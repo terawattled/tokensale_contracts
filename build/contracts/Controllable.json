@@ -1,0 +1,40 @@
+{
+  "contract_name": "Controllable",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newController",
+          "type": "address"
+        }
+      ],
+      "name": "transferControl",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "controller",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "type": "constructor"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000f57600080fd5b5b60008054600160a060020a03191633600160a060020a03161790555b5b60fb8061003b6000396000f300606060405263ffffffff60e060020a6000350416636d16fa418114602d578063f77c479114604b575b600080fd5b3415603757600080fd5b6049600160a060020a03600435166077565b005b3415605557600080fd5b605b60c0565b604051600160a060020a03909116815260200160405180910390f35b60005433600160a060020a03908116911614609157600080fd5b600160a060020a0381161560bb5760008054600160a060020a031916600160a060020a0383161790555b5b5b50565b600054600160a060020a0316815600a165627a7a72305820b85ef620d4f164529fe127fcdee7ed65353cc268da0947ca250ba92b3144f91a0029",
+  "networks": {},
+  "schema_version": "0.0.5",
+  "updated_at": 1525757979505
+}

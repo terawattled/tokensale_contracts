@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d799f063-4fc1-4146-b5d7-d7586fe2efb1" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/abis/tokenSale.txt" beforeDir="false" afterPath="$PROJECT_DIR$/abis/tokenSale.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/ApproveAndCallReceiver.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/CallFallback.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/Controllable.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/Controller.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/ControllerInterface.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/ERC20.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/Migrations.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/Ownable.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/Pausable.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/ProofPresaleToken.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/ProofPresaleTokenInterface.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/ProofToken.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/ProofTokenInterface.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/SafeMath.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/TokenFactory.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/TokenFactoryInterface.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/contracts/Tokensale.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/ApproveAndCallReceiver.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/ApproveAndCallReceiver.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Controllable.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Controllable.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/ControllerInterface.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/ControllerInterface.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/ERC20.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/ERC20.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Migrations.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Migrations.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Ownable.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Ownable.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/Pausable.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Pausable.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/ProofPresaleToken.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/LedPresaleToken.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/ProofPresaleTokenInterface.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/LedPresaleTokenInterface.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/ProofToken.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/LedToken.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/ProofTokenInterface.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/LedTokenInterface.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/SafeMath.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/SafeMath.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/TokenFactory.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/TokenFactory.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/TokenFactoryInterface.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/TokenFactoryInterface.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/TokenSale.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/TokenSale.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage.json" beforeDir="false" afterPath="$PROJECT_DIR$/coverage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/2_deploy_contracts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/other_test/crowdsale.js" beforeDir="false" afterPath="$PROJECT_DIR$/other_test/crowdsale.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/controlHelpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/controlHelpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/disableTransfers.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/disableTransfers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/enableTransfers.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/enableTransfers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/getPresaleBalances.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/getPresaleBalances.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/importBalances.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/importBalances.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/jsHelpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/jsHelpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/lockBalances.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/lockBalances.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/logEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/logEvents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/ownershipHelpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ownershipHelpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/testConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/testConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/tokenSaleHelpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/tokenSaleHelpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/transferTokenControl.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/transferTokenControl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/watchEvents.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/watchEvents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cloneProofToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/cloneProofToken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/initialState.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/initialState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ownable.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/ownable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/pausable.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/pausable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/payments.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/payments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/proofToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/proofToken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/tokenSale.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/tokenSale.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/truffle.js" beforeDir="false" afterPath="$PROJECT_DIR$/truffle.js" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="2_deploy_contracts.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/migrations/2_deploy_contracts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-468">
+              <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TokenSale.sol" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/contracts/TokenSale.sol">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LedToken.sol" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/contracts/LedToken.sol">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="53" column="17" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>pragma solidity \^0\.4\.15\;\n</find>
+      <find>solidity \^0\.4\.15\;\n</find>
+      <find>using</find>
+      <find>ProofToken</find>
+      <find>proof</find>
+      <find>Proof</find>
+      <find>PROOF</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>solidity \^0\.4\.13\;\n</replace>
+      <replace>LedToken</replace>
+      <replace>led</replace>
+      <replace>Led</replace>
+      <replace>LED</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/contracts/ApproveAndCallReceiver.sol" />
+        <option value="$PROJECT_DIR$/contracts/Controllable.sol" />
+        <option value="$PROJECT_DIR$/node_modules/eth-lightwallet/lib/keystore.js" />
+        <option value="$PROJECT_DIR$/contracts/LedPresaleToken.sol" />
+        <option value="$PROJECT_DIR$/contracts/LedPresaleTokenInterface.sol" />
+        <option value="$PROJECT_DIR$/contracts/LedToken.sol" />
+        <option value="$PROJECT_DIR$/contracts/TokenFactory.sol" />
+        <option value="$PROJECT_DIR$/scripts/controlHelpers.js" />
+        <option value="$PROJECT_DIR$/scripts/disableTransfers.js" />
+        <option value="$PROJECT_DIR$/scripts/enableTransfers.js" />
+        <option value="$PROJECT_DIR$/scripts/getPresaleBalances.js" />
+        <option value="$PROJECT_DIR$/scripts/helpers.js" />
+        <option value="$PROJECT_DIR$/scripts/importBalances.js" />
+        <option value="$PROJECT_DIR$/scripts/jsHelpers.js" />
+        <option value="$PROJECT_DIR$/scripts/lockBalances.js" />
+        <option value="$PROJECT_DIR$/scripts/logEvents.js" />
+        <option value="$PROJECT_DIR$/scripts/ownershipHelpers.js" />
+        <option value="$PROJECT_DIR$/scripts/testConfig.js" />
+        <option value="$PROJECT_DIR$/test/initialState.js" />
+        <option value="$PROJECT_DIR$/app/javascripts/app.js" />
+        <option value="$PROJECT_DIR$/scripts/watchEvents.js" />
+        <option value="$PROJECT_DIR$/scripts/transferTokenControl.js" />
+        <option value="$PROJECT_DIR$/config.js" />
+        <option value="$PROJECT_DIR$/truffle.js" />
+        <option value="$PROJECT_DIR$/migrations/2_deploy_contracts.js" />
+        <option value="$PROJECT_DIR$/contracts/TokenSale.sol" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="830" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ProofTokenSale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProofTokenSale" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProofTokenSale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProofTokenSale" type="462c0819:PsiDirectoryNode" />
+              <item name="contracts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ProofTokenSale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ProofTokenSale" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d799f063-4fc1-4146-b5d7-d7586fe2efb1" name="Default" comment="" />
+      <created>1525668295252</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1525668295252</updated>
+      <workItem from="1525668296811" duration="1563000" />
+      <workItem from="1525669950972" duration="2426000" />
+      <workItem from="1525699883062" duration="2241000" />
+      <workItem from="1525732277281" duration="11901000" />
+      <workItem from="1525837454312" duration="11000" />
+      <workItem from="1525841030586" duration="930000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="19072000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1440" height="830" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289855" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3289855" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/truffle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" selection-start-line="6" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/tokenSaleHelpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/transferTokenControl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/watchEvents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/controlHelpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/2_deploy_contracts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="56" column="6" lean-forward="true" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/truffle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" lean-forward="true" selection-start-line="6" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/tokenSaleHelpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/transferTokenControl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/watchEvents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/controlHelpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/2_deploy_contracts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="56" column="6" lean-forward="true" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contracts/LedPresaleTokenInterface.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contracts/LedPresaleToken.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contracts/LedTokenInterface.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-76" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contracts/TokenFactory.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.solcover.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/proofToken.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5092" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/importBalances.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="48" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/initialState.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="37" column="66" lean-forward="true" selection-start-line="37" selection-start-column="66" selection-end-line="37" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/ownable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-892" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/pausable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2017" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/payments.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4372" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/tokenSale.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-130" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/cloneProofToken.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/javascripts/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/other_test/crowdsale.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jsdoc.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/logEvents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/disableTransfers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="33" selection-start-column="33" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/enableTransfers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/getPresaleBalances.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/helpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4702">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/jsHelpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/lockBalances.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/ownershipHelpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-307">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/pausableHelpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-157" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/testConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/tokenSaleHelpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/transferTokenControl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/watchEvents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/controlHelpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/truffle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contracts/LedToken.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="53" column="17" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/migrations/2_deploy_contracts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-468">
+          <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/contracts/TokenSale.sol">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
