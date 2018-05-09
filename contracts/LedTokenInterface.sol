@@ -3,7 +3,7 @@ pragma solidity ^0.4.13;
 import './Controllable.sol';
 
 /**
- * @title LedToken (PRFT)
+ * @title LedToken (LED)
  * Standard Mintable ERC20 Token
  * https://github.com/ethereum/EIPs/issues/20
  * Based on code by FirstBlood:

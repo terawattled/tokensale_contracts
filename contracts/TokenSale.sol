@@ -30,9 +30,9 @@ contract TokenSale is Pausable {
   address public ledMultiSig = 0x9c0e9941a4c554f6e1aa1930268a7c992e3c8602;
 
   uint256 public constant BASE_PRICE_IN_WEI = 140000000000000;//0.10 cents in wei
-  uint256 public constant PUBLIC_TOKENS = 1000000 * (10 ** 18);
-  uint256 public constant TOTAL_PRESALE_TOKENS = 112386712924725508802400;
-  uint256 public constant TOKENS_ALLOCATED_TO_LED = 1000000 * (10 ** 18);
+  uint256 public constant PUBLIC_TOKENS = 100 * (10 ** 18);
+  uint256 public constant TOTAL_PRESALE_TOKENS = 65 * (10 ** 18);
+  uint256 public constant TOKENS_ALLOCATED_TO_LED = 100 * (10 ** 18);
 
 
 

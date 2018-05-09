@@ -1,0 +1,10 @@
+Running migration: 2_deploy_contracts.js
+  Deploying TokenFactory...
+  ... 0xe5e6405dbbd34d2fc4d934a123cff6e50fde9893f08437a51f3111f3567795ec
+  TokenFactory: 0x9fe70087a4c2e3b4d699ab1eb0dc0a6c15260ee3
+  Deploying LedToken...
+  ... 0x88300f3119e59e0481594c4b0098a9140f4533d9562cd25a54858b0b7ec9c0c9
+  LedToken: 0x85d1e6a7752d9853520089dd71dedc98727b681f
+  Deploying TokenSale...
+  ... 0x3ce158955239b5603888ef6093bf0ec18f1ed90fe90907f1e9d6f90b460eaf7d
+  TokenSale: 0x5401780608a1f2c24c15578233da3765effb0729
