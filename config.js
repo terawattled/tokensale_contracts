@@ -1,9 +1,9 @@
 let config = {
   infura: {
-    ethereum: 'https://mainnet.infura.io/Oi27hEUIuGqMsrYGpI7e',
-    ropsten: 'https://ropsten.infura.io/Oi27hEUIuGqMsrYGpI7e',
-    rinkeby: 'https://rinkeby.infura.io/Oi27hEUIuGqMsrYGpI7e',
-    kovan: 'https://kovan.infura.io/Oi27hEUIuGqMsrYGpI7e'
+    ethereum: 'https://mainnet.infura.io/LYT8oOCNelziQUTO4HE2 ',
+    ropsten: 'https://ropsten.infura.io/LYT8oOCNelziQUTO4HE2',
+    rinkeby: 'https://rinkeby.infura.io/LYT8oOCNelziQUTO4HE2',
+    kovan: 'https://kovan.infura.io/LYT8oOCNelziQUTO4HE2'
   },
   constants: {
     DEFAULT_GAS: 2 * 10 ** 6,

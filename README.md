@@ -101,7 +101,7 @@ Step-by-step instructions to finalize the token sale:
 - Clone the repository and install dependencies
 
 ```
-git clone https://github.com/LedSuite/LedPresaleContract.git
+git clone https://github.com/terawattled/tokensale_contracts.git
 cd LedPresaleContract
 npm install
 ```
