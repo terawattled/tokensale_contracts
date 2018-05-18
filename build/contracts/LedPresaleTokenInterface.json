@@ -173,9 +173,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.13;\n\n/**\n * @title LedPresaleToken (LEDP)\n * Standard Mintable ERC20 Token\n * https://github.com/ethereum/EIPs/issues/20\n * Based on code by FirstBlood:\n * https://github.com/Firstbloodio/token/blob/master/smart_contract/FirstBloodToken.sol\n */\n\ncontract LedPresaleTokenInterface {\n\n  uint256 public totalSupply;\n\n  function balanceOf(address _owner) constant returns (uint256);\n  function transfer(address _to, uint _value) returns (bool);\n  function transferFrom(address _from, address _to, uint _value) returns (bool);\n  function approve(address _spender, uint _value) returns (bool);\n  function allowance(address _owner, address _spender) constant returns (uint256);\n  function mint(address _to, uint256 _amount) returns (bool);\n  function finishMinting() returns (bool);\n\n}",
-  "sourcePath": "/Users/jeromeraymond/ProofTokenSale/contracts/LedPresaleTokenInterface.sol",
+  "sourcePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/LedPresaleTokenInterface.sol",
   "ast": {
-    "absolutePath": "/Users/jeromeraymond/ProofTokenSale/contracts/LedPresaleTokenInterface.sol",
+    "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/LedPresaleTokenInterface.sol",
     "exportedSymbols": {
       "LedPresaleTokenInterface": [
         501
@@ -952,7 +952,7 @@
     "src": "0:799:5"
   },
   "legacyAST": {
-    "absolutePath": "/Users/jeromeraymond/ProofTokenSale/contracts/LedPresaleTokenInterface.sol",
+    "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/LedPresaleTokenInterface.sol",
     "exportedSymbols": {
       "LedPresaleTokenInterface": [
         501
@@ -1734,5 +1734,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-09T05:32:59.007Z"
+  "updatedAt": "2018-05-17T10:34:37.449Z"
 }

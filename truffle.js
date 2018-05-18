@@ -10,10 +10,10 @@ module.exports = {
     networks: {
         development: {
             host: 'localhost',
-            port: 7545,
+            port: 8545,
             network_id: '*',
             gas: config.constants.MAX_GAS,
-            from: '0xE9b5c2bFa73442cB3fD222022566399BAaa13A52'  // testprc main account here
+            from: '0x1219b0010d1170b2a194543d3dff5c9e7cfade2f'  // testprc main account here
         },
         ethereum: {
             provider: new LightWalletProvider({

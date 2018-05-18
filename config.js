@@ -19,8 +19,8 @@ let config = {
   },
   addresses: {
     development: {
-      WALLET_ADDRESS: '0x6704fbfcd5ef766b287262fa2281c105d57246a6',
-      TOKEN_WALLET_ADDRESS: '0x6704fbfcd5ef766b287262fa2281c105d57246a6'
+      WALLET_ADDRESS: '0x1219b0010d1170b2a194543d3dff5c9e7cfade2f',
+      TOKEN_WALLET_ADDRESS: '0x1219b0010d1170b2a194543d3dff5c9e7cfade2f'
     },
     rinkeby: {
       WALLET_ADDRESS: '0xa3af38500C37C4C05B1CE5c417dCf8f103fCC6f4',

@@ -80,9 +80,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.13;\n\n/// @dev The token controller contract must implement these functions\ncontract ControllerInterface {\n\n    function proxyPayment(address _owner) public payable returns(bool);\n    function onTransfer(address _from, address _to, uint _amount) public returns(bool);\n    function onApprove(address _owner, address _spender, uint _amount) public returns(bool);\n}",
-  "sourcePath": "/Users/jeromeraymond/ProofTokenSale/contracts/ControllerInterface.sol",
+  "sourcePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/ControllerInterface.sol",
   "ast": {
-    "absolutePath": "/Users/jeromeraymond/ProofTokenSale/contracts/ControllerInterface.sol",
+    "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/ControllerInterface.sol",
     "exportedSymbols": {
       "ControllerInterface": [
         89
@@ -476,7 +476,7 @@
     "src": "0:382:2"
   },
   "legacyAST": {
-    "absolutePath": "/Users/jeromeraymond/ProofTokenSale/contracts/ControllerInterface.sol",
+    "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/ControllerInterface.sol",
     "exportedSymbols": {
       "ControllerInterface": [
         89
@@ -875,5 +875,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-09T05:32:59.005Z"
+  "updatedAt": "2018-05-17T10:34:37.447Z"
 }

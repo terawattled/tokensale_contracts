@@ -38,9 +38,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.13;\n\nimport './LedToken.sol';\n\ncontract TokenFactoryInterface {\n\n    function createCloneToken(\n        address _parentToken,\n        uint _snapshotBlock,\n        string _tokenName,\n        string _tokenSymbol\n      ) public returns (LedToken newToken);\n}",
-  "sourcePath": "/Users/jeromeraymond/ProofTokenSale/contracts/TokenFactoryInterface.sol",
+  "sourcePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/TokenFactoryInterface.sol",
   "ast": {
-    "absolutePath": "/Users/jeromeraymond/ProofTokenSale/contracts/TokenFactoryInterface.sol",
+    "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/TokenFactoryInterface.sol",
     "exportedSymbols": {
       "TokenFactoryInterface": [
         1988
@@ -61,7 +61,7 @@
         "src": "0:24:13"
       },
       {
-        "absolutePath": "/Users/jeromeraymond/ProofTokenSale/contracts/LedToken.sol",
+        "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/LedToken.sol",
         "file": "./LedToken.sol",
         "id": 1974,
         "nodeType": "ImportDirective",
@@ -255,7 +255,7 @@
     "src": "0:276:13"
   },
   "legacyAST": {
-    "absolutePath": "/Users/jeromeraymond/ProofTokenSale/contracts/TokenFactoryInterface.sol",
+    "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/TokenFactoryInterface.sol",
     "exportedSymbols": {
       "TokenFactoryInterface": [
         1988
@@ -276,7 +276,7 @@
         "src": "0:24:13"
       },
       {
-        "absolutePath": "/Users/jeromeraymond/ProofTokenSale/contracts/LedToken.sol",
+        "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/LedToken.sol",
         "file": "./LedToken.sol",
         "id": 1974,
         "nodeType": "ImportDirective",
@@ -475,5 +475,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-09T05:32:59.013Z"
+  "updatedAt": "2018-05-17T10:34:37.458Z"
 }

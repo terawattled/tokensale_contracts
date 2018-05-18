@@ -180,9 +180,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.13;\n\n/**\n * @title ERC20 interface\n * @dev see https://github.com/ethereum/EIPs/issues/20\n */\ncontract ERC20 {\n\n  uint256 public totalSupply;\n\n  function balanceOf(address _owner) constant returns (uint256);\n  function transfer(address _to, uint256 _value) returns (bool);\n  function transferFrom(address _from, address _to, uint256 _amount) returns (bool);\n  function approve(address _spender, uint256 _amount) returns (bool);\n  function allowance(address _owner, address _spender) constant returns (uint256);\n\n  event Transfer(address indexed from, address indexed to, uint256 value);\n  event Approval(address indexed owner, address indexed spender, uint256 value);\n\n}",
-  "sourcePath": "/Users/jeromeraymond/ProofTokenSale/contracts/ERC20.sol",
+  "sourcePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/ERC20.sol",
   "ast": {
-    "absolutePath": "/Users/jeromeraymond/ProofTokenSale/contracts/ERC20.sol",
+    "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/ERC20.sol",
     "exportedSymbols": {
       "ERC20": [
         155
@@ -986,7 +986,7 @@
     "src": "0:691:3"
   },
   "legacyAST": {
-    "absolutePath": "/Users/jeromeraymond/ProofTokenSale/contracts/ERC20.sol",
+    "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/ERC20.sol",
     "exportedSymbols": {
       "ERC20": [
         155
@@ -1795,5 +1795,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-09T05:32:59.006Z"
+  "updatedAt": "2018-05-17T10:34:37.447Z"
 }
