@@ -13,8 +13,6 @@ const web3 = new Web3(provider);
 
 const moment = require('moment');
 
-const {decodeEthereumAddress} = require('../scripts/utils.js');
-
 const compiledLedToken = require('../contracts/build/LedToken.json');
 const compiledTokenSale = require('../contracts/build/TokenSale.json');
 const compiledTokenFactory = require('../contracts/build/TokenFactory.json');
@@ -30,14 +28,10 @@ let startTime;
 let endTime;
 let contractUploadTime;
 
-let txnReceipt;
-let topics;
 let clonedTokenAddress;
 let clonedToken;
 
 let accounts;
-
-let oneEther;
 
 beforeEach(async function() {
   accounts = await web3.eth.getAccounts();
