@@ -5,17 +5,6 @@ const web3 = new Web3(provider);
 
 const assert = require('assert');
 
-// const BigNumber = web3.BigNumber;
-// let chai = require('chai');
-// var chaiAsPromised = require('chai-as-promised');
-// var chaiStats = require('chai-stats');
-// var chaiBigNumber = require('chai-bignumber')(BigNumber);
-// chai.use(chaiAsPromised).use(chaiBigNumber).use(chaiStats).should();
-
-// const assert = chai.assert;
-// const should = chai.should();
-// const expect = chai.expect;
-
 const compiledLedToken = require('../contracts/build/LedToken.json');
 const compiledTokenSale = require('../contracts/build/TokenSale.json');
 const compiledLedPresaleToken = require('../contracts/build/LedPresaleToken.json');
