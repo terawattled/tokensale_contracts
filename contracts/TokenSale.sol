@@ -91,7 +91,7 @@ contract TokenSale is Pausable {
 
     uint256 tokens = weiAmount.mul(decimalsMultiplier).div(priceInWei);
     tokensMinted = tokensMinted.add(tokens);
-    require(tokensMinted < tokenCap);
+    require(tokensMinted < cap);
 
     contributors = contributors.add(1);
 

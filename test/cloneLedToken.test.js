@@ -13,7 +13,6 @@ const web3 = new Web3(provider);
 
 const moment = require('moment');
 
-const {getTxnReceiptTopics, latestTime, increaseTime} = require('../scripts/helpers.js');
 const {decodeEthereumAddress} = require('../scripts/utils.js');
 
 const compiledLedToken = require('../contracts/build/LedToken.json');
@@ -65,22 +64,18 @@ beforeEach(async function() {
   tokenSaleAddress = tokenSale.options.address;
 
   await ledToken.methods.transferControl(tokenSaleAddress).send({from:accounts[0]});
-
-  await increaseTime(moment.duration(1.01, 'days'));
 })
 
 describe('Cloning: ', function () {
   beforeEach(async function() {
-    console.log('lets try');
+    await tokenSale.methods.forceStart().send({from:accounts[0],gas:'3000000'});
     await tokenSale.methods.buyTokens(accounts[1]).send({
       from:accounts[1],
       value:web3.utils.toWei('1', 'ether'),
       gas:'3000000'
     });
-    console.log('success');
     let txn = await ledToken.methods.createCloneToken(0, 'Led Token', 'PRFT2').send({from:accounts[0], gas:'3000000'});
-    topics = getTxnReceiptTopics(txn);
-    clonedTokenAddress = decodeEthereumAddress(topics[0].parameters[0]);
+    clonedTokenAddress = txn['events']['NewCloneToken']['returnValues']['cloneToken'];
     clonedToken = await new web3.eth.Contract(JSON.parse(compiledLedToken.interface),clonedTokenAddress);
   })
 
@@ -110,14 +105,15 @@ describe('Cloning: ', function () {
     let clonedTokenSaleAddress = clonedTokenSale.options.address;
     await clonedToken.methods.transferControl(clonedTokenSaleAddress).send({from:accounts[0],gas:'3000000'});
 
-    let initialTokenBalance = await clonedToken.methods.balanceOf(accounts[2]);
+    await clonedTokenSale.methods.forceStart().send({from:accounts[0],gas:'3000000'});
+
+    let initialTokenBalance = await clonedToken.methods.balanceOf(accounts[2]).call();
 
     await clonedTokenSale.methods.buyTokens(accounts[2]).send({from:accounts[2],value:web3.utils.toWei('1', 'ether'),gas:'3000000'});
 
-    let tokenBalance = await clonedToken.methods.balanceOf(accounts[2]);
+    let tokenBalance = await clonedToken.methods.balanceOf(accounts[2]).call();
     let balanceIncrease = (tokenBalance - initialTokenBalance);
-    let decimals = await clonedToken.methods.decimals().call();
-    balanceIncrease = (balanceIncrease/(10**decimals.toNumber()));
+    balanceIncrease = (balanceIncrease/(10**18));
     assert(balanceIncrease>10);
   })
 
@@ -129,16 +125,16 @@ describe('Cloning: ', function () {
 
     let clonedTokenSaleAddress = clonedTokenSale.options.address;
     await clonedToken.methods.transferControl(clonedTokenSaleAddress).send({from:accounts[0],gas:'3000000'});
-    await clonedTokenSale.methods.enableTransfers(true).send({from:accounts[0],gas:'3000000'});
-    let buyer1InitialBalance = await clonedToken.methods.balanceOf(accounts[1]);
-    let buyer2InitialBalance = await clonedToken.methods.balanceOf(accounts[2]);
+    await clonedTokenSale.methods.enableTransfers().send({from:accounts[0],gas:'3000000'});
+    let buyer1InitialBalance = await clonedToken.methods.balanceOf(accounts[1]).call();
+    let buyer2InitialBalance = await clonedToken.methods.balanceOf(accounts[2]).call();
 
     await clonedToken.methods.transfer(accounts[2], 100).send({from:accounts[1],gas:'3000000'});
 
-    let buyer1Balance = await getTokenBalance(clonedToken, buyer);
-    let buyer2Balance = await getTokenBalance(clonedToken, buyer2);
+    let buyer1Balance = await clonedToken.methods.balanceOf(accounts[1]).call();
+    let buyer2Balance = await clonedToken.methods.balanceOf(accounts[2]).call();
 
-    assert.equal(buyer1Balance, buyer1InitialBalance - 100);
-    assert.equal(buyer2Balance, buyer2InitialBalance + 100);
+    assert.ok(buyer1InitialBalance>buyer1Balance);
+    assert.ok(buyer2InitialBalance<buyer2Balance);
   })
 })
