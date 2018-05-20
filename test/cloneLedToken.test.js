@@ -55,7 +55,7 @@ beforeEach(async function() {
   ledTokenAddress = ledToken.options.address;
   
   contractUploadTime = moment.unix(Date.now()); 
-  startTime = contractUploadTime;
+  startTime = contractUploadTime.unix();
   endTime = contractUploadTime.add(2, 'days').unix(); 
 
   tokenSale = await new web3.eth.Contract(JSON.parse(compiledTokenSale.interface))
@@ -71,13 +71,13 @@ beforeEach(async function() {
 
 describe('Cloning: ', function () {
   beforeEach(async function() {
-
+    console.log('lets try');
     await tokenSale.methods.buyTokens(accounts[1]).send({
       from:accounts[1],
       value:web3.utils.toWei('1', 'ether'),
       gas:'3000000'
     });
-
+    console.log('success');
     let txn = await ledToken.methods.createCloneToken(0, 'Led Token', 'PRFT2').send({from:accounts[0], gas:'3000000'});
     topics = getTxnReceiptTopics(txn);
     clonedTokenAddress = decodeEthereumAddress(topics[0].parameters[0]);

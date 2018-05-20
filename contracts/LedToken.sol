@@ -95,7 +95,7 @@ contract LedToken is Controllable {
     //  genesis block for this token as that contains totalSupply of this
     //  token at this block number.
     if ((totalSupplyHistory.length == 0) || (totalSupplyHistory[0].fromBlock > _blockNumber)) {
-        if (address(parentToken) != 0) {
+        if (address(parentToken) != 0x0) {
             return parentToken.totalSupplyAt(min(_blockNumber, parentSnapShotBlock));
         } else {
             return 0;
@@ -129,7 +129,7 @@ contract LedToken is Controllable {
     //  genesis block for that token as this contains initial balance of
     //  this token
     if ((balances[_owner].length == 0) || (balances[_owner][0].fromBlock > _blockNumber)) {
-        if (address(parentToken) != 0) {
+        if (address(parentToken) != 0x0) {
             return parentToken.balanceOfAt(_owner, min(_blockNumber, parentSnapShotBlock));
         } else {
             // Has no parent
