@@ -80,7 +80,7 @@ describe('Ownership', function () {
     try {
       await tokenSale.methods.transferOwnership(hacker2).send({from:hacker1,gas:'3000000'});
     } catch (error) {
-      console.log(error.message);
+      
     }
     // await expectInvalidOpcode(transferOwnership(tokenSale, hacker1, hacker2))
     const newOwner = await tokenSale.methods.owner().call();
