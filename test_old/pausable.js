@@ -191,4 +191,3 @@ contract('Crowdsale', (accounts) => {
     })
   })
 })
-
