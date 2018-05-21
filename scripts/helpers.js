@@ -1,4 +1,4 @@
-import moment from 'moment'
+const moment = require('moment')
 
 /**
  * @module Helpers
@@ -10,6 +10,11 @@ var chaiAsPromised = require('chai-as-promised')
 const expect = chai.expect
 chai.should()
 chai.use(chaiAsPromised)
+
+const ganache = require('ganache-cli')
+const provider = ganache.provider()
+const Web3 = require('web3')
+const web3 = new Web3(provider)
 
 /**
  * @description Returns a promise that is resolve when transactions corresponding to input hashes are resolved

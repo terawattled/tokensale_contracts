@@ -40,6 +40,7 @@ contract LedToken is Controllable {
   bool public presaleBalancesLocked = false;
 
   uint256 public constant TOTAL_PRESALE_TOKENS = 112386712924725508802400;
+  uint256 public totalSupplyAtCheckpoint;
 
   event Mint(address indexed to, uint256 amount);
   event MintFinished();
@@ -95,7 +96,7 @@ contract LedToken is Controllable {
     //  genesis block for this token as that contains totalSupply of this
     //  token at this block number.
     if ((totalSupplyHistory.length == 0) || (totalSupplyHistory[0].fromBlock > _blockNumber)) {
-        if (address(parentToken) != 0) {
+        if (address(parentToken) != 0x0) {
             return parentToken.totalSupplyAt(min(_blockNumber, parentSnapShotBlock));
         } else {
             return 0;
@@ -129,7 +130,7 @@ contract LedToken is Controllable {
     //  genesis block for that token as this contains initial balance of
     //  this token
     if ((balances[_owner].length == 0) || (balances[_owner][0].fromBlock > _blockNumber)) {
-        if (address(parentToken) != 0) {
+        if (address(parentToken) != 0x0) {
             return parentToken.balanceOfAt(_owner, min(_blockNumber, parentSnapShotBlock));
         } else {
             // Has no parent
@@ -288,11 +289,11 @@ contract LedToken is Controllable {
     require(presaleBalancesLocked == false);
 
     for (uint256 i = 0; i < _addresses.length; i++) {
+      totalSupplyAtCheckpoint += _balances[i];
       updateValueAtNow(balances[_addresses[i]], _balances[i]);
+      updateValueAtNow(totalSupplyHistory, totalSupplyAtCheckpoint);
       Transfer(0, _addresses[i], _balances[i]);
     }
-
-    updateValueAtNow(totalSupplyHistory, TOTAL_PRESALE_TOKENS);
     return true;
   }
 
