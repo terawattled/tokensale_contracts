@@ -12,8 +12,6 @@ const web3 = new Web3(provider);
 
 const moment = require('moment');
 
-const {increaseTime} = require('../scripts/helpers.js');
-
 const assert = require('assert');
 
 const compiledLedToken = require('../contracts/build/LedToken.json');
