@@ -40,6 +40,7 @@ contract LedToken is Controllable {
   bool public presaleBalancesLocked = false;
 
   uint256 public constant TOTAL_PRESALE_TOKENS = 112386712924725508802400;
+  uint256 public totalSupplyAtCheckpoint;
 
   event Mint(address indexed to, uint256 amount);
   event MintFinished();
@@ -288,11 +289,11 @@ contract LedToken is Controllable {
     require(presaleBalancesLocked == false);
 
     for (uint256 i = 0; i < _addresses.length; i++) {
+      totalSupplyAtCheckpoint += _balances[i];
       updateValueAtNow(balances[_addresses[i]], _balances[i]);
+      updateValueAtNow(totalSupplyHistory, totalSupplyAtCheckpoint);
       Transfer(0, _addresses[i], _balances[i]);
     }
-
-    updateValueAtNow(totalSupplyHistory, TOTAL_PRESALE_TOKENS);
     return true;
   }
 

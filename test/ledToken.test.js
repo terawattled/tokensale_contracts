@@ -85,6 +85,7 @@ describe('Initial State', function () {
 })
 
 describe('Import balances', function () {
+  this.timeout(0);
   beforeEach(async function() {
     tokenSale = await new web3.eth.Contract(JSON.parse(compiledTokenSale.interface))
     .deploy({data:compiledTokenSale.bytecode,arguments:[ledTokenAddress,startTime,endTime]})
@@ -103,9 +104,7 @@ describe('Import balances', function () {
     assert.equal(receiverBalance,100);
   })
 
-  // This test is commented out for now. It takes enormous amounts of gas to complete,
-  // which Ganache won't do.
-  /*it('should correctly import balances from a CSV file', async function() {
+  it('should correctly import balances from a CSV file', async function() {
     let addresses = [];
     let balances = [];
 
@@ -124,9 +123,9 @@ describe('Import balances', function () {
 
     let addressListNumber = addresses.length;
 
-    for (let i = 0; i < addressListNumber; i = i + 100) {
-      let addressesBatch = addresses.slice(i, i + 100);
-      let balancesBatch = balances.slice(i, i + 100);
+    for (let i = 0; i < addressListNumber; i = i + 25) {
+      let addressesBatch = addresses.slice(i, i + 25);
+      let balancesBatch = balances.slice(i, i + 25);
       await ledToken.methods.importPresaleBalances(addressesBatch, balancesBatch).send({from:fund,gas:'3000000'});
     }
 
@@ -134,11 +133,9 @@ describe('Import balances', function () {
       let balance = await ledToken.methods.balanceOf(addresses[i]).call();
       assert.equal(balance,balances[i]);
     }
-  })*/
+  })
 
-  // This test is commented out for now. It takes enormous amounts of gas to complete,
-  // which Ganache won't do.
-  /*it('have a total supply equal to the sum of the presale balances and led tokens after importing', async function() {
+  it('have a total supply equal to the sum of the presale balances and led tokens after importing', async function() {
     let addresses = [];
     let balances = [];
 
@@ -157,16 +154,16 @@ describe('Import balances', function () {
 
     let addressListNumber = addresses.length;
 
-    for (let i = 0; i < addressListNumber; i = i + 100) {
-      let addressesBatch = addresses.slice(i, i + 100);
-      let balancesBatch = balances.slice(i, i + 100);
+    for (let i = 0; i < addressListNumber; i = i + 25) {
+      let addressesBatch = addresses.slice(i, i + 25);
+      let balancesBatch = balances.slice(i, i + 25);
       await ledToken.methods.importPresaleBalances(addressesBatch, balancesBatch).send({from:fund,gas:'3000000'});
     }
 
     let expectedSupply = balances.sum();
-    let supply = await ledToken.methods.TotalSupply().call();
+    let supply = await ledToken.methods.totalSupply().call();
     assert.equal(supply, expectedSupply);
-  })*/
+  })
 
   it('should not import balances if caller is not the owner of the contract', async function() {
     let addresses = [];
