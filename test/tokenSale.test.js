@@ -1,189 +1,173 @@
-const BigNumber = web3.BigNumber
-let chai = require('chai')
-var chaiAsPromised = require('chai-as-promised')
-var chaiStats = require('chai-stats')
-var chaiBigNumber = require('chai-bignumber')(BigNumber)
-chai.use(chaiAsPromised).use(chaiBigNumber).use(chaiStats).should()
+const ganache = require('ganache-cli');
+const provider = ganache.provider();
+const Web3 = require('web3');
+const web3 = new Web3(provider);
 
-import moment from 'moment'
-import { TOKENS_ALLOCATED_TO_LED, ether } from '../scripts/testConfig.js'
+const moment = require('moment');
+
+/*import { TOKENS_ALLOCATED_TO_LED, ether } from '../scripts/testConfig.js'
 import { getAddress, advanceToBlock, expectInvalidOpcode, waitUntilTransactionsMined, latestTime, increaseTime } from '../scripts/helpers.js'
 import { baseUnits, mintToken, getTokenBalance, getTotalSupply } from '../scripts/tokenHelpers.js'
 import { transferControl } from '../scripts/controlHelpers.js'
 import { enableTransfers, buyTokens, finalize, getCap, getPrice, getPriceInWei, getBasePrice, getBasePriceInWei } from '../scripts/tokenSaleHelpers.js'
-import { pause, unpause } from '../scripts/pausableHelpers'
+import { pause, unpause } from '../scripts/pausableHelpers'*/
 
-const assert = chai.assert
-const should = chai.should()
-const expect = chai.expect
+const assert = require('assert');
 
-const LedPresaleToken = artifacts.require('./LedPresaleToken.sol')
-const LedToken = artifacts.require('./LedToken.sol')
-const TokenSale = artifacts.require('./TokenSale.sol')
+const compiledLedToken = require('../contracts/build/LedToken.json');
+const compiledTokenSale = require('../contracts/build/TokenSale.json');
+const compiledLedPresaleToken = require('../contracts/build/LedPresaleToken.json');
 
-contract('Crowdsale', (accounts) => {
-  let fund = accounts[0]
-  let tokenSale
-  let tokenSaleAddress
-  let ledToken
-  let ledPresaleToken
-  let ledPresaleTokenAddress
-  let ledTokenAddress
-  let sender = accounts[1]
-  let receiver = accounts[2]
-  let hacker = accounts[3]
-  let wallet = accounts[5]
-  let ledWalletAddress = accounts[9]
+let accounts;
+let fund;
+let tokenSale;
+let tokenSaleAddress;
+let ledToken;
+let ledPresaleToken;
+let ledPresaleTokenAddress;
+let ledTokenAddress;
+let sender;
+let receiver;
+let hacker;
+let wallet;
+let ledWalletAddress;
 
-  let startTime
-  let endTime
-  let contractUploadTime
+let startTime;
+let endTime;
+let contractUploadTime;
 
+beforeEach(async function() {
+  accounts = await web3.eth.getAccounts();
+  fund = accounts[0];
+  sender = accounts[1];
+  receiver = accounts[2];
+  hacker = accounts[3];
+  wallet = accounts[5];
+  ledWalletAddress = accounts[9];
+
+  ledPresaleToken = await LedPresaleToken.new()
+  ledPresaleTokenAddress = await getAddress(ledPresaleToken)
+
+  ledToken = await new web3.eth.Contract(JSON.parse(compiledLedToken.interface))
+  .deploy({data:compiledLedToken.bytecode,arguments:['0x0','0x0',0,'Led Token','PRFT']})
+  .send({from:fund,gas:'3000000'});
+
+  ledTokenAddress = ledToken.options.address;
+
+  contractUploadTime = moment.unix(Date.now());
+  startTime = contractUploadTime.unix();
+  endTime = contractUploadTime.add(31, 'days').unix();
+
+  tokenSale = await new web3.eth.Contract(JSON.parse(compiledTokenSale.interface))
+  .deploy({data:compiledTokenSale.bytecode,arguments:[ledTokenAddress,startTime,endTime]})
+  .send({from:fund,gas:'3000000'});
+
+  tokenSaleAddress = tokenSale.options.address;
+})
+
+describe('Token Information', async function() {
   beforeEach(async function() {
-
-
-    ledPresaleToken = await LedPresaleToken.new()
-    ledPresaleTokenAddress = await getAddress(ledPresaleToken)
-
-    ledToken = await LedToken.new(
-      '0x0',
-      '0x0',
-      0,
-      'Led Token Test',
-      'PRFT Test'
-    )
-
-    ledTokenAddress = await getAddress(ledToken)
-
-    contractUploadTime = latestTime()
-    startTime = contractUploadTime.add(1, 'day').unix()
-    endTime = contractUploadTime.add(31, 'day').unix()
-
-    tokenSale = await TokenSale.new(
-      ledTokenAddress,
-      startTime,
-      endTime)
-
-    tokenSaleAddress = await getAddress(tokenSale)
+    await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
+    await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
   })
 
-  describe('Token Information', async function() {
-    beforeEach(async function() {
-      await transferControl(ledToken, fund, tokenSaleAddress)
-      await enableTransfers(tokenSale, fund)
-      await increaseTime(moment.duration(1.1, 'day'))
-    })
+  it('should return the correct token supply', async function() {
+    await tokenSale.methods.buyTokens(sender).send({from:sender,value:web3.utils.toWei('1','ether'),gas:'3000000'});
 
-    it('should return the correct token supply', async function() {
-      await buyTokens(tokenSale, sender, 1 * ether)
-
-      let supply = await getTotalSupply(ledToken)
-      let tokenSaleDisplaySupply = await getTotalSupply(tokenSale)
-      supply.should.be.equal(tokenSaleDisplaySupply)
-    })
-
-    // the token balance of each token holder can also be displayed via the token sale contract - by routing towards the led token balanceOf() method
-    // we verify both balances are equal
-    it('should return the correct token balance (tokenSale.balanceOf must be equal to ledToken.balanceOf)', async function() {
-      await buyTokens(tokenSale, sender, 1 * ether)
-      let senderBalance = await getTokenBalance(ledToken, sender)
-      let senderDisplayBalance = await getTokenBalance(tokenSale, sender)
-      senderBalance.should.be.equal(senderDisplayBalance)
-    })
+    let supply = await ledToken.methods.totalSupply().call();
+    let tokenSaleDisplaySupply = await tokenSale.methods.totalSupply().call();
+    assert.equal(supply,tokenSaleDisplaySupply);
   })
 
-  describe('Initial State', function () {
-    beforeEach(async function() {
-      await transferControl(ledToken, fund, tokenSaleAddress)
-      await increaseTime(moment.duration(1.01, 'day'))
-    })
+  // the token balance of each token holder can also be displayed via the token sale contract - by routing towards the led token balanceOf() method
+  // we verify both balances are equal
+  it('should return the correct token balance (tokenSale.balanceOf must be equal to ledToken.balanceOf)', async function() {
+    await tokenSale.methods.buyTokens(sender).send({from:sender,value:web3.utils.toWei('1','ether'),gas:'3000000'});
+    let senderBalance = await ledToken.methods.balanceOf(sender).call();
+    let senderDisplayBalance = await tokenSale.methods.balanceOf(sender).call();
+    assert.equal(senderBalance,senderDisplayBalance);
+  })
+})
 
-    it('should initially set the multisig', async function() {
-      let tokenSaleWallet = await tokenSale.ledMultiSig.call()
-      tokenSaleWallet.should.be.equal('0x99892ac6da1b3851167cb959fe945926bca89f09')
-    })
-
-    it('should initially be linked to the Led token', async function() {
-      let tokenSaleToken = await tokenSale.ledToken.call()
-      tokenSaleToken.should.be.equal(ledTokenAddress)
-    })
-
-    it('Initial Price should be equal to 0.0748 ether', async function() {
-      let price = await getPrice(tokenSale)
-      expect(price).almost.equal(0.85 * 0.088)
-    })
-
-    it('Base Price should be equal to 0.088 ether', async function() {
-      let price = await getBasePrice(tokenSale)
-      price.should.be.equal(0.088)
-    })
-
-    it('cap should be equal to remaining tokens adjusted to multiplier', async function() {
-      let cap = await getCap(tokenSale)
-      cap.should.be.equal(1068644)
-    })
+describe('Initial State', function () {
+  beforeEach(async function() {
+    await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
   })
 
-  describe('Finalized state', function () {
-    beforeEach(async function() {
+  it('should initially set the multisig', async function() {
+    let multisigUpper = await tokenSale.methods.ledMultiSig().call();
+    let multisig = multisigUpper.toLowerCase();
+    assert.equal(multisig,ledMultiSig);
+  })
 
-      contractUploadTime = latestTime()
-      startTime = contractUploadTime.add(1, 'day').unix()
-      endTime = contractUploadTime.add(31, 'day').unix()
-      ledPresaleToken = await LedPresaleToken.new()
-      ledPresaleTokenAddress = await getAddress(ledPresaleToken)
+  it('should initially be linked to the Led token', async function() {
+    let tokenSaleToken = await tokenSale.methods.ledToken().call();
+    assert.equal(tokenSaleToken,ledTokenAddress);
+  })
 
-      ledToken = await LedToken.new(
-        '0x0',
-        '0x0',
-        0,
-        'Led Token Test',
-        'PRFT Test'
-      )
+  it('Initial Price should be equal to 0.000119 ether', async function() {
+    let price = await tokenSale.methods.getPriceInWei().call();
+    assert.equal(price, 119000000000000);
+  })
 
-      ledTokenAddress = await getAddress(ledToken)
+  it('Base Price should be equal to 0.00014 ether', async function() {
+    let price = await tokenSale.methods.BASE_PRICE_IN_WEI().call();
+    assert.equal(price, 140000000000000);
+  })
 
-      tokenSale = await TokenSale.new(
-        ledTokenAddress,
-        startTime,
-        endTime)
+  it('cap should be equal to remaining tokens adjusted to multiplier', async function() {
+    let cap = await tokenSale.methods.cap().call();
+    assert.equal(cap, 1068644);
+  })
+})
 
-      tokenSaleAddress = await getAddress(tokenSale)
-      transferControl(ledToken, fund, tokenSaleAddress)
-    })
+describe('Finalized state', function () {
+  beforeEach(async function() {
+    await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
+  })
 
-    it('should initially not be finalized', async function() {
-      let finalized = await tokenSale.finalized.call()
-      finalized.should.be.false
-    })
+  it('should initially not be finalized', async function() {
+    let finalized = await tokenSale.methods.finalized().call();
+    assert(!finalized);
+  })
 
-    it('should not be finalizeable if the token sale is not paused', async function() {
-      await expectInvalidOpcode(finalize(tokenSale, fund))
-      let finalized = await tokenSale.finalized.call()
-      finalized.should.be.false
-    })
+  it('should not be finalizeable if the token sale is not paused', async function() {
+    try {
+      await tokenSale.methods.finalize().send({from:fund,gas:'3000000'});
+      assert(false);
+    } catch(error) {
+      let finalized = await tokenSale.methods.finalized().call();
+      assert(!finalized);
+    }
+  })
 
-    it('should be finalizeable if the token sale is paused', async function() {
-      await pause(tokenSale, fund)
-      await finalize(tokenSale, fund)
-      let finalized = await tokenSale.finalized.call()
-      finalized.should.be.true
-    })
+  it('should be finalizeable if the token sale is paused', async function() {
+    await tokenSale.methods.pause().send({from:fund,gas:'3000000'});
+    await tokenSale.methods.finalize().send({from:fund,gas:'3000000'});
+    let finalized = await tokenSale.methods.finalized().call();
+    assert(finalized);
+  })
 
-    it('should not be finalizeable if the token sale is paused/unpaused', async function() {
-      await pause(tokenSale, fund)
-      await unpause(tokenSale, fund)
-      await expectInvalidOpcode(finalize(tokenSale, fund))
-      let finalized = await tokenSale.finalized.call()
-      finalized.should.be.false
-    })
+  it('should not be finalizeable if the token sale is paused/unpaused', async function() {
+    await tokenSale.methods.pause().send({from:fund,gas:'3000000'});
+    await tokenSale.methods.unpause().send({from:fund,gas:'3000000'});
+    try {
+      await tokenSale.methods.finalize().send({from:fund,gas:'3000000'});
+      assert(false);
+    } catch(error) {
+      let finalized = await tokenSale.methods.finalized().call();
+      assert(!finalized);
+    }
+  })
 
-    it('should not be finalizeable by non-owner', async function() {
-      await pause(tokenSale, fund)
-      await expectInvalidOpcode(finalize(tokenSale, hacker))
-      let finalized = await tokenSale.finalized.call()
-      finalized.should.be.false
-    })
-
+  it('should not be finalizeable by non-owner', async function() {
+    await tokenSale.methods.pause().send({from:fund,gas:'3000000'});
+    try {
+      await tokenSale.methods.finalize().send({from:hacker,gas:'3000000'});
+      assert(false);
+    } catch(error) {
+      let finalized = await tokenSale.methods.finalized().call();
+      assert(!finalized);
+    }
   })
 })
