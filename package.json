@@ -48,6 +48,7 @@
     "async-request": "~1.2.0",
     "await-each": "~1.1.0",
     "babel-polyfill": "^6.26.0",
+    "bignumber.js": "^7.1.0",
     "bluebird": "~3.5.0",
     "chai": "~4.1.2",
     "chai-as-promised": "~7.1.1",

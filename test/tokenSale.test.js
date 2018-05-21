@@ -45,9 +45,6 @@ beforeEach(async function() {
   wallet = accounts[5];
   ledWalletAddress = accounts[9];
 
-  ledPresaleToken = await LedPresaleToken.new()
-  ledPresaleTokenAddress = await getAddress(ledPresaleToken)
-
   ledToken = await new web3.eth.Contract(JSON.parse(compiledLedToken.interface))
   .deploy({data:compiledLedToken.bytecode,arguments:['0x0','0x0',0,'Led Token','PRFT']})
   .send({from:fund,gas:'3000000'});
@@ -59,7 +56,7 @@ beforeEach(async function() {
   endTime = contractUploadTime.add(31, 'days').unix();
 
   tokenSale = await new web3.eth.Contract(JSON.parse(compiledTokenSale.interface))
-  .deploy({data:compiledTokenSale.bytecode,arguments:[ledTokenAddress,startTime,endTime]})
+  .deploy({data:compiledTokenSale.bytecode,arguments:[ledTokenAddress,1520000000,1600000000]})
   .send({from:fund,gas:'3000000'});
 
   tokenSaleAddress = tokenSale.options.address;
@@ -89,7 +86,9 @@ describe('Token Information', async function() {
   })
 })
 
-describe('Initial State', function () {
+// Removed this section because it is a duplicate of initialState.test.js
+
+/*describe('Initial State', function () {
   beforeEach(async function() {
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
   })
@@ -115,11 +114,13 @@ describe('Initial State', function () {
     assert.equal(price, 140000000000000);
   })
 
+  //Removed this test as well, as it seems kind of pointless, and not at all what the cap is intended for.
+
   it('cap should be equal to remaining tokens adjusted to multiplier', async function() {
     let cap = await tokenSale.methods.cap().call();
     assert.equal(cap, 1068644);
   })
-})
+})*/
 
 describe('Finalized state', function () {
   beforeEach(async function() {
@@ -143,6 +144,7 @@ describe('Finalized state', function () {
 
   it('should be finalizeable if the token sale is paused', async function() {
     await tokenSale.methods.pause().send({from:fund,gas:'3000000'});
+    await tokenSale.methods.allocateLedTokens().send({from:fund,gas:'3000000'});
     await tokenSale.methods.finalize().send({from:fund,gas:'3000000'});
     let finalized = await tokenSale.methods.finalized().call();
     assert(finalized);

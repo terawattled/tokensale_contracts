@@ -819,7 +819,7 @@ contract TokenSale is Pausable {
 
   uint256 public tokenCap = PUBLIC_TOKENS - TOTAL_PRESALE_TOKENS;
   uint256 public cap = tokenCap * (10 ** 7);
-  uint256 public weiCap = cap * BASE_PRICE_IN_WEI;
+  uint256 public weiCap = (cap/(10**18)) * BASE_PRICE_IN_WEI;
 
   uint256 public firstDiscountPrice = (BASE_PRICE_IN_WEI * 85) / 100;
   uint256 public secondDiscountPrice = (BASE_PRICE_IN_WEI * 90) / 100;
