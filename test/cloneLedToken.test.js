@@ -47,9 +47,9 @@ beforeEach(async function() {
 
   ledTokenAddress = ledToken.options.address;
   
-  contractUploadTime = moment.unix(Date.now()); 
+  contractUploadTime = moment.unix(Date.now());
   startTime = contractUploadTime.unix();
-  endTime = contractUploadTime.add(2, 'days').unix(); 
+  endTime = contractUploadTime.add(7, 'days').unix();
 
   tokenSale = await new web3.eth.Contract(JSON.parse(compiledTokenSale.interface))
   .deploy({data:compiledTokenSale.bytecode,arguments:[ledTokenAddress,startTime,endTime]})
@@ -62,6 +62,10 @@ beforeEach(async function() {
 
 describe('Cloning: ', function () {
   beforeEach(async function() {
+
+    // Force start the sale here since Javascript and Solidity timestamps have different formats,
+    // And without reformatting them, it will throw an error.
+
     await tokenSale.methods.forceStart().send({from:accounts[0],gas:'3000000'});
     await tokenSale.methods.buyTokens(accounts[1]).send({
       from:accounts[1],
