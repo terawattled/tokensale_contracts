@@ -10,7 +10,7 @@ import './TokenInfo.sol';
 
  * on a token per ETH rate. Funds collected are forwarded to a wallet as they arrive.
  */
-contract TokenSale is Pausable, TokenInfo {
+contract PrivateSale is Pausable, TokenInfo {
 
   using SafeMath for uint256;
 
@@ -23,16 +23,15 @@ contract TokenSale is Pausable, TokenInfo {
   uint256 public startTime;
   uint256 public endTime;
   uint256 public surplusTokens;
-  uint256 public allocatedTokens;
 
   bool public finalized;
 
   bool public ledTokensAllocated;
   address public ledMultiSig = LED_MULTISIG;
 
-  uint256 public tokenCap = ICO_TOKENCAP;
+  uint256 public tokenCap = PRIVATESALE_TOKENCAP;
   uint256 public cap = tokenCap * (10 ** 18);
-  uint256 public weiCap = tokenCap * ICO_BASE_PRICE_IN_WEI;
+  uint256 public weiCap = tokenCap * PRIVATESALE_BASE_PRICE_IN_WEI;
 
   bool public started = false;
 
@@ -43,7 +42,7 @@ contract TokenSale is Pausable, TokenInfo {
   event LogInt(string _name, uint256 _value);
   event Finalized();
 
-  function TokenSale(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
+  function PrivateSale(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
     require(_tokenAddress != 0x0);
     require(_startTime > 0);
     require(_endTime > _startTime);
@@ -72,7 +71,7 @@ contract TokenSale is Pausable, TokenInfo {
     require(validPurchase());
 
     uint256 weiAmount = msg.value;
-    uint256 priceInWei = ICO_BASE_PRICE_IN_WEI;
+    uint256 priceInWei = PRIVATESALE_BASE_PRICE_IN_WEI;
     totalWeiRaised = totalWeiRaised.add(weiAmount);
 
     uint256 bonusPercentage = determineBonus(weiAmount);
@@ -91,23 +90,23 @@ contract TokenSale is Pausable, TokenInfo {
   }
 
   function determineBonus(uint256 _wei) constant public returns (uint256) {
-    if(_wei > ICO_LEVEL_1) {
-      if(_wei > ICO_LEVEL_2) {
-        if(_wei > ICO_LEVEL_3) {
-          if(_wei > ICO_LEVEL_4) {
-            if(_wei > ICO_LEVEL_5) {
-              return ICO_PERCENTAGE_5;
+    if(_wei > PRIVATESALE_LEVEL_1) {
+      if(_wei > PRIVATESALE_LEVEL_2) {
+        if(_wei > PRIVATESALE_LEVEL_3) {
+          if(_wei > PRIVATESALE_LEVEL_4) {
+            if(_wei > PRIVATESALE_LEVEL_5) {
+              return PRIVATESALE_PERCENTAGE_5;
             } else {
-              return ICO_PERCENTAGE_4;
+              return PRIVATESALE_PERCENTAGE_4;
             }
           } else {
-            return ICO_PERCENTAGE_3;
+            return PRIVATESALE_PERCENTAGE_3;
           }
         } else {
-          return ICO_PERCENTAGE_2;
+          return PRIVATESALE_PERCENTAGE_2;
         }
       } else {
-        return ICO_PERCENTAGE_1;
+        return PRIVATESALE_PERCENTAGE_1;
       }
     } else {
       return 0;
@@ -161,19 +160,6 @@ contract TokenSale is Pausable, TokenInfo {
     ledToken.transferControl(_newController);
   }
 
-
-  function enableTransfers() public {
-    if (now < endTime) {
-      require(msg.sender == owner);
-    }
-    ledToken.enableTransfers(true);
-  }
-
-  function lockTransfers() public onlyOwner {
-    require(now < endTime);
-    ledToken.enableTransfers(false);
-  }
-
   function enableMasterTransfers() public onlyOwner {
     ledToken.enableMasterTransfers(true);
   }
@@ -186,21 +172,11 @@ contract TokenSale is Pausable, TokenInfo {
     started = true;
   }
 
-  function allocateLedTokens() public onlyOwner whenNotFinalized {
-    require(!ledTokensAllocated);
-    allocatedTokens = LEDTEAM_TOKENS.mul(decimalsMultiplier);
-    ledToken.mint(ledMultiSig, allocatedTokens);
-    surplusTokens = cap - tokensMinted;
-    ledToken.mint(ledMultiSig, surplusTokens);
-    ledTokensAllocated = true;
-  }
-
   function finalize() public onlyOwner {
     require(paused);
-    require(ledTokensAllocated);
+    surplusTokens = cap - tokensMinted;
+    ledToken.mint(ledMultiSig, surplusTokens);
 
-    ledToken.finishMinting();
-    ledToken.enableTransfers(true);
     Finalized();
 
     finalized = true;
