@@ -39,7 +39,6 @@ contract LedToken is Controllable {
   bool public mintingFinished = false;
   bool public presaleBalancesLocked = false;
 
-  uint256 public constant TOTAL_PRESALE_TOKENS = 112386712924725508802400;
   uint256 public totalSupplyAtCheckpoint;
 
   event Mint(address indexed to, uint256 amount);

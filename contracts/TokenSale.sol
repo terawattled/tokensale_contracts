@@ -3,13 +3,14 @@ pragma solidity ^0.4.13;
 import './SafeMath.sol';
 import './Pausable.sol';
 import './LedTokenInterface.sol';
+import './TokenInfo.sol';
 /**
  * @title Tokensale
  * Tokensale allows investors to make token purchases and assigns them tokens based
 
  * on a token per ETH rate. Funds collected are forwarded to a wallet as they arrive.
  */
-contract TokenSale is Pausable {
+contract TokenSale is Pausable, TokenInfo {
 
   using SafeMath for uint256;
 
@@ -27,26 +28,13 @@ contract TokenSale is Pausable {
   bool public finalized;
 
   bool public ledTokensAllocated;
-  address public ledMultiSig = 0x9c0e9941a4c554f6e1aa1930268a7c992e3c8602;
+  address public ledMultiSig = LED_MULTISIG;
 
-  uint256 public constant BASE_PRICE_IN_WEI = 140000000000000;//0.10 cents in wei
-  uint256 public constant PUBLIC_TOKENS = 100 * (10 ** 18);
-  uint256 public constant TOTAL_PRESALE_TOKENS = 65 * (10 ** 18);
-  uint256 public constant TOKENS_ALLOCATED_TO_LED = 100 * (10 ** 18);
+  uint256 public constant BASE_PRICE_IN_WEI = ICO_BASE_PRICE_IN_WEI;//0.40 USD in wei
 
-
-
-  uint256 public tokenCap = PUBLIC_TOKENS - TOTAL_PRESALE_TOKENS;
-  uint256 public cap = tokenCap * (10 ** 7);
-  uint256 public weiCap = (cap/(10**18)) * BASE_PRICE_IN_WEI;
-
-  uint256 public firstDiscountPrice = (BASE_PRICE_IN_WEI * 85) / 100;
-  uint256 public secondDiscountPrice = (BASE_PRICE_IN_WEI * 90) / 100;
-  uint256 public thirdDiscountPrice = (BASE_PRICE_IN_WEI * 95) / 100;
-
-  uint256 public firstDiscountCap = (weiCap * 5) / 100;
-  uint256 public secondDiscountCap = (weiCap * 10) / 100;
-  uint256 public thirdDiscountCap = (weiCap * 20) / 100;
+  uint256 public tokenCap = ICO_TOKENCAP;
+  uint256 public cap = tokenCap * (10 ** 18);
+  uint256 public weiCap = tokenCap * BASE_PRICE_IN_WEI;
 
   bool public started = false;
 
@@ -86,10 +74,14 @@ contract TokenSale is Pausable {
     require(validPurchase());
 
     uint256 weiAmount = msg.value;
-    uint256 priceInWei = getPriceInWei();
+    uint256 priceInWei = BASE_PRICE_IN_WEI;
     totalWeiRaised = totalWeiRaised.add(weiAmount);
 
-    uint256 tokens = weiAmount.mul(decimalsMultiplier).div(priceInWei);
+    uint256 bonusPercentage = determineBonus(weiAmount);
+
+    uint256 initialTokens = weiAmount.mul(decimalsMultiplier).div(priceInWei);
+    uint256 bonusTokens = initialTokens.mul(bonusPercentage/100);
+    uint256 tokens = initialTokens.add(bonusTokens);
     tokensMinted = tokensMinted.add(tokens);
     require(tokensMinted < cap);
 
@@ -100,27 +92,30 @@ contract TokenSale is Pausable {
     forwardFunds();
   }
 
-
-  /**
-   * Get the price in wei for current premium
-   * @return price {uint256}
-   */
-  function getPriceInWei() constant public returns (uint256) {
-
-    uint256 price;
-
-    if (totalWeiRaised < firstDiscountCap) {
-      price = firstDiscountPrice;
-    } else if (totalWeiRaised < secondDiscountCap) {
-      price = secondDiscountPrice;
-    } else if (totalWeiRaised < thirdDiscountCap) {
-      price = thirdDiscountPrice;
+  function determineBonus(uint256 _wei) constant public returns (uint256) {
+    if(_wei > ICO_LEVEL_1) {
+      if(_wei > ICO_LEVEL_2) {
+        if(_wei > ICO_LEVEL_3) {
+          if(_wei > ICO_LEVEL_4) {
+            if(_wei > ICO_LEVEL_5) {
+              return ICO_PERCENTAGE_5;
+            } else {
+              return ICO_PERCENTAGE_4;
+            }
+          } else {
+            return ICO_PERCENTAGE_3;
+          }
+        } else {
+          return ICO_PERCENTAGE_2;
+        }
+      } else {
+        return ICO_PERCENTAGE_1;
+      }
     } else {
-      price = BASE_PRICE_IN_WEI;
+      return 0;
     }
-
-    return price;
   }
+
 
   /**
   * Forwards funds to the tokensale wallet
