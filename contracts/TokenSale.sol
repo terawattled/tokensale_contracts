@@ -190,7 +190,7 @@ contract TokenSale is Pausable, TokenInfo {
 
   function allocateLedTokens() public onlyOwner whenNotFinalized {
     require(!ledTokensAllocated);
-    ledToken.mint(ledMultiSig, TOKENS_ALLOCATED_TO_LED);
+    ledToken.mint(ledMultiSig, LEDTEAM_TOKENS);
     ledTokensAllocated = true;
   }
 
