@@ -32,7 +32,7 @@ contract Presale is Pausable, TokenInfo {
   address public ledMultiSig = LED_MULTISIG;
 
   uint256 public tokenCap = PRESALE_TOKENCAP;
-  uint256 public cap = tokenCap * (10 ** 18);
+  uint256 public cap = tokenCap * (1 ether);
   uint256 public weiCap = tokenCap * PRESALE_BASE_PRICE_IN_WEI;
 
   bool public started = false;
@@ -53,7 +53,7 @@ contract Presale is Pausable, TokenInfo {
     endTime = _endTime;
     ledToken = LedTokenInterface(_tokenAddress);
 
-    decimalsMultiplier = (10 ** 18);
+    decimalsMultiplier = (1 ether);
   }
 
 
