@@ -5,8 +5,8 @@ import './Pausable.sol';
 import './LedTokenInterface.sol';
 import './TokenInfo.sol';
 /**
- * @title Tokensale
- * Tokensale allows investors to make token purchases and assigns them tokens based
+ * @title PrivateSale
+ * PrivateSale allows investors to make token purchases and assigns them tokens based
 
  * on a token per ETH rate. Funds collected are forwarded to a wallet as they arrive.
  */
@@ -199,30 +199,38 @@ contract PrivateSale is Pausable, TokenInfo {
     finalized = true;
   }
 
-  function getInfo() public constant returns(uint256, uint256, string, bool, 
-  uint256, uint256, uint256, uint256, uint256, uint256, uint256, uint256, uint256, 
-  uint256, uint256, uint256, uint256, bool, uint256, uint256){
+  function getInfo() public constant returns(uint256, uint256, string, bool,  uint256, uint256, uint256, 
+  bool, uint256, uint256){
+    uint256 decimals = 18;
+    string memory symbol = ledToken.symbol();
+    bool transfersEnabled = ledToken.transfersEnabled();
     return (
       TOTAL_TOKENCAP, // Tokencap with the decimal point in place. should be 100.000.000
-      18, // Decimals
-      ledToken.symbol,
-      ledToken.transfersEnabled,
+      decimals, // Decimals
+      symbol,
+      transfersEnabled,
       contributors,
       totalWeiRaised,
-      PRIVATESALE_LEVEL_1, // Amount of ether needed per bonus level
-      PRIVATESALE_LEVEL_2,
-      PRIVATESALE_LEVEL_3,
-      PRIVATESALE_LEVEL_4,
-      PRIVATESALE_LEVEL_5,
-      PRIVATESALE_PERCENTAGE_1, // Bonus percentage per bonus level
-      PRIVATESALE_PERCENTAGE_2,
-      PRIVATESALE_PERCENTAGE_3,
-      PRIVATESALE_PERCENTAGE_4,
-      PRIVATESALE_PERCENTAGE_5,
       cap, // Tokencap without the decimal point in place. Will be a huge number.
       started,
       startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
       endTime
+    );
+  }
+  
+  function getInfoLevels() public constant returns(uint256, uint256, uint256, uint256, uint256, uint256, 
+  uint256, uint256, uint256, uint256){
+    return (
+      PRESALE_LEVEL_1, // Amount of ether needed per bonus level
+      PRESALE_LEVEL_2,
+      PRESALE_LEVEL_3,
+      PRESALE_LEVEL_4,
+      PRESALE_LEVEL_5,
+      PRESALE_PERCENTAGE_1, // Bonus percentage per bonus level
+      PRESALE_PERCENTAGE_2,
+      PRESALE_PERCENTAGE_3,
+      PRESALE_PERCENTAGE_4,
+      PRESALE_PERCENTAGE_5
     );
   }
 
