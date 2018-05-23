@@ -82,7 +82,8 @@ contract Presale is Pausable, TokenInfo {
 
     uint256 initialTokens = weiAmount.mul(decimalsMultiplier).div(priceInWei);
     if(bonusPercentage>0){
-      bonusTokens = initialTokens.mul(bonusPercentage/100);
+      uint256 initialDivided = initialTokens.div(100);
+      bonusTokens = initialDivided.mul(bonusPercentage);
     } else {
       bonusTokens = 0;
     }

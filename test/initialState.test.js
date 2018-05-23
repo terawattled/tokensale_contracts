@@ -77,10 +77,12 @@ describe('Initial State', function () {
     assert.equal(token, ledTokenAddress);
   })
 
-  it('Token base price should be equal to 0.000119 ether with the first discount', async function() {
+  // Repeat test
+
+  /*it('Token base price should be equal to 0.000119 ether with the first discount', async function() {
     let priceWei = await tokenSale.methods.getPriceInWei().call();
     let price = (priceWei/10**18);
     let difference = Math.abs(price-(0.000119));
     assert.ok(difference<0.00001);
-  })
+  })*/
 })

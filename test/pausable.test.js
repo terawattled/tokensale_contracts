@@ -56,6 +56,7 @@ beforeEach(async function() {
   .send({from:fund,gas:'3000000'});
 
   tokenSaleAddress = tokenSale.options.address;
+  await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
 })
 
 describe('Pause', function () {

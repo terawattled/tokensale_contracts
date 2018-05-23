@@ -1,3 +1,5 @@
+const BigNumber = require('bignumber.js');
+
 const ganache = require('ganache-cli');
 const provider = ganache.provider({default_balance_ether:1000000000000000});
 const Web3 = require('web3');
@@ -56,7 +58,7 @@ beforeEach(async function() {
   endTime = contractUploadTime.add(31, 'days').unix();
 })
 
-describe('Starting and Ending Period', async function() {
+describe('Private Sale Starting and Ending Period', async function() {
 
   it('should reject payments before start', async function() {
     tokenSale = await new web3.eth.Contract(JSON.parse(compiledTokenSale.interface))
@@ -64,7 +66,7 @@ describe('Starting and Ending Period', async function() {
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
+    await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
 
     try {
       await tokenSale.methods.buyTokens(sender).send({from:sender,value:web3.utils.toWei('1','ether'),gas:'3000000'});
@@ -81,11 +83,11 @@ describe('Starting and Ending Period', async function() {
 
   it('should accept payments after start', async function() {
     tokenSale = await new web3.eth.Contract(JSON.parse(compiledTokenSale.interface))
-    .deploy({data:compiledTokenSale.bytecode,arguments:[ledTokenAddress,1520000000,endTime]})
+    .deploy({data:compiledTokenSale.bytecode,arguments:[ledTokenAddress,1520000000,1600000000]})
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
+    await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
 
     let tx = await web3.eth.sendTransaction({
       from:sender,
@@ -112,7 +114,7 @@ describe('Starting and Ending Period', async function() {
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
+    await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
 
     try {
       await tokenSale.methods.buyTokens(sender).send({from:sender,value:web3.utils.toWei('1','ether'),gas:'3000000'});
@@ -128,7 +130,7 @@ describe('Starting and Ending Period', async function() {
   })
 })
 
-describe('Token Information', async function() {
+describe('Private Sale Token Information', async function() {
   beforeEach(async function() {
     tokenSale = await new web3.eth.Contract(JSON.parse(compiledTokenSale.interface))
     .deploy({data:compiledTokenSale.bytecode,arguments:[ledTokenAddress,1520000000,1600000000]})
@@ -136,7 +138,7 @@ describe('Token Information', async function() {
 
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
+    await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
   })
 
   it('should return the correct token supply', async function() {
@@ -157,14 +159,14 @@ describe('Token Information', async function() {
   })
 })
 
-describe('Payments', async function() {
+describe('Private Sale Payments', async function() {
   beforeEach(async function() {
     tokenSale = await new web3.eth.Contract(JSON.parse(compiledTokenSale.interface))
     .deploy({data:compiledTokenSale.bytecode,arguments:[ledTokenAddress,1520000000,1600000000]})
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
+    await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
   })
 
   it('should accepts ether transactions sent to contract', async function() {
@@ -214,7 +216,7 @@ describe('Payments', async function() {
     let supplyIncrease = (totalSupply - initialTotalSupply);
     let supplyBase = supplyIncrease/(10**18);
 
-    assert.equal(supplyBase,3395.1);
+    assert.equal(Math.floor(supplyBase),3395);
   })
 
   it('should transfer money to the wallet after receiving investment', async function() {
@@ -251,7 +253,7 @@ describe('Payments', async function() {
     let tokenBalance = await ledToken.methods.balanceOf(sender).call();
     let balanceIncrease = (tokenBalance - initialTokenBalance);
     let balanceBase = balanceIncrease/(10**18);
-    assert.equal(balanceBase, 3395.1);
+    assert.equal(Math.floor(balanceBase), 3395);
   })
 })
 
@@ -292,7 +294,7 @@ describe('Payments', async function() {
   })
 })*/
 
-describe('Finalized state', function () {
+describe('Private Sale Finalized state', function () {
   beforeEach(async function() {
     tokenSale = await new web3.eth.Contract(JSON.parse(compiledTokenSale.interface))
     .deploy({data:compiledTokenSale.bytecode,arguments:[ledTokenAddress,1520000000,1600000000]})
@@ -319,7 +321,6 @@ describe('Finalized state', function () {
 
   it('should be finalizeable if the token sale is paused', async function() {
     await tokenSale.methods.pause().send({from:fund,gas:'3000000'});
-    await tokenSale.methods.allocateLedTokens().send({from:fund,gas:'3000000'});
     await tokenSale.methods.finalize().send({from:fund,gas:'3000000'});
     let finalized = await tokenSale.methods.finalized().call();
     assert(finalized);
@@ -351,26 +352,27 @@ describe('Finalized state', function () {
   it('should not have stopped the minting process after finalizing',async function(){
     await tokenSale.methods.pause().send({from:fund,gas:'3000000'});
     await tokenSale.methods.finalize().send({from:fund,gas:'3000000'});
-    let notFinished = ledToken.methods.mintingFinished().call();
-    assert(finished);
+    let finished = await ledToken.methods.mintingFinished().call();
+    assert(!finished);
   })
   
   it('should allocate the surplus tokens to the LED team after finishing', async function() {
     await tokenSale.methods.pause().send({from:fund,gas:'3000000'});
     await tokenSale.methods.finalize().send({from:fund,gas:'3000000'});
-    let teamAddress = await tokenSale.methods.ledMultiSig.call();
+    let teamAddress = await tokenSale.methods.ledMultiSig().call();
     let teamBalance = await ledToken.methods.balanceOf(teamAddress).call();
     assert.ok(teamBalance>0);
   })
 })
 
-describe('Buying Tokens', async function() {
+describe('Private Sale Buying Tokens', async function() {
   beforeEach(async function() {
     tokenSale = await new web3.eth.Contract(JSON.parse(compiledTokenSale.interface))
     .deploy({data:compiledTokenSale.bytecode,arguments:[ledTokenAddress,1520000000,1600000000]})
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
+    await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
   })
 
   it('should have a base token price of 294542134252305 wei',async function () {
@@ -388,8 +390,9 @@ describe('Buying Tokens', async function() {
     let balanceIncrease = (tokenBalance - initialTokenBalance);
     let basePrice = await tokenSale.methods.PRIVATESALE_BASE_PRICE_IN_WEI().call();
     let tokensWithoutBonus = sendValue/basePrice;
-    assert.ok(tokensWithoutBonus<balanceIncrease);
-    assert.equal(tokensWithoutBonus*1.2, balanceIncrease);
+    let balanceBase = balanceIncrease/(10**18);
+    assert.ok(tokensWithoutBonus<balanceBase);
+    assert.equal(Math.floor(tokensWithoutBonus*1.2), Math.floor(balanceBase));
   })
 
   it('should offer a 25% bonus if more than 5 eth was put in', async function() {
@@ -402,8 +405,9 @@ describe('Buying Tokens', async function() {
     let balanceIncrease = (tokenBalance - initialTokenBalance);
     let basePrice = await tokenSale.methods.PRIVATESALE_BASE_PRICE_IN_WEI().call();
     let tokensWithoutBonus = sendValue/basePrice;
-    assert.ok(tokensWithoutBonus<balanceIncrease);
-    assert.equal(tokensWithoutBonus*1.25, balanceIncrease);
+    let balanceBase = balanceIncrease/(10**18);
+    assert.ok(tokensWithoutBonus<balanceBase);
+    assert.equal(Math.floor(tokensWithoutBonus*1.25), Math.floor(balanceBase));
   })
 
   it('should offer a 35% bonus if more than 8.1 eth was put in', async function() {
@@ -416,8 +420,9 @@ describe('Buying Tokens', async function() {
     let balanceIncrease = (tokenBalance - initialTokenBalance);
     let basePrice = await tokenSale.methods.PRIVATESALE_BASE_PRICE_IN_WEI().call();
     let tokensWithoutBonus = sendValue/basePrice;
-    assert.ok(tokensWithoutBonus<balanceIncrease);
-    assert.equal(tokensWithoutBonus*1.35, balanceIncrease);
+    let balanceBase = balanceIncrease/(10**18);
+    assert.ok(tokensWithoutBonus<balanceBase);
+    assert.equal(Math.floor(tokensWithoutBonus*1.35), Math.floor(balanceBase));
   })
 
   it('should offer a 50% bonus if more than 12 eth was put in', async function() {
@@ -430,8 +435,9 @@ describe('Buying Tokens', async function() {
     let balanceIncrease = (tokenBalance - initialTokenBalance);
     let basePrice = await tokenSale.methods.PRIVATESALE_BASE_PRICE_IN_WEI().call();
     let tokensWithoutBonus = sendValue/basePrice;
-    assert.ok(tokensWithoutBonus<balanceIncrease);
-    assert.equal(tokensWithoutBonus*1.5, balanceIncrease);
+    let balanceBase = balanceIncrease/(10**18);
+    assert.ok(tokensWithoutBonus<balanceBase);
+    assert.equal(Math.floor(tokensWithoutBonus*1.5), Math.floor(balanceBase));
   })
 
   it('should offer a 100% bonus if more than 21 eth was put in', async function() {
@@ -444,8 +450,9 @@ describe('Buying Tokens', async function() {
     let balanceIncrease = (tokenBalance - initialTokenBalance);
     let basePrice = await tokenSale.methods.PRIVATESALE_BASE_PRICE_IN_WEI().call();
     let tokensWithoutBonus = sendValue/basePrice;
-    assert.ok(tokensWithoutBonus<balanceIncrease);
-    assert.equal(tokensWithoutBonus*2, balanceIncrease);
+    let balanceBase = balanceIncrease/(10**18);
+    assert.ok(tokensWithoutBonus<balanceBase);
+    assert.equal(Math.floor(tokensWithoutBonus*2), Math.floor(balanceBase));
   })
 
   it('should throw if the number of tokens exceeds the cap', async function() {
@@ -453,7 +460,7 @@ describe('Buying Tokens', async function() {
     let capInWei = await tokenSale.methods.weiCap().call();
     let initialBalance = await ledToken.methods.balanceOf(sender).call();
 
-    let amount = 0.48 * capInWei * (1.001);
+    let amount = 0.48 * capInWei * (1.1);
     try {
       await tokenSale.methods.buyTokens(sender).send({from:sender,value:amount,gas:'3000000'});
       assert(false);
