@@ -25,6 +25,8 @@ contract TokenSale is Pausable, TokenInfo {
   uint256 public surplusTokens;
   uint256 public allocatedTokens;
 
+  mapping (address => bool) public whitelisted;
+
   bool public finalized;
 
   bool public ledTokensAllocated;
@@ -70,6 +72,7 @@ contract TokenSale is Pausable, TokenInfo {
   function buyTokens(address _beneficiary) public payable whenNotPaused whenNotFinalized {
     require(_beneficiary != 0x0);
     require(validPurchase());
+    require(isWhitelisted(_beneficiary));
 
     uint256 weiAmount = msg.value;
     uint256 priceInWei = ICO_BASE_PRICE_IN_WEI;
@@ -117,6 +120,14 @@ contract TokenSale is Pausable, TokenInfo {
     } else {
       return 0;
     }
+  }
+
+  function isWhitelisted(address _sender) internal constant returns(bool) {
+    return whitelisted[_sender];
+  }
+
+  function whitelist(address _sender) public onlyOwner {
+    whitelisted[_sender] = true;
   }
 
 

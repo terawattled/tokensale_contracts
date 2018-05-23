@@ -24,6 +24,8 @@ contract Presale is Pausable, TokenInfo {
   uint256 public endTime;
   uint256 public surplusTokens;
 
+  mapping (address => bool) public whitelisted;
+
   bool public finalized;
 
   bool public ledTokensAllocated;
@@ -69,6 +71,7 @@ contract Presale is Pausable, TokenInfo {
   function buyTokens(address _beneficiary) public payable whenNotPaused whenNotFinalized {
     require(_beneficiary != 0x0);
     require(validPurchase());
+    require(isWhitelisted(_beneficiary));
 
     uint256 weiAmount = msg.value;
     uint256 priceInWei = PRESALE_BASE_PRICE_IN_WEI;
@@ -116,6 +119,14 @@ contract Presale is Pausable, TokenInfo {
     } else {
       return 0;
     }
+  }
+
+  function isWhitelisted(address _sender) internal constant returns(bool) {
+    return whitelisted[_sender];
+  }
+
+  function whitelist(address _sender) public onlyOwner {
+    whitelisted[_sender] = true;
   }
 
 
@@ -179,6 +190,7 @@ contract Presale is Pausable, TokenInfo {
 
   function finalize() public onlyOwner {
     require(paused);
+    require(!finalized);
     surplusTokens = cap - tokensMinted;
     ledToken.mint(ledMultiSig, surplusTokens);
 
