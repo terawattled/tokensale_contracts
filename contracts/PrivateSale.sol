@@ -199,6 +199,33 @@ contract PrivateSale is Pausable, TokenInfo {
     finalized = true;
   }
 
+  function getInfo() public constant returns(uint256, uint256, string, bool, 
+  uint256, uint256, uint256, uint256, uint256, uint256, uint256, uint256, uint256, 
+  uint256, uint256, uint256, uint256, bool, uint256, uint256){
+    return (
+      TOTAL_TOKENCAP, // Tokencap with the decimal point in place. should be 100.000.000
+      18, // Decimals
+      ledToken.symbol,
+      ledToken.transfersEnabled,
+      contributors,
+      totalWeiRaised,
+      PRIVATESALE_LEVEL_1, // Amount of ether needed per bonus level
+      PRIVATESALE_LEVEL_2,
+      PRIVATESALE_LEVEL_3,
+      PRIVATESALE_LEVEL_4,
+      PRIVATESALE_LEVEL_5,
+      PRIVATESALE_PERCENTAGE_1, // Bonus percentage per bonus level
+      PRIVATESALE_PERCENTAGE_2,
+      PRIVATESALE_PERCENTAGE_3,
+      PRIVATESALE_PERCENTAGE_4,
+      PRIVATESALE_PERCENTAGE_5,
+      cap, // Tokencap without the decimal point in place. Will be a huge number.
+      started,
+      startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
+      endTime
+    );
+  }
+
 
   function isContract(address _addr) constant internal returns(bool) {
     uint size;
