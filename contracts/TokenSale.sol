@@ -76,9 +76,14 @@ contract TokenSale is Pausable, TokenInfo {
     totalWeiRaised = totalWeiRaised.add(weiAmount);
 
     uint256 bonusPercentage = determineBonus(weiAmount);
+    uint256 bonusTokens;
 
     uint256 initialTokens = weiAmount.mul(decimalsMultiplier).div(priceInWei);
-    uint256 bonusTokens = initialTokens.mul(bonusPercentage/100);
+    if(bonusPercentage>0){
+      bonusTokens = initialTokens.mul(bonusPercentage/100);
+    } else {
+      bonusTokens = 0;
+    }
     uint256 tokens = initialTokens.add(bonusTokens);
     tokensMinted = tokensMinted.add(tokens);
     require(tokensMinted < cap);
