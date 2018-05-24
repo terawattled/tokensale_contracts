@@ -989,7 +989,7 @@ contract Presale is Pausable, TokenInfo {
       transfersEnabled,
       contributors,
       totalWeiRaised,
-      cap, // Tokencap without the decimal point in place. Will be a huge number.
+      cap, // Tokencap for the presale without the decimal point in place. Will be a huge number.
       started,
       startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
       endTime
@@ -1238,7 +1238,7 @@ contract PrivateSale is Pausable, TokenInfo {
       transfersEnabled,
       contributors,
       totalWeiRaised,
-      cap, // Tokencap without the decimal point in place. Will be a huge number.
+      cap, // Tokencap for the private sale without the decimal point in place. Will be a huge number.
       started,
       startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
       endTime
@@ -1572,7 +1572,7 @@ contract TokenSale is Pausable, TokenInfo {
       transfersEnabled,
       contributors,
       totalWeiRaised,
-      cap, // Tokencap without the decimal point in place. Will be a huge number.
+      cap, // Tokencap for the ICO without the decimal point in place. Will be a huge number.
       started,
       startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
       endTime
