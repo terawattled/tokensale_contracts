@@ -72,7 +72,7 @@ contract TokenSale is Pausable, TokenInfo {
   function buyTokens(address _beneficiary) public payable whenNotPaused whenNotFinalized {
     require(_beneficiary != 0x0);
     require(validPurchase());
-    require(isWhitelisted(_beneficiary));
+    // require(isWhitelisted(_beneficiary));
 
     uint256 weiAmount = msg.value;
     uint256 priceInWei = ICO_BASE_PRICE_IN_WEI;
