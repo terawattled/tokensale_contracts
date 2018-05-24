@@ -11,8 +11,6 @@ import './Controllable.sol';
  */
 contract LedTokenInterface is Controllable {
 
-  string public name;
-  string public symbol;
   bool public transfersEnabled;
 
   event Mint(address indexed to, uint256 amount);

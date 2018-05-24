@@ -203,7 +203,7 @@ contract Presale is Pausable, TokenInfo {
   function getInfo() public constant returns(uint256, uint256, string, bool,  uint256, uint256, uint256, 
   bool, uint256, uint256){
     uint256 decimals = 18;
-    string memory symbol = ledToken.symbol();
+    string memory symbol = "LED";
     bool transfersEnabled = ledToken.transfersEnabled();
     return (
       TOTAL_TOKENCAP, // Tokencap with the decimal point in place. should be 100.000.000
