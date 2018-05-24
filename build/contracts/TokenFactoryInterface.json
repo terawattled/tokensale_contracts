@@ -1,0 +1,479 @@
+{
+  "contractName": "TokenFactoryInterface",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_parentToken",
+          "type": "address"
+        },
+        {
+          "name": "_snapshotBlock",
+          "type": "uint256"
+        },
+        {
+          "name": "_tokenName",
+          "type": "string"
+        },
+        {
+          "name": "_tokenSymbol",
+          "type": "string"
+        }
+      ],
+      "name": "createCloneToken",
+      "outputs": [
+        {
+          "name": "newToken",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.4.13;\n\nimport './LedToken.sol';\n\ncontract TokenFactoryInterface {\n\n    function createCloneToken(\n        address _parentToken,\n        uint _snapshotBlock,\n        string _tokenName,\n        string _tokenSymbol\n      ) public returns (LedToken newToken);\n}",
+  "sourcePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/TokenFactoryInterface.sol",
+  "ast": {
+    "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/TokenFactoryInterface.sol",
+    "exportedSymbols": {
+      "TokenFactoryInterface": [
+        7290
+      ]
+    },
+    "id": 7291,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7275,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".13"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:16"
+      },
+      {
+        "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/LedToken.sol",
+        "file": "./LedToken.sol",
+        "id": 7276,
+        "nodeType": "ImportDirective",
+        "scope": 7291,
+        "sourceUnit": 1496,
+        "src": "26:24:16",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 7290,
+        "linearizedBaseContracts": [
+          7290
+        ],
+        "name": "TokenFactoryInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7289,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "createCloneToken",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7285,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7278,
+                  "name": "_parentToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7289,
+                  "src": "125:20:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7277,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "125:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7280,
+                  "name": "_snapshotBlock",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7289,
+                  "src": "155:19:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7279,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "155:4:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7282,
+                  "name": "_tokenName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7289,
+                  "src": "184:17:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7281,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "184:6:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7284,
+                  "name": "_tokenSymbol",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7289,
+                  "src": "211:19:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7283,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "211:6:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "115:123:16"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 7288,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7287,
+                  "name": "newToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7289,
+                  "src": "255:17:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_LedToken_$1495",
+                    "typeString": "contract LedToken"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7286,
+                    "name": "LedToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1495,
+                    "src": "255:8:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_LedToken_$1495",
+                      "typeString": "contract LedToken"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "254:19:16"
+            },
+            "scope": 7290,
+            "src": "90:184:16",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7291,
+        "src": "52:224:16"
+      }
+    ],
+    "src": "0:276:16"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/TokenFactoryInterface.sol",
+    "exportedSymbols": {
+      "TokenFactoryInterface": [
+        7290
+      ]
+    },
+    "id": 7291,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7275,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".13"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:16"
+      },
+      {
+        "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/LedToken.sol",
+        "file": "./LedToken.sol",
+        "id": 7276,
+        "nodeType": "ImportDirective",
+        "scope": 7291,
+        "sourceUnit": 1496,
+        "src": "26:24:16",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 7290,
+        "linearizedBaseContracts": [
+          7290
+        ],
+        "name": "TokenFactoryInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 7289,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "createCloneToken",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7285,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7278,
+                  "name": "_parentToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7289,
+                  "src": "125:20:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7277,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "125:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7280,
+                  "name": "_snapshotBlock",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7289,
+                  "src": "155:19:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7279,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "155:4:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7282,
+                  "name": "_tokenName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7289,
+                  "src": "184:17:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7281,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "184:6:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7284,
+                  "name": "_tokenSymbol",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7289,
+                  "src": "211:19:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 7283,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "211:6:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "115:123:16"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 7288,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7287,
+                  "name": "newToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7289,
+                  "src": "255:17:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_LedToken_$1495",
+                    "typeString": "contract LedToken"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 7286,
+                    "name": "LedToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1495,
+                    "src": "255:8:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_LedToken_$1495",
+                      "typeString": "contract LedToken"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "254:19:16"
+            },
+            "scope": 7290,
+            "src": "90:184:16",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 7291,
+        "src": "52:224:16"
+      }
+    ],
+    "src": "0:276:16"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.23+commit.124ca40d.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-05-24T13:51:51.881Z"
+}
