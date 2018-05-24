@@ -67,6 +67,8 @@ describe('Cloning: ', function () {
     // And without reformatting them, it will throw an error.
 
     await tokenSale.methods.forceStart().send({from:accounts[0],gas:'3000000'});
+    await tokenSale.methods.whitelist(accounts[1]).send({from:accounts[0],gas:'3000000'});
+    await tokenSale.methods.whitelist(accounts[2]).send({from:accounts[0],gas:'3000000'});
     await tokenSale.methods.buyTokens(accounts[1]).send({
       from:accounts[1],
       value:web3.utils.toWei('1', 'ether'),
@@ -104,6 +106,7 @@ describe('Cloning: ', function () {
     await clonedToken.methods.transferControl(clonedTokenSaleAddress).send({from:accounts[0],gas:'3000000'});
 
     await clonedTokenSale.methods.forceStart().send({from:accounts[0],gas:'3000000'});
+    await clonedTokenSale.methods.whitelist(accounts[2]).send({from:accounts[0],gas:'3000000'});
 
     let initialTokenBalance = await clonedToken.methods.balanceOf(accounts[2]).call();
 

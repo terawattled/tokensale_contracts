@@ -66,6 +66,7 @@ describe('Token Information', async function() {
   beforeEach(async function() {
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
     await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
+    await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
   })
 
   it('should return the correct token supply', async function() {
@@ -172,4 +173,14 @@ describe('Finalized state', function () {
       assert(!finalized);
     }
   })
+
+  it('should allocate the surplus tokens to the LED team after finishing', async function() {
+    await tokenSale.methods.pause().send({from:fund,gas:'3000000'});
+    await tokenSale.methods.allocateLedTokens().send({from:fund,gas:'3000000'});
+    await tokenSale.methods.finalize().send({from:fund,gas:'3000000'});
+    let teamAddress = await tokenSale.methods.ledMultiSig().call();
+    let teamBalance = await ledToken.methods.balanceOf(teamAddress).call();
+    assert.ok(teamBalance>0);
+  })
+
 })

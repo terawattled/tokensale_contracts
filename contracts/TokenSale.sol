@@ -25,13 +25,15 @@ contract TokenSale is Pausable, TokenInfo {
   uint256 public surplusTokens;
   uint256 public allocatedTokens;
 
+  mapping (address => bool) public whitelisted;
+
   bool public finalized;
 
   bool public ledTokensAllocated;
   address public ledMultiSig = LED_MULTISIG;
 
   uint256 public tokenCap = ICO_TOKENCAP;
-  uint256 public cap = tokenCap * (10 ** 18);
+  uint256 public cap = tokenCap * (1 ether);
   uint256 public weiCap = tokenCap * ICO_BASE_PRICE_IN_WEI;
 
   bool public started = false;
@@ -52,7 +54,7 @@ contract TokenSale is Pausable, TokenInfo {
     endTime = _endTime;
     ledToken = LedTokenInterface(_tokenAddress);
 
-    decimalsMultiplier = (10 ** 18);
+    decimalsMultiplier = (1 ether);
   }
 
 
@@ -70,15 +72,22 @@ contract TokenSale is Pausable, TokenInfo {
   function buyTokens(address _beneficiary) public payable whenNotPaused whenNotFinalized {
     require(_beneficiary != 0x0);
     require(validPurchase());
+    require(isWhitelisted(_beneficiary));
 
     uint256 weiAmount = msg.value;
     uint256 priceInWei = ICO_BASE_PRICE_IN_WEI;
     totalWeiRaised = totalWeiRaised.add(weiAmount);
 
     uint256 bonusPercentage = determineBonus(weiAmount);
+    uint256 bonusTokens;
 
     uint256 initialTokens = weiAmount.mul(decimalsMultiplier).div(priceInWei);
-    uint256 bonusTokens = initialTokens.mul(bonusPercentage/100);
+    if(bonusPercentage>0){
+      uint256 initialDivided = initialTokens.div(100);
+      bonusTokens = initialDivided.mul(bonusPercentage);
+    } else {
+      bonusTokens = 0;
+    }
     uint256 tokens = initialTokens.add(bonusTokens);
     tokensMinted = tokensMinted.add(tokens);
     require(tokensMinted < cap);
@@ -112,6 +121,14 @@ contract TokenSale is Pausable, TokenInfo {
     } else {
       return 0;
     }
+  }
+
+  function isWhitelisted(address _sender) internal constant returns(bool) {
+    return whitelisted[_sender];
+  }
+
+  function whitelist(address _sender) public onlyOwner {
+    whitelisted[_sender] = true;
   }
 
 
@@ -204,6 +221,41 @@ contract TokenSale is Pausable, TokenInfo {
     Finalized();
 
     finalized = true;
+  }
+
+  function getInfo() public constant returns(uint256, uint256, string, bool,  uint256, uint256, uint256, 
+  bool, uint256, uint256){
+    uint256 decimals = 18;
+    string memory symbol = ledToken.symbol();
+    bool transfersEnabled = ledToken.transfersEnabled();
+    return (
+      TOTAL_TOKENCAP, // Tokencap with the decimal point in place. should be 100.000.000
+      decimals, // Decimals
+      symbol,
+      transfersEnabled,
+      contributors,
+      totalWeiRaised,
+      cap, // Tokencap without the decimal point in place. Will be a huge number.
+      started,
+      startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
+      endTime
+    );
+  }
+  
+  function getInfoLevels() public constant returns(uint256, uint256, uint256, uint256, uint256, uint256, 
+  uint256, uint256, uint256, uint256){
+    return (
+      PRESALE_LEVEL_1, // Amount of ether needed per bonus level
+      PRESALE_LEVEL_2,
+      PRESALE_LEVEL_3,
+      PRESALE_LEVEL_4,
+      PRESALE_LEVEL_5,
+      PRESALE_PERCENTAGE_1, // Bonus percentage per bonus level
+      PRESALE_PERCENTAGE_2,
+      PRESALE_PERCENTAGE_3,
+      PRESALE_PERCENTAGE_4,
+      PRESALE_PERCENTAGE_5
+    );
   }
 
 

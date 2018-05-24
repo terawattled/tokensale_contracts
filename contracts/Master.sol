@@ -1,7 +1,58 @@
 pragma solidity ^0.4.13;
 
-// NOTE - This contract is strictly for compilation purposes. To reference individual contracts
-// please look at their individual files.
+contract TokenInfo {
+    // Base prices in wei, going off from an Ether value of $678.77
+    uint256 public constant PRIVATESALE_BASE_PRICE_IN_WEI = 294542134252305;
+    uint256 public constant PRESALE_BASE_PRICE_IN_WEI = 441813201378457;
+    uint256 public constant ICO_BASE_PRICE_IN_WEI = 589084268504609;
+
+    // Bonus percentages for each respective sale level
+    uint256 public constant PRIVATESALE_PERCENTAGE_1 = 20;
+    uint256 public constant PRIVATESALE_PERCENTAGE_2 = 25;
+    uint256 public constant PRIVATESALE_PERCENTAGE_3 = 35;
+    uint256 public constant PRIVATESALE_PERCENTAGE_4 = 50;
+    uint256 public constant PRIVATESALE_PERCENTAGE_5 = 100;
+
+    uint256 public constant PRESALE_PERCENTAGE_1 = 10;
+    uint256 public constant PRESALE_PERCENTAGE_2 = 15;
+    uint256 public constant PRESALE_PERCENTAGE_3 = 20;
+    uint256 public constant PRESALE_PERCENTAGE_4 = 25;
+    uint256 public constant PRESALE_PERCENTAGE_5 = 35;
+
+    uint256 public constant ICO_PERCENTAGE_1 = 5;
+    uint256 public constant ICO_PERCENTAGE_2 = 10;
+    uint256 public constant ICO_PERCENTAGE_3 = 15;
+    uint256 public constant ICO_PERCENTAGE_4 = 20;
+    uint256 public constant ICO_PERCENTAGE_5 = 25;
+
+    // Bonus levels in wei for each respective level
+    uint256 public constant PRIVATESALE_LEVEL_1 = 2400000000000000000;
+    uint256 public constant PRIVATESALE_LEVEL_2 = 5000000000000000000;
+    uint256 public constant PRIVATESALE_LEVEL_3 = 8100000000000000000;
+    uint256 public constant PRIVATESALE_LEVEL_4 = 12000000000000000000;
+    uint256 public constant PRIVATESALE_LEVEL_5 = 20000000000000000000;
+
+    uint256 public constant PRESALE_LEVEL_1 = 3000000000000000000;
+    uint256 public constant PRESALE_LEVEL_2 = 6000000000000000000;
+    uint256 public constant PRESALE_LEVEL_3 = 9000000000000000000;
+    uint256 public constant PRESALE_LEVEL_4 = 12000000000000000000;
+    uint256 public constant PRESALE_LEVEL_5 = 15000000000000000000;
+
+    uint256 public constant ICO_LEVEL_1 = 4000000000000000000;
+    uint256 public constant ICO_LEVEL_2 = 8000000000000000000;
+    uint256 public constant ICO_LEVEL_3 = 12000000000000000000;
+    uint256 public constant ICO_LEVEL_4 = 16000000000000000000;
+    uint256 public constant ICO_LEVEL_5 = 20000000000000000000;
+
+    // Caps for the respective sales, the amount of tokens allocated to the team and the total cap
+    uint256 public constant PRIVATESALE_TOKENCAP = 23750000;
+    uint256 public constant PRESALE_TOKENCAP = 18750000;
+    uint256 public constant ICO_TOKENCAP = 22500000;
+    uint256 public constant LEDTEAM_TOKENS = 35000000;
+    uint256 public constant TOTAL_TOKENCAP = 100000000;
+
+    address public constant LED_MULTISIG = 0x9c0e9941a4c554f6e1aa1930268a7c992e3c8602;
+}
 
 contract ApproveAndCallReceiver {
     function receiveApproval(address from, uint256 _amount, address _token, bytes _data) public;
@@ -115,7 +166,7 @@ contract LedPresaleToken is ERC20, Controllable {
   }
 
   function transferFrom(address _from, address _to, uint _value) returns (bool) {
-    var _allowance = allowed[_from][msg.sender];
+    uint _allowance = allowed[_from][msg.sender];
 
     balances[_to] = balances[_to].add(_value);
     balances[_from] = balances[_from].sub(_value);
@@ -156,6 +207,7 @@ contract LedPresaleToken is ERC20, Controllable {
 
 
 }
+
 
 /**
  * @title LedPresaleToken (LEDP)
@@ -210,7 +262,6 @@ contract LedToken is Controllable {
   bool public mintingFinished = false;
   bool public presaleBalancesLocked = false;
 
-  uint256 public constant TOTAL_PRESALE_TOKENS = 112386712924725508802400;
   uint256 public totalSupplyAtCheckpoint;
 
   event Mint(address indexed to, uint256 amount);
@@ -597,6 +648,10 @@ contract LedToken is Controllable {
  */
 contract LedTokenInterface is Controllable {
 
+  string public name;
+  string public symbol;
+  bool public transfersEnabled;
+
   event Mint(address indexed to, uint256 amount);
   event MintFinished();
   event ClaimedTokens(address indexed _token, address indexed _owner, uint _amount);
@@ -729,6 +784,504 @@ contract Pausable is Ownable {
 }
 
 /**
+ * @title Presale
+ * Presale allows investors to make token purchases and assigns them tokens based
+
+ * on a token per ETH rate. Funds collected are forwarded to a wallet as they arrive.
+ */
+contract Presale is Pausable, TokenInfo {
+
+  using SafeMath for uint256;
+
+  LedTokenInterface public ledToken;
+  uint256 public totalWeiRaised;
+  uint256 public tokensMinted;
+  uint256 public totalSupply;
+  uint256 public contributors;
+  uint256 public decimalsMultiplier;
+  uint256 public startTime;
+  uint256 public endTime;
+  uint256 public surplusTokens;
+
+  mapping (address => bool) public whitelisted;
+
+  bool public finalized;
+
+  bool public ledTokensAllocated;
+  address public ledMultiSig = LED_MULTISIG;
+
+  uint256 public tokenCap = PRESALE_TOKENCAP;
+  uint256 public cap = tokenCap * (1 ether);
+  uint256 public weiCap = tokenCap * PRESALE_BASE_PRICE_IN_WEI;
+
+  bool public started = false;
+
+  event TokenPurchase(address indexed purchaser, address indexed beneficiary, uint256 value, uint256 amount);
+  event NewClonedToken(address indexed _cloneToken);
+  event OnTransfer(address _from, address _to, uint _amount);
+  event OnApprove(address _owner, address _spender, uint _amount);
+  event LogInt(string _name, uint256 _value);
+  event Finalized();
+
+  function Presale(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
+    require(_tokenAddress != 0x0);
+    require(_startTime > 0);
+    require(_endTime > _startTime);
+
+    startTime = _startTime;
+    endTime = _endTime;
+    ledToken = LedTokenInterface(_tokenAddress);
+
+    decimalsMultiplier = (1 ether);
+  }
+
+
+  /**
+   * High level token purchase function
+   */
+  function() public payable {
+    buyTokens(msg.sender);
+  }
+
+  /**
+   * Low level token purchase function
+   * @param _beneficiary will receive the tokens.
+   */
+  function buyTokens(address _beneficiary) public payable whenNotPaused whenNotFinalized {
+    require(_beneficiary != 0x0);
+    require(validPurchase());
+    require(isWhitelisted(_beneficiary));
+
+    uint256 weiAmount = msg.value;
+    uint256 priceInWei = PRESALE_BASE_PRICE_IN_WEI;
+    totalWeiRaised = totalWeiRaised.add(weiAmount);
+
+    uint256 bonusPercentage = determineBonus(weiAmount);
+    uint256 bonusTokens;
+
+    uint256 initialTokens = weiAmount.mul(decimalsMultiplier).div(priceInWei);
+    if(bonusPercentage>0){
+      uint256 initialDivided = initialTokens.div(100);
+      bonusTokens = initialDivided.mul(bonusPercentage);
+    } else {
+      bonusTokens = 0;
+    }
+    uint256 tokens = initialTokens.add(bonusTokens);
+    tokensMinted = tokensMinted.add(tokens);
+    require(tokensMinted < cap);
+
+    contributors = contributors.add(1);
+
+    ledToken.mint(_beneficiary, tokens);
+    TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
+    forwardFunds();
+  }
+
+  function determineBonus(uint256 _wei) constant public returns (uint256) {
+    if(_wei > PRESALE_LEVEL_1) {
+      if(_wei > PRESALE_LEVEL_2) {
+        if(_wei > PRESALE_LEVEL_3) {
+          if(_wei > PRESALE_LEVEL_4) {
+            if(_wei > PRESALE_LEVEL_5) {
+              return PRESALE_PERCENTAGE_5;
+            } else {
+              return PRESALE_PERCENTAGE_4;
+            }
+          } else {
+            return PRESALE_PERCENTAGE_3;
+          }
+        } else {
+          return PRESALE_PERCENTAGE_2;
+        }
+      } else {
+        return PRESALE_PERCENTAGE_1;
+      }
+    } else {
+      return 0;
+    }
+  }
+
+  function isWhitelisted(address _sender) internal constant returns(bool) {
+    return whitelisted[_sender];
+  }
+
+  function whitelist(address _sender) public onlyOwner {
+    whitelisted[_sender] = true;
+  }
+
+
+  /**
+  * Forwards funds to the tokensale wallet
+  */
+  function forwardFunds() internal {
+    ledMultiSig.transfer(msg.value);
+  }
+
+
+  /**
+  * Validates the purchase (period, minimum amount, within cap)
+  * @return {bool} valid
+  */
+  function validPurchase() internal constant returns (bool) {
+    uint256 current = now;
+    bool presaleStarted = (current >= startTime || started);
+    bool presaleNotEnded = current <= endTime;
+    bool nonZeroPurchase = msg.value != 0;
+    return nonZeroPurchase && presaleStarted && presaleNotEnded;
+  }
+
+  /**
+  * Returns the total Led token supply
+  * @return totalSupply {uint256} Led Token Total Supply
+  */
+  function totalSupply() public constant returns (uint256) {
+    return ledToken.totalSupply();
+  }
+
+  /**
+  * Returns token holder Led Token balance
+  * @param _owner {address} Token holder address
+  * @return balance {uint256} Corresponding token holder balance
+  */
+  function balanceOf(address _owner) public constant returns (uint256) {
+    return ledToken.balanceOf(_owner);
+  }
+
+  /**
+  * Change the Led Token controller
+  * @param _newController {address} New Led Token controller
+  */
+  function changeController(address _newController) public {
+    require(isContract(_newController));
+    ledToken.transferControl(_newController);
+  }
+
+  function enableMasterTransfers() public onlyOwner {
+    ledToken.enableMasterTransfers(true);
+  }
+
+  function lockMasterTransfers() public onlyOwner {
+    ledToken.enableMasterTransfers(false);
+  }
+
+  function forceStart() public onlyOwner {
+    started = true;
+  }
+
+  function finalize() public onlyOwner {
+    require(paused);
+    require(!finalized);
+    surplusTokens = cap - tokensMinted;
+    ledToken.mint(ledMultiSig, surplusTokens);
+
+    Finalized();
+
+    finalized = true;
+  }
+
+  function getInfo() public constant returns(uint256, uint256, string, bool,  uint256, uint256, uint256, 
+  bool, uint256, uint256){
+    uint256 decimals = 18;
+    string memory symbol = ledToken.symbol();
+    bool transfersEnabled = ledToken.transfersEnabled();
+    return (
+      TOTAL_TOKENCAP, // Tokencap with the decimal point in place. should be 100.000.000
+      decimals, // Decimals
+      symbol,
+      transfersEnabled,
+      contributors,
+      totalWeiRaised,
+      cap, // Tokencap without the decimal point in place. Will be a huge number.
+      started,
+      startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
+      endTime
+    );
+  }
+  
+  function getInfoLevels() public constant returns(uint256, uint256, uint256, uint256, uint256, uint256, 
+  uint256, uint256, uint256, uint256){
+    return (
+      PRESALE_LEVEL_1, // Amount of ether needed per bonus level
+      PRESALE_LEVEL_2,
+      PRESALE_LEVEL_3,
+      PRESALE_LEVEL_4,
+      PRESALE_LEVEL_5,
+      PRESALE_PERCENTAGE_1, // Bonus percentage per bonus level
+      PRESALE_PERCENTAGE_2,
+      PRESALE_PERCENTAGE_3,
+      PRESALE_PERCENTAGE_4,
+      PRESALE_PERCENTAGE_5
+    );
+  }
+
+
+  function isContract(address _addr) constant internal returns(bool) {
+    uint size;
+    if (_addr == 0)
+      return false;
+    assembly {
+        size := extcodesize(_addr)
+    }
+    return size>0;
+  }
+
+  modifier whenNotFinalized() {
+    require(!finalized);
+    _;
+  }
+
+}
+
+/**
+ * @title PrivateSale
+ * PrivateSale allows investors to make token purchases and assigns them tokens based
+
+ * on a token per ETH rate. Funds collected are forwarded to a wallet as they arrive.
+ */
+contract PrivateSale is Pausable, TokenInfo {
+
+  using SafeMath for uint256;
+
+  LedTokenInterface public ledToken;
+  uint256 public totalWeiRaised;
+  uint256 public tokensMinted;
+  uint256 public totalSupply;
+  uint256 public contributors;
+  uint256 public decimalsMultiplier;
+  uint256 public startTime;
+  uint256 public endTime;
+  uint256 public surplusTokens;
+
+  mapping (address => bool) public whitelisted;
+
+  bool public finalized;
+
+  bool public ledTokensAllocated;
+  address public ledMultiSig = LED_MULTISIG;
+
+  uint256 public tokenCap = PRIVATESALE_TOKENCAP;
+  uint256 public cap = tokenCap * (1 ether);
+  uint256 public weiCap = tokenCap * PRIVATESALE_BASE_PRICE_IN_WEI;
+
+  bool public started = false;
+
+  event TokenPurchase(address indexed purchaser, address indexed beneficiary, uint256 value, uint256 amount);
+  event NewClonedToken(address indexed _cloneToken);
+  event OnTransfer(address _from, address _to, uint _amount);
+  event OnApprove(address _owner, address _spender, uint _amount);
+  event LogInt(string _name, uint256 _value);
+  event Finalized();
+
+  function PrivateSale(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
+    require(_tokenAddress != 0x0);
+    require(_startTime > 0);
+    require(_endTime > _startTime);
+
+    startTime = _startTime;
+    endTime = _endTime;
+    ledToken = LedTokenInterface(_tokenAddress);
+
+    decimalsMultiplier = (1 ether);
+  }
+
+
+  /**
+   * High level token purchase function
+   */
+  function() public payable {
+    buyTokens(msg.sender);
+  }
+
+  /**
+   * Low level token purchase function
+   * @param _beneficiary will receive the tokens.
+   */
+  function buyTokens(address _beneficiary) public payable whenNotPaused whenNotFinalized {
+    require(_beneficiary != 0x0);
+    require(validPurchase());
+    require(isWhitelisted(_beneficiary));
+
+    uint256 weiAmount = msg.value;
+    uint256 priceInWei = PRIVATESALE_BASE_PRICE_IN_WEI;
+    totalWeiRaised = totalWeiRaised.add(weiAmount);
+
+    uint256 bonusPercentage = determineBonus(weiAmount);
+    uint256 bonusTokens;
+
+    uint256 initialTokens = weiAmount.mul(decimalsMultiplier).div(priceInWei);
+    if(bonusPercentage>0){
+      uint256 initialDivided = initialTokens.div(100);
+      bonusTokens = initialDivided.mul(bonusPercentage);
+    } else {
+      bonusTokens = 0;
+    }
+    uint256 tokens = initialTokens.add(bonusTokens);
+    tokensMinted = tokensMinted.add(tokens);
+    require(tokensMinted < cap);
+
+    contributors = contributors.add(1);
+
+    ledToken.mint(_beneficiary, tokens);
+    TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
+    forwardFunds();
+  }
+
+  function determineBonus(uint256 _wei) constant public returns (uint256) {
+    if(_wei > PRIVATESALE_LEVEL_1) {
+      if(_wei > PRIVATESALE_LEVEL_2) {
+        if(_wei > PRIVATESALE_LEVEL_3) {
+          if(_wei > PRIVATESALE_LEVEL_4) {
+            if(_wei > PRIVATESALE_LEVEL_5) {
+              return PRIVATESALE_PERCENTAGE_5;
+            } else {
+              return PRIVATESALE_PERCENTAGE_4;
+            }
+          } else {
+            return PRIVATESALE_PERCENTAGE_3;
+          }
+        } else {
+          return PRIVATESALE_PERCENTAGE_2;
+        }
+      } else {
+        return PRIVATESALE_PERCENTAGE_1;
+      }
+    } else {
+      return 0;
+    }
+  }
+
+  function isWhitelisted(address _sender) internal constant returns(bool) {
+    return whitelisted[_sender];
+  }
+
+  function whitelist(address _sender) public onlyOwner {
+    whitelisted[_sender] = true;
+  }
+
+
+  /**
+  * Forwards funds to the tokensale wallet
+  */
+  function forwardFunds() internal {
+    ledMultiSig.transfer(msg.value);
+  }
+
+
+  /**
+  * Validates the purchase (period, minimum amount, within cap)
+  * @return {bool} valid
+  */
+  function validPurchase() internal constant returns (bool) {
+    uint256 current = now;
+    bool presaleStarted = (current >= startTime || started);
+    bool presaleNotEnded = current <= endTime;
+    bool nonZeroPurchase = msg.value != 0;
+    return nonZeroPurchase && presaleStarted && presaleNotEnded;
+  }
+
+  /**
+  * Returns the total Led token supply
+  * @return totalSupply {uint256} Led Token Total Supply
+  */
+  function totalSupply() public constant returns (uint256) {
+    return ledToken.totalSupply();
+  }
+
+  /**
+  * Returns token holder Led Token balance
+  * @param _owner {address} Token holder address
+  * @return balance {uint256} Corresponding token holder balance
+  */
+  function balanceOf(address _owner) public constant returns (uint256) {
+    return ledToken.balanceOf(_owner);
+  }
+
+  /**
+  * Change the Led Token controller
+  * @param _newController {address} New Led Token controller
+  */
+  function changeController(address _newController) public {
+    require(isContract(_newController));
+    ledToken.transferControl(_newController);
+  }
+
+  function enableMasterTransfers() public onlyOwner {
+    ledToken.enableMasterTransfers(true);
+  }
+
+  function lockMasterTransfers() public onlyOwner {
+    ledToken.enableMasterTransfers(false);
+  }
+
+  function forceStart() public onlyOwner {
+    started = true;
+  }
+
+  function finalize() public onlyOwner {
+    require(paused);
+    require(!finalized);
+    surplusTokens = cap - tokensMinted;
+    ledToken.mint(ledMultiSig, surplusTokens);
+
+    Finalized();
+
+    finalized = true;
+  }
+
+  function getInfo() public constant returns(uint256, uint256, string, bool,  uint256, uint256, uint256, 
+  bool, uint256, uint256){
+    uint256 decimals = 18;
+    string memory symbol = ledToken.symbol();
+    bool transfersEnabled = ledToken.transfersEnabled();
+    return (
+      TOTAL_TOKENCAP, // Tokencap with the decimal point in place. should be 100.000.000
+      decimals, // Decimals
+      symbol,
+      transfersEnabled,
+      contributors,
+      totalWeiRaised,
+      cap, // Tokencap without the decimal point in place. Will be a huge number.
+      started,
+      startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
+      endTime
+    );
+  }
+  
+  function getInfoLevels() public constant returns(uint256, uint256, uint256, uint256, uint256, uint256, 
+  uint256, uint256, uint256, uint256){
+    return (
+      PRESALE_LEVEL_1, // Amount of ether needed per bonus level
+      PRESALE_LEVEL_2,
+      PRESALE_LEVEL_3,
+      PRESALE_LEVEL_4,
+      PRESALE_LEVEL_5,
+      PRESALE_PERCENTAGE_1, // Bonus percentage per bonus level
+      PRESALE_PERCENTAGE_2,
+      PRESALE_PERCENTAGE_3,
+      PRESALE_PERCENTAGE_4,
+      PRESALE_PERCENTAGE_5
+    );
+  }
+
+
+  function isContract(address _addr) constant internal returns(bool) {
+    uint size;
+    if (_addr == 0)
+      return false;
+    assembly {
+        size := extcodesize(_addr)
+    }
+    return size>0;
+  }
+
+  modifier whenNotFinalized() {
+    require(!finalized);
+    _;
+  }
+
+}
+
+/**
  * @title SafeMath
  * @dev Math operations with safety checks that throw on error
  */
@@ -790,7 +1343,13 @@ contract TokenFactoryInterface {
       ) public returns (LedToken newToken);
 }
 
-contract TokenSale is Pausable {
+/**
+ * @title Tokensale
+ * Tokensale allows investors to make token purchases and assigns them tokens based
+
+ * on a token per ETH rate. Funds collected are forwarded to a wallet as they arrive.
+ */
+contract TokenSale is Pausable, TokenInfo {
 
   using SafeMath for uint256;
 
@@ -802,32 +1361,19 @@ contract TokenSale is Pausable {
   uint256 public decimalsMultiplier;
   uint256 public startTime;
   uint256 public endTime;
-  uint256 public remainingTokens;
+  uint256 public surplusTokens;
   uint256 public allocatedTokens;
+
+  mapping (address => bool) public whitelisted;
 
   bool public finalized;
 
   bool public ledTokensAllocated;
-  address public ledMultiSig = 0x9c0e9941a4c554f6e1aa1930268a7c992e3c8602;
+  address public ledMultiSig = LED_MULTISIG;
 
-  uint256 public constant BASE_PRICE_IN_WEI = 140000000000000;//0.10 cents in wei
-  uint256 public constant PUBLIC_TOKENS = 100 * (10 ** 18);
-  uint256 public constant TOTAL_PRESALE_TOKENS = 65 * (10 ** 18);
-  uint256 public constant TOKENS_ALLOCATED_TO_LED = 100 * (10 ** 18);
-
-
-
-  uint256 public tokenCap = PUBLIC_TOKENS - TOTAL_PRESALE_TOKENS;
-  uint256 public cap = tokenCap * (10 ** 7);
-  uint256 public weiCap = (cap/(10**18)) * BASE_PRICE_IN_WEI;
-
-  uint256 public firstDiscountPrice = (BASE_PRICE_IN_WEI * 85) / 100;
-  uint256 public secondDiscountPrice = (BASE_PRICE_IN_WEI * 90) / 100;
-  uint256 public thirdDiscountPrice = (BASE_PRICE_IN_WEI * 95) / 100;
-
-  uint256 public firstDiscountCap = (weiCap * 5) / 100;
-  uint256 public secondDiscountCap = (weiCap * 10) / 100;
-  uint256 public thirdDiscountCap = (weiCap * 20) / 100;
+  uint256 public tokenCap = ICO_TOKENCAP;
+  uint256 public cap = tokenCap * (1 ether);
+  uint256 public weiCap = tokenCap * ICO_BASE_PRICE_IN_WEI;
 
   bool public started = false;
 
@@ -847,7 +1393,7 @@ contract TokenSale is Pausable {
     endTime = _endTime;
     ledToken = LedTokenInterface(_tokenAddress);
 
-    decimalsMultiplier = (10 ** 18);
+    decimalsMultiplier = (1 ether);
   }
 
 
@@ -865,12 +1411,23 @@ contract TokenSale is Pausable {
   function buyTokens(address _beneficiary) public payable whenNotPaused whenNotFinalized {
     require(_beneficiary != 0x0);
     require(validPurchase());
+    require(isWhitelisted(_beneficiary));
 
     uint256 weiAmount = msg.value;
-    uint256 priceInWei = getPriceInWei();
+    uint256 priceInWei = ICO_BASE_PRICE_IN_WEI;
     totalWeiRaised = totalWeiRaised.add(weiAmount);
 
-    uint256 tokens = weiAmount.mul(decimalsMultiplier).div(priceInWei);
+    uint256 bonusPercentage = determineBonus(weiAmount);
+    uint256 bonusTokens;
+
+    uint256 initialTokens = weiAmount.mul(decimalsMultiplier).div(priceInWei);
+    if(bonusPercentage>0){
+      uint256 initialDivided = initialTokens.div(100);
+      bonusTokens = initialDivided.mul(bonusPercentage);
+    } else {
+      bonusTokens = 0;
+    }
+    uint256 tokens = initialTokens.add(bonusTokens);
     tokensMinted = tokensMinted.add(tokens);
     require(tokensMinted < cap);
 
@@ -881,27 +1438,38 @@ contract TokenSale is Pausable {
     forwardFunds();
   }
 
-
-  /**
-   * Get the price in wei for current premium
-   * @return price {uint256}
-   */
-  function getPriceInWei() constant public returns (uint256) {
-
-    uint256 price;
-
-    if (totalWeiRaised < firstDiscountCap) {
-      price = firstDiscountPrice;
-    } else if (totalWeiRaised < secondDiscountCap) {
-      price = secondDiscountPrice;
-    } else if (totalWeiRaised < thirdDiscountCap) {
-      price = thirdDiscountPrice;
+  function determineBonus(uint256 _wei) constant public returns (uint256) {
+    if(_wei > ICO_LEVEL_1) {
+      if(_wei > ICO_LEVEL_2) {
+        if(_wei > ICO_LEVEL_3) {
+          if(_wei > ICO_LEVEL_4) {
+            if(_wei > ICO_LEVEL_5) {
+              return ICO_PERCENTAGE_5;
+            } else {
+              return ICO_PERCENTAGE_4;
+            }
+          } else {
+            return ICO_PERCENTAGE_3;
+          }
+        } else {
+          return ICO_PERCENTAGE_2;
+        }
+      } else {
+        return ICO_PERCENTAGE_1;
+      }
     } else {
-      price = BASE_PRICE_IN_WEI;
+      return 0;
     }
-
-    return price;
   }
+
+  function isWhitelisted(address _sender) internal constant returns(bool) {
+    return whitelisted[_sender];
+  }
+
+  function whitelist(address _sender) public onlyOwner {
+    whitelisted[_sender] = true;
+  }
+
 
   /**
   * Forwards funds to the tokensale wallet
@@ -976,7 +1544,10 @@ contract TokenSale is Pausable {
 
   function allocateLedTokens() public onlyOwner whenNotFinalized {
     require(!ledTokensAllocated);
-    ledToken.mint(ledMultiSig, TOKENS_ALLOCATED_TO_LED);
+    allocatedTokens = LEDTEAM_TOKENS.mul(decimalsMultiplier);
+    ledToken.mint(ledMultiSig, allocatedTokens);
+    surplusTokens = cap - tokensMinted;
+    ledToken.mint(ledMultiSig, surplusTokens);
     ledTokensAllocated = true;
   }
 
@@ -989,6 +1560,41 @@ contract TokenSale is Pausable {
     Finalized();
 
     finalized = true;
+  }
+
+  function getInfo() public constant returns(uint256, uint256, string, bool,  uint256, uint256, uint256, 
+  bool, uint256, uint256){
+    uint256 decimals = 18;
+    string memory symbol = ledToken.symbol();
+    bool transfersEnabled = ledToken.transfersEnabled();
+    return (
+      TOTAL_TOKENCAP, // Tokencap with the decimal point in place. should be 100.000.000
+      decimals, // Decimals
+      symbol,
+      transfersEnabled,
+      contributors,
+      totalWeiRaised,
+      cap, // Tokencap without the decimal point in place. Will be a huge number.
+      started,
+      startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
+      endTime
+    );
+  }
+  
+  function getInfoLevels() public constant returns(uint256, uint256, uint256, uint256, uint256, uint256, 
+  uint256, uint256, uint256, uint256){
+    return (
+      PRESALE_LEVEL_1, // Amount of ether needed per bonus level
+      PRESALE_LEVEL_2,
+      PRESALE_LEVEL_3,
+      PRESALE_LEVEL_4,
+      PRESALE_LEVEL_5,
+      PRESALE_PERCENTAGE_1, // Bonus percentage per bonus level
+      PRESALE_PERCENTAGE_2,
+      PRESALE_PERCENTAGE_3,
+      PRESALE_PERCENTAGE_4,
+      PRESALE_PERCENTAGE_5
+    );
   }
 
 
