@@ -203,7 +203,7 @@ contract PrivateSale is Pausable, TokenInfo {
   function getInfo() public constant returns(uint256, uint256, string, bool,  uint256, uint256, uint256, 
   bool, uint256, uint256){
     uint256 decimals = 18;
-    string memory symbol = ledToken.symbol();
+    string memory symbol = "LED";
     bool transfersEnabled = ledToken.transfersEnabled();
     return (
       TOTAL_TOKENCAP, // Tokencap with the decimal point in place. should be 100.000.000
@@ -212,7 +212,7 @@ contract PrivateSale is Pausable, TokenInfo {
       transfersEnabled,
       contributors,
       totalWeiRaised,
-      cap, // Tokencap without the decimal point in place. Will be a huge number.
+      cap, // Tokencap for the private sale without the decimal point in place. Will be a huge number.
       started,
       startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
       endTime
