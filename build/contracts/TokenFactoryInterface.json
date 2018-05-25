@@ -43,14 +43,14 @@
     "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/TokenFactoryInterface.sol",
     "exportedSymbols": {
       "TokenFactoryInterface": [
-        7290
+        3807
       ]
     },
-    "id": 7291,
+    "id": 3808,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 7275,
+        "id": 3792,
         "literals": [
           "solidity",
           "^",
@@ -63,10 +63,10 @@
       {
         "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/LedToken.sol",
         "file": "./LedToken.sol",
-        "id": 7276,
+        "id": 3793,
         "nodeType": "ImportDirective",
-        "scope": 7291,
-        "sourceUnit": 1496,
+        "scope": 3808,
+        "sourceUnit": 2016,
         "src": "26:24:16",
         "symbolAliases": [],
         "unitAlias": ""
@@ -77,9 +77,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 7290,
+        "id": 3807,
         "linearizedBaseContracts": [
-          7290
+          3807
         ],
         "name": "TokenFactoryInterface",
         "nodeType": "ContractDefinition",
@@ -87,7 +87,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7289,
+            "id": 3806,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -95,15 +95,15 @@
             "name": "createCloneToken",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7285,
+              "id": 3802,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7278,
+                  "id": 3795,
                   "name": "_parentToken",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7289,
+                  "scope": 3806,
                   "src": "125:20:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -112,7 +112,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7277,
+                    "id": 3794,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "125:7:16",
@@ -126,10 +126,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 7280,
+                  "id": 3797,
                   "name": "_snapshotBlock",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7289,
+                  "scope": 3806,
                   "src": "155:19:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -138,7 +138,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7279,
+                    "id": 3796,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "155:4:16",
@@ -152,10 +152,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 7282,
+                  "id": 3799,
                   "name": "_tokenName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7289,
+                  "scope": 3806,
                   "src": "184:17:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -164,7 +164,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 7281,
+                    "id": 3798,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "184:6:16",
@@ -178,10 +178,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 7284,
+                  "id": 3801,
                   "name": "_tokenSymbol",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7289,
+                  "scope": 3806,
                   "src": "211:19:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -190,7 +190,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 7283,
+                    "id": 3800,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "211:6:16",
@@ -207,31 +207,31 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 7288,
+              "id": 3805,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7287,
+                  "id": 3804,
                   "name": "newToken",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7289,
+                  "scope": 3806,
                   "src": "255:17:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_LedToken_$1495",
+                    "typeIdentifier": "t_contract$_LedToken_$2015",
                     "typeString": "contract LedToken"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 7286,
+                    "id": 3803,
                     "name": "LedToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1495,
+                    "referencedDeclaration": 2015,
                     "src": "255:8:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_LedToken_$1495",
+                      "typeIdentifier": "t_contract$_LedToken_$2015",
                       "typeString": "contract LedToken"
                     }
                   },
@@ -241,14 +241,14 @@
               ],
               "src": "254:19:16"
             },
-            "scope": 7290,
+            "scope": 3807,
             "src": "90:184:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 7291,
+        "scope": 3808,
         "src": "52:224:16"
       }
     ],
@@ -258,14 +258,14 @@
     "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/TokenFactoryInterface.sol",
     "exportedSymbols": {
       "TokenFactoryInterface": [
-        7290
+        3807
       ]
     },
-    "id": 7291,
+    "id": 3808,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 7275,
+        "id": 3792,
         "literals": [
           "solidity",
           "^",
@@ -278,10 +278,10 @@
       {
         "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/LedToken.sol",
         "file": "./LedToken.sol",
-        "id": 7276,
+        "id": 3793,
         "nodeType": "ImportDirective",
-        "scope": 7291,
-        "sourceUnit": 1496,
+        "scope": 3808,
+        "sourceUnit": 2016,
         "src": "26:24:16",
         "symbolAliases": [],
         "unitAlias": ""
@@ -292,9 +292,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 7290,
+        "id": 3807,
         "linearizedBaseContracts": [
-          7290
+          3807
         ],
         "name": "TokenFactoryInterface",
         "nodeType": "ContractDefinition",
@@ -302,7 +302,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 7289,
+            "id": 3806,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -310,15 +310,15 @@
             "name": "createCloneToken",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7285,
+              "id": 3802,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7278,
+                  "id": 3795,
                   "name": "_parentToken",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7289,
+                  "scope": 3806,
                   "src": "125:20:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -327,7 +327,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7277,
+                    "id": 3794,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "125:7:16",
@@ -341,10 +341,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 7280,
+                  "id": 3797,
                   "name": "_snapshotBlock",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7289,
+                  "scope": 3806,
                   "src": "155:19:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -353,7 +353,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7279,
+                    "id": 3796,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "155:4:16",
@@ -367,10 +367,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 7282,
+                  "id": 3799,
                   "name": "_tokenName",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7289,
+                  "scope": 3806,
                   "src": "184:17:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -379,7 +379,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 7281,
+                    "id": 3798,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "184:6:16",
@@ -393,10 +393,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 7284,
+                  "id": 3801,
                   "name": "_tokenSymbol",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7289,
+                  "scope": 3806,
                   "src": "211:19:16",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -405,7 +405,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 7283,
+                    "id": 3800,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "211:6:16",
@@ -422,31 +422,31 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 7288,
+              "id": 3805,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7287,
+                  "id": 3804,
                   "name": "newToken",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7289,
+                  "scope": 3806,
                   "src": "255:17:16",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_LedToken_$1495",
+                    "typeIdentifier": "t_contract$_LedToken_$2015",
                     "typeString": "contract LedToken"
                   },
                   "typeName": {
                     "contractScope": null,
-                    "id": 7286,
+                    "id": 3803,
                     "name": "LedToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1495,
+                    "referencedDeclaration": 2015,
                     "src": "255:8:16",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_LedToken_$1495",
+                      "typeIdentifier": "t_contract$_LedToken_$2015",
                       "typeString": "contract LedToken"
                     }
                   },
@@ -456,14 +456,14 @@
               ],
               "src": "254:19:16"
             },
-            "scope": 7290,
+            "scope": 3807,
             "src": "90:184:16",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 7291,
+        "scope": 3808,
         "src": "52:224:16"
       }
     ],
@@ -475,5 +475,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-24T13:51:51.881Z"
+  "updatedAt": "2018-05-25T15:25:48.425Z"
 }

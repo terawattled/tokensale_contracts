@@ -2,9 +2,9 @@ const path = require('path');
 const solc = require('solc');
 const fs = require('fs-extra');
 
-const buildPath = path.resolve(__dirname, 'contracts', 'build');
+const buildPath = path.resolve(__dirname, 'master_contract', 'build');
 
-const masterPath = path.resolve(__dirname, 'contracts', 'Master.sol');
+const masterPath = path.resolve(__dirname, 'master_contract', 'Master.sol');
 const source = fs.readFileSync(masterPath, 'utf-8');
 const output = solc.compile(source, 1).contracts;
 

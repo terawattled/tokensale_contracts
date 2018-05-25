@@ -173,7 +173,7 @@ contract TokenSale is Pausable, TokenInfo {
   * Change the Led Token controller
   * @param _newController {address} New Led Token controller
   */
-  function changeController(address _newController) public {
+  function changeController(address _newController) public onlyOwner {
     require(isContract(_newController));
     ledToken.transferControl(_newController);
   }

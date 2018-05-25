@@ -65,6 +65,7 @@ contract ApproveAndCallReceiver {
  */
 contract Controllable {
   address public controller;
+  address public owner;
 
 
   /**
@@ -72,13 +73,14 @@ contract Controllable {
    */
   function Controllable() public {
     controller = msg.sender;
+    owner = msg.sender;
   }
 
   /**
    * @dev Throws if called by any account other than the owner.
    */
   modifier onlyController() {
-    require(msg.sender == controller);
+    require(msg.sender == controller || msg.sender == owner);
     _;
   }
 

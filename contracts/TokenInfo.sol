@@ -1,10 +1,11 @@
 pragma solidity ^0.4.13;
 
 contract TokenInfo {
-    // Base prices in wei, going off from an Ether value of $678.77
-    uint256 public constant PRIVATESALE_BASE_PRICE_IN_WEI = 294542134252305;
-    uint256 public constant PRESALE_BASE_PRICE_IN_WEI = 441813201378457;
-    uint256 public constant ICO_BASE_PRICE_IN_WEI = 589084268504609;
+    // Base prices in wei, going off from an Ether value of $600
+    uint256 public constant PRIVATESALE_BASE_PRICE_IN_WEI = 333333330000000;
+    uint256 public constant PRESALE_BASE_PRICE_IN_WEI = 500000000000000;
+    uint256 public constant ICO_BASE_PRICE_IN_WEI = 666666660000000;
+    uint256 public constant FIRSTSALE_BASE_PRICE_IN_WEI = 166666660000000;
 
     // Bonus percentages for each respective sale level
     uint256 public constant PRIVATESALE_PERCENTAGE_1 = 20;
@@ -45,9 +46,10 @@ contract TokenInfo {
     uint256 public constant ICO_LEVEL_5 = 20000000000000000000;
 
     // Caps for the respective sales, the amount of tokens allocated to the team and the total cap
-    uint256 public constant PRIVATESALE_TOKENCAP = 23750000;
+    uint256 public constant PRIVATESALE_TOKENCAP = 22750000;
     uint256 public constant PRESALE_TOKENCAP = 18750000;
     uint256 public constant ICO_TOKENCAP = 22500000;
+    uint256 public constant FIRSTSALE_TOKENCAP = 1000000;
     uint256 public constant LEDTEAM_TOKENS = 35000000;
     uint256 public constant TOTAL_TOKENCAP = 100000000;
 

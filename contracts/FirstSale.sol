@@ -5,12 +5,12 @@ import './Pausable.sol';
 import './LedTokenInterface.sol';
 import './TokenInfo.sol';
 /**
- * @title Presale
- * Presale allows investors to make token purchases and assigns them tokens based
+ * @title FirstSale
+ * FirstSale allows investors to make token purchases and assigns them tokens based
 
  * on a token per ETH rate. Funds collected are forwarded to a wallet as they arrive.
  */
-contract Presale is Pausable, TokenInfo {
+contract FirstSale is Pausable, TokenInfo {
 
   using SafeMath for uint256;
 
@@ -33,9 +33,9 @@ contract Presale is Pausable, TokenInfo {
   bool public ledTokensAllocated;
   address public ledMultiSig = LED_MULTISIG;
 
-  uint256 public tokenCap = PRESALE_TOKENCAP;
+  uint256 public tokenCap = FIRSTSALE_TOKENCAP;
   uint256 public cap = tokenCap * (1 ether);
-  uint256 public weiCap = tokenCap * PRESALE_BASE_PRICE_IN_WEI;
+  uint256 public weiCap = tokenCap * FIRSTSALE_BASE_PRICE_IN_WEI;
 
   bool public started = false;
 
@@ -46,7 +46,7 @@ contract Presale is Pausable, TokenInfo {
   event LogInt(string _name, uint256 _value);
   event Finalized();
 
-  function Presale(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
+  function FirstSale(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
     require(_tokenAddress != 0x0);
     require(_startTime > 0);
     require(_endTime > _startTime);
@@ -77,20 +77,10 @@ contract Presale is Pausable, TokenInfo {
     // require(isWhitelisted(_beneficiary));
 
     uint256 weiAmount = msg.value;
-    uint256 priceInWei = PRESALE_BASE_PRICE_IN_WEI;
+    uint256 priceInWei = FIRSTSALE_BASE_PRICE_IN_WEI;
     totalWeiRaised = totalWeiRaised.add(weiAmount);
 
-    uint256 bonusPercentage = determineBonus(weiAmount);
-    uint256 bonusTokens;
-
-    uint256 initialTokens = weiAmount.mul(decimalsMultiplier).div(priceInWei);
-    if(bonusPercentage>0){
-      uint256 initialDivided = initialTokens.div(100);
-      bonusTokens = initialDivided.mul(bonusPercentage);
-    } else {
-      bonusTokens = 0;
-    }
-    uint256 tokens = initialTokens.add(bonusTokens);
+    uint256 tokens = weiAmount.mul(decimalsMultiplier).div(priceInWei);
     tokensMinted = tokensMinted.add(tokens);
     require(tokensMinted < cap);
 
@@ -99,30 +89,6 @@ contract Presale is Pausable, TokenInfo {
     ledToken.mint(_beneficiary, tokens);
     TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
     forwardFunds();
-  }
-
-  function determineBonus(uint256 _wei) constant public returns (uint256) {
-    if(_wei > PRESALE_LEVEL_1) {
-      if(_wei > PRESALE_LEVEL_2) {
-        if(_wei > PRESALE_LEVEL_3) {
-          if(_wei > PRESALE_LEVEL_4) {
-            if(_wei > PRESALE_LEVEL_5) {
-              return PRESALE_PERCENTAGE_5;
-            } else {
-              return PRESALE_PERCENTAGE_4;
-            }
-          } else {
-            return PRESALE_PERCENTAGE_3;
-          }
-        } else {
-          return PRESALE_PERCENTAGE_2;
-        }
-      } else {
-        return PRESALE_PERCENTAGE_1;
-      }
-    } else {
-      return 0;
-    }
   }
 
   function isWhitelisted(address _sender) internal constant returns(bool) {
@@ -216,26 +182,10 @@ contract Presale is Pausable, TokenInfo {
       transfersEnabled,
       contributors,
       totalWeiRaised,
-      tokenCap, // Tokencap for the presale with the decimal point in place.
+      tokenCap, // Tokencap for the first sale with the decimal point in place.
       started,
       startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
       endTime
-    );
-  }
-  
-  function getInfoLevels() public constant returns(uint256, uint256, uint256, uint256, uint256, uint256, 
-  uint256, uint256, uint256, uint256){
-    return (
-      PRESALE_LEVEL_1, // Amount of ether needed per bonus level
-      PRESALE_LEVEL_2,
-      PRESALE_LEVEL_3,
-      PRESALE_LEVEL_4,
-      PRESALE_LEVEL_5,
-      PRESALE_PERCENTAGE_1, // Bonus percentage per bonus level
-      PRESALE_PERCENTAGE_2,
-      PRESALE_PERCENTAGE_3,
-      PRESALE_PERCENTAGE_4,
-      PRESALE_PERCENTAGE_5
     );
   }
 
