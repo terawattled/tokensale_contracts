@@ -24,6 +24,8 @@ contract PrivateSale is Pausable, TokenInfo {
   uint256 public endTime;
   uint256 public surplusTokens;
 
+  address public owner;
+
   mapping (address => bool) public whitelisted;
 
   bool public finalized;
@@ -52,6 +54,7 @@ contract PrivateSale is Pausable, TokenInfo {
     startTime = _startTime;
     endTime = _endTime;
     ledToken = LedTokenInterface(_tokenAddress);
+    owner = msg.sender;
 
     decimalsMultiplier = (1 ether);
   }
@@ -172,7 +175,7 @@ contract PrivateSale is Pausable, TokenInfo {
   * Change the Led Token controller
   * @param _newController {address} New Led Token controller
   */
-  function changeController(address _newController) public {
+  function changeController(address _newController) public onlyOwner {
     require(isContract(_newController));
     ledToken.transferControl(_newController);
   }
@@ -194,6 +197,7 @@ contract PrivateSale is Pausable, TokenInfo {
     require(!finalized);
     surplusTokens = cap - tokensMinted;
     ledToken.mint(ledMultiSig, surplusTokens);
+    ledToken.transferControl(owner);
 
     Finalized();
 
@@ -212,7 +216,7 @@ contract PrivateSale is Pausable, TokenInfo {
       transfersEnabled,
       contributors,
       totalWeiRaised,
-      cap, // Tokencap for the private sale without the decimal point in place. Will be a huge number.
+      tokenCap, // Tokencap for the private sale with the decimal point in place.
       started,
       startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
       endTime

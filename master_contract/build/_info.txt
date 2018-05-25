@@ -1,0 +1,1 @@
+These compiled files are for the testing framework, compiled with solc.
