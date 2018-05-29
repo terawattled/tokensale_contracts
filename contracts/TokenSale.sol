@@ -1,9 +1,9 @@
 pragma solidity ^0.4.13;
 
-import './SafeMath.sol';
-import './Pausable.sol';
-import './LedTokenInterface.sol';
-import './TokenInfo.sol';
+import "./SafeMath.sol";
+import "./Pausable.sol";
+import "./LedTokenInterface.sol";
+import "./TokenInfo.sol";
 /**
  * @title Tokensale
  * Tokensale allows investors to make token purchases and assigns them tokens based
@@ -207,14 +207,15 @@ contract TokenSale is Pausable, TokenInfo {
     require(!ledTokensAllocated);
     allocatedTokens = LEDTEAM_TOKENS.mul(decimalsMultiplier);
     ledToken.mint(ledMultiSig, allocatedTokens);
-    surplusTokens = cap - tokensMinted;
-    ledToken.mint(ledMultiSig, surplusTokens);
     ledTokensAllocated = true;
   }
 
   function finalize() public onlyOwner {
     require(paused);
     require(ledTokensAllocated);
+
+    surplusTokens = cap - tokensMinted;
+    ledToken.mint(ledMultiSig, surplusTokens);
 
     ledToken.finishMinting();
     ledToken.enableTransfers(true);

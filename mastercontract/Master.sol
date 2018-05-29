@@ -1,10 +1,11 @@
 pragma solidity ^0.4.13;
 
 contract TokenInfo {
-    // Base prices in wei, going off from an Ether value of $678.77
-    uint256 public constant PRIVATESALE_BASE_PRICE_IN_WEI = 294542134252305;
-    uint256 public constant PRESALE_BASE_PRICE_IN_WEI = 441813201378457;
-    uint256 public constant ICO_BASE_PRICE_IN_WEI = 589084268504609;
+    // Base prices in wei, going off from an Ether value of $600
+    uint256 public constant PRIVATESALE_BASE_PRICE_IN_WEI = 333333330000000;
+    uint256 public constant PRESALE_BASE_PRICE_IN_WEI = 500000000000000;
+    uint256 public constant ICO_BASE_PRICE_IN_WEI = 666666660000000;
+    uint256 public constant FIRSTSALE_BASE_PRICE_IN_WEI = 166666660000000;
 
     // Bonus percentages for each respective sale level
     uint256 public constant PRIVATESALE_PERCENTAGE_1 = 20;
@@ -26,32 +27,116 @@ contract TokenInfo {
     uint256 public constant ICO_PERCENTAGE_5 = 25;
 
     // Bonus levels in wei for each respective level
-    uint256 public constant PRIVATESALE_LEVEL_1 = 2400000000000000000;
-    uint256 public constant PRIVATESALE_LEVEL_2 = 5000000000000000000;
-    uint256 public constant PRIVATESALE_LEVEL_3 = 8100000000000000000;
-    uint256 public constant PRIVATESALE_LEVEL_4 = 12000000000000000000;
-    uint256 public constant PRIVATESALE_LEVEL_5 = 20000000000000000000;
+    uint256 public constant PRIVATESALE_LEVEL_1 = 4000000000000000000;
+    uint256 public constant PRIVATESALE_LEVEL_2 = 8333333333333333333;
+    uint256 public constant PRIVATESALE_LEVEL_3 = 13500000000000000000;
+    uint256 public constant PRIVATESALE_LEVEL_4 = 20000000000000000000;
+    uint256 public constant PRIVATESALE_LEVEL_5 = 33333333333333333333;
 
-    uint256 public constant PRESALE_LEVEL_1 = 3000000000000000000;
-    uint256 public constant PRESALE_LEVEL_2 = 6000000000000000000;
-    uint256 public constant PRESALE_LEVEL_3 = 9000000000000000000;
-    uint256 public constant PRESALE_LEVEL_4 = 12000000000000000000;
-    uint256 public constant PRESALE_LEVEL_5 = 15000000000000000000;
+    uint256 public constant PRESALE_LEVEL_1 = 5000000000000000000;
+    uint256 public constant PRESALE_LEVEL_2 = 10000000000000000000;
+    uint256 public constant PRESALE_LEVEL_3 = 15000000000000000000;
+    uint256 public constant PRESALE_LEVEL_4 = 20000000000000000000;
+    uint256 public constant PRESALE_LEVEL_5 = 25000000000000000000;
 
-    uint256 public constant ICO_LEVEL_1 = 4000000000000000000;
-    uint256 public constant ICO_LEVEL_2 = 8000000000000000000;
-    uint256 public constant ICO_LEVEL_3 = 12000000000000000000;
-    uint256 public constant ICO_LEVEL_4 = 16000000000000000000;
-    uint256 public constant ICO_LEVEL_5 = 20000000000000000000;
+    uint256 public constant ICO_LEVEL_1 = 6666666666666666666;
+    uint256 public constant ICO_LEVEL_2 = 13333333333333333333;
+    uint256 public constant ICO_LEVEL_3 = 20000000000000000000;
+    uint256 public constant ICO_LEVEL_4 = 26666666666666666666;
+    uint256 public constant ICO_LEVEL_5 = 33333333333333333333;
 
     // Caps for the respective sales, the amount of tokens allocated to the team and the total cap
-    uint256 public constant PRIVATESALE_TOKENCAP = 23750000;
+    uint256 public constant PRIVATESALE_TOKENCAP = 22750000;
     uint256 public constant PRESALE_TOKENCAP = 18750000;
     uint256 public constant ICO_TOKENCAP = 22500000;
+    uint256 public constant FIRSTSALE_TOKENCAP = 1000000;
     uint256 public constant LEDTEAM_TOKENS = 35000000;
     uint256 public constant TOTAL_TOKENCAP = 100000000;
 
     address public constant LED_MULTISIG = 0x9c0e9941a4c554f6e1aa1930268a7c992e3c8602;
+}
+
+/**
+ * @title Ownable
+ * @dev The Ownable contract has an owner address, and provides basic authorization control
+ * functions, this simplifies the implementation of "user permissions".
+ */
+contract Ownable {
+  address public owner;
+
+
+  /**
+   * @dev The Ownable constructor sets the original `owner` of the contract to the sender account.
+   */
+  function Ownable() public {
+    owner = msg.sender;
+  }
+
+  /**
+   * @dev Throws if called by any account other than the owner.
+   */
+  modifier onlyOwner() {
+    require(msg.sender == owner);
+    _;
+  }
+
+  /**
+   * @dev Allows the current owner to transfer control of the contract to a newOwner.
+   * @param newOwner The address to transfer ownership to.
+   */
+  function transferOwnership(address newOwner) public onlyOwner {
+    if (newOwner != address(0)) {
+      owner = newOwner;
+    }
+  }
+
+}
+
+/**
+ * @title Pausable
+ * @dev Base contract which allows children to implement an emergency stop mechanism.
+ */
+contract Pausable is Ownable {
+  event Pause();
+  event Unpause();
+
+  bool public paused = false;
+
+  function Pausable() public {}
+
+  /**
+   * @dev modifier to allow actions only when the contract IS paused
+   */
+  modifier whenNotPaused() {
+    require(!paused);
+    _;
+  }
+
+  /**
+   * @dev modifier to allow actions only when the contract IS NOT paused
+   */
+  modifier whenPaused {
+    require(paused);
+    _;
+  }
+
+  /**
+   * @dev called by the owner to pause, triggers stopped state
+   */
+  function pause() public onlyOwner whenNotPaused returns (bool) {
+    paused = true;
+    Pause();
+    return true;
+  }
+
+  /**
+   * @dev called by the owner to unpause, returns to normal state
+   */
+  function unpause() public onlyOwner whenPaused returns (bool) {
+    paused = false;
+    Unpause();
+    return true;
+  }
 }
 
 contract ApproveAndCallReceiver {
@@ -65,7 +150,6 @@ contract ApproveAndCallReceiver {
  */
 contract Controllable {
   address public controller;
-  address public owner;
 
 
   /**
@@ -73,14 +157,13 @@ contract Controllable {
    */
   function Controllable() public {
     controller = msg.sender;
-    owner = msg.sender;
   }
 
   /**
    * @dev Throws if called by any account other than the owner.
    */
   modifier onlyController() {
-    require(msg.sender == controller || msg.sender == owner);
+    require(msg.sender == controller);
     _;
   }
 
@@ -124,112 +207,205 @@ contract ERC20 {
 }
 
 /**
- * @title LedPresaleToken (LEDP)
- * Standard Mintable ERC20 Token
- * https://github.com/ethereum/EIPs/issues/20
- * Based on code by FirstBlood:
- * https://github.com/Firstbloodio/token/blob/master/smart_contract/FirstBloodToken.sol
- */
+ * @title FirstSale
+ * FirstSale allows investors to make token purchases and assigns them tokens based
 
-contract LedPresaleToken is ERC20, Controllable {
+ * on a token per ETH rate. Funds collected are forwarded to a wallet as they arrive.
+ */
+contract FirstSale is Pausable, TokenInfo {
 
   using SafeMath for uint256;
 
+  LedTokenInterface public ledToken;
+  uint256 public totalWeiRaised;
+  uint256 public tokensMinted;
   uint256 public totalSupply;
+  uint256 public contributors;
+  uint256 public decimalsMultiplier;
+  uint256 public startTime;
+  uint256 public endTime;
+  uint256 public surplusTokens;
 
-  mapping(address => uint) balances;
-  mapping (address => mapping (address => uint)) allowed;
+  address public owner;
 
-  string public constant name = "Led Presale Token";
-  string public constant symbol = "LEDP";
-  uint8 public constant decimals = 18;
-  bool public mintingFinished = false;
+  mapping (address => bool) public whitelisted;
 
-  event Mint(address indexed to, uint256 amount);
-  event MintFinished();
+  bool public finalized;
 
-  function LedPresaleToken() {}
+  bool public ledTokensAllocated;
+  address public ledMultiSig = LED_MULTISIG;
 
-  function() payable {
-    revert();
-  }
+  uint256 public tokenCap = FIRSTSALE_TOKENCAP;
+  uint256 public cap = tokenCap * (1 ether);
+  uint256 public weiCap = tokenCap * FIRSTSALE_BASE_PRICE_IN_WEI;
 
-  function balanceOf(address _owner) constant returns (uint256) {
-    return balances[_owner];
-  }
+  bool public started = false;
 
-  function transfer(address _to, uint _value) returns (bool) {
+  event TokenPurchase(address indexed purchaser, address indexed beneficiary, uint256 value, uint256 amount);
+  event NewClonedToken(address indexed _cloneToken);
+  event OnTransfer(address _from, address _to, uint _amount);
+  event OnApprove(address _owner, address _spender, uint _amount);
+  event LogInt(string _name, uint256 _value);
+  event Finalized();
 
-    balances[msg.sender] = balances[msg.sender].sub(_value);
-    balances[_to] = balances[_to].add(_value);
+  function FirstSale(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
+    require(_tokenAddress != 0x0);
+    require(_startTime > 0);
+    require(_endTime > _startTime);
 
-    Transfer(msg.sender, _to, _value);
-    return true;
-  }
+    startTime = _startTime;
+    endTime = _endTime;
+    ledToken = LedTokenInterface(_tokenAddress);
+    owner = msg.sender;
 
-  function transferFrom(address _from, address _to, uint _value) returns (bool) {
-    uint _allowance = allowed[_from][msg.sender];
-
-    balances[_to] = balances[_to].add(_value);
-    balances[_from] = balances[_from].sub(_value);
-    allowed[_from][msg.sender] = _allowance.sub(_value);
-
-    Transfer(_from, _to, _value);
-    return true;
-  }
-
-  function approve(address _spender, uint _value) returns (bool) {
-    allowed[msg.sender][_spender] = _value;
-    Approval(msg.sender, _spender, _value);
-    return true;
-  }
-
-  function allowance(address _owner, address _spender) constant returns (uint256) {
-    return allowed[_owner][_spender];
+    decimalsMultiplier = (1 ether);
   }
 
 
-  modifier canMint() {
-    require(!mintingFinished);
+  /**
+   * High level token purchase function
+   */
+  function() public payable {
+    buyTokens(msg.sender);
+  }
+
+  /**
+   * Low level token purchase function
+   * @param _beneficiary will receive the tokens.
+   */
+  function buyTokens(address _beneficiary) public payable whenNotPaused whenNotFinalized {
+    require(_beneficiary != 0x0);
+    require(validPurchase());
+    // require(isWhitelisted(_beneficiary));
+
+    uint256 weiAmount = msg.value;
+    uint256 priceInWei = FIRSTSALE_BASE_PRICE_IN_WEI;
+    totalWeiRaised = totalWeiRaised.add(weiAmount);
+
+    uint256 tokens = weiAmount.mul(decimalsMultiplier).div(priceInWei);
+    tokensMinted = tokensMinted.add(tokens);
+    require(tokensMinted < cap);
+
+    contributors = contributors.add(1);
+
+    ledToken.mint(_beneficiary, tokens);
+    TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
+    forwardFunds();
+  }
+
+  function isWhitelisted(address _sender) internal constant returns(bool) {
+    return whitelisted[_sender];
+  }
+
+  function whitelist(address _sender) public onlyOwner {
+    whitelisted[_sender] = true;
+  }
+
+
+  /**
+  * Forwards funds to the tokensale wallet
+  */
+  function forwardFunds() internal {
+    ledMultiSig.transfer(msg.value);
+  }
+
+
+  /**
+  * Validates the purchase (period, minimum amount, within cap)
+  * @return {bool} valid
+  */
+  function validPurchase() internal constant returns (bool) {
+    uint256 current = now;
+    bool presaleStarted = (current >= startTime || started);
+    bool presaleNotEnded = current <= endTime;
+    bool nonZeroPurchase = msg.value != 0;
+    return nonZeroPurchase && presaleStarted && presaleNotEnded;
+  }
+
+  /**
+  * Returns the total Led token supply
+  * @return totalSupply {uint256} Led Token Total Supply
+  */
+  function totalSupply() public constant returns (uint256) {
+    return ledToken.totalSupply();
+  }
+
+  /**
+  * Returns token holder Led Token balance
+  * @param _owner {address} Token holder address
+  * @return balance {uint256} Corresponding token holder balance
+  */
+  function balanceOf(address _owner) public constant returns (uint256) {
+    return ledToken.balanceOf(_owner);
+  }
+
+  /**
+  * Change the Led Token controller
+  * @param _newController {address} New Led Token controller
+  */
+  function changeController(address _newController) public onlyOwner {
+    require(isContract(_newController));
+    ledToken.transferControl(_newController);
+  }
+
+  function enableMasterTransfers() public onlyOwner {
+    ledToken.enableMasterTransfers(true);
+  }
+
+  function lockMasterTransfers() public onlyOwner {
+    ledToken.enableMasterTransfers(false);
+  }
+
+  function forceStart() public onlyOwner {
+    started = true;
+  }
+
+  function finalize() public onlyOwner {
+    require(paused);
+    require(!finalized);
+    surplusTokens = cap - tokensMinted;
+    ledToken.mint(ledMultiSig, surplusTokens);
+    ledToken.transferControl(owner);
+
+    Finalized();
+
+    finalized = true;
+  }
+
+  function getInfo() public constant returns(uint256, uint256, string, bool,  uint256, uint256, uint256, 
+  bool, uint256, uint256){
+    uint256 decimals = 18;
+    string memory symbol = "LED";
+    bool transfersEnabled = ledToken.transfersEnabled();
+    return (
+      TOTAL_TOKENCAP, // Tokencap with the decimal point in place. should be 100.000.000
+      decimals, // Decimals
+      symbol,
+      transfersEnabled,
+      contributors,
+      totalWeiRaised,
+      tokenCap, // Tokencap for the first sale with the decimal point in place.
+      started,
+      startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
+      endTime
+    );
+  }
+
+
+  function isContract(address _addr) constant internal returns(bool) {
+    uint size;
+    if (_addr == 0)
+      return false;
+    assembly {
+        size := extcodesize(_addr)
+    }
+    return size>0;
+  }
+
+  modifier whenNotFinalized() {
+    require(!finalized);
     _;
   }
-
-  function mint(address _to, uint256 _amount) onlyController canMint returns (bool) {
-    totalSupply = totalSupply.add(_amount);
-    balances[_to] = balances[_to].add(_amount);
-    Mint(_to, _amount);
-    return true;
-  }
-
-  function finishMinting() onlyController returns (bool) {
-    mintingFinished = true;
-    MintFinished();
-    return true;
-  }
-
-
-}
-
-
-/**
- * @title LedPresaleToken (LEDP)
- * Standard Mintable ERC20 Token
- * https://github.com/ethereum/EIPs/issues/20
- * Based on code by FirstBlood:
- * https://github.com/Firstbloodio/token/blob/master/smart_contract/FirstBloodToken.sol
- */
-
-contract LedPresaleTokenInterface {
-
-  uint256 public totalSupply;
-
-  function balanceOf(address _owner) constant returns (uint256);
-  function transfer(address _to, uint _value) returns (bool);
-  function transferFrom(address _from, address _to, uint _value) returns (bool);
-  function approve(address _spender, uint _value) returns (bool);
-  function allowance(address _owner, address _spender) constant returns (uint256);
-  function mint(address _to, uint256 _amount) returns (bool);
-  function finishMinting() returns (bool);
 
 }
 
@@ -678,111 +854,6 @@ contract LedTokenInterface is Controllable {
 
 }
 
-contract Migrations {
-  address public owner;
-  uint public last_completed_migration;
-
-  modifier restricted() {
-    if (msg.sender == owner) _;
-  }
-
-  function Migrations() {
-    owner = msg.sender;
-  }
-
-  function setCompleted(uint completed) restricted {
-    last_completed_migration = completed;
-  }
-
-  function upgrade(address new_address) restricted {
-    Migrations upgraded = Migrations(new_address);
-    upgraded.setCompleted(last_completed_migration);
-  }
-}
-
-/**
- * @title Ownable
- * @dev The Ownable contract has an owner address, and provides basic authorization control
- * functions, this simplifies the implementation of "user permissions".
- */
-contract Ownable {
-  address public owner;
-
-
-  /**
-   * @dev The Ownable constructor sets the original `owner` of the contract to the sender account.
-   */
-  function Ownable() public {
-    owner = msg.sender;
-  }
-
-  /**
-   * @dev Throws if called by any account other than the owner.
-   */
-  modifier onlyOwner() {
-    require(msg.sender == owner);
-    _;
-  }
-
-  /**
-   * @dev Allows the current owner to transfer control of the contract to a newOwner.
-   * @param newOwner The address to transfer ownership to.
-   */
-  function transferOwnership(address newOwner) public onlyOwner {
-    if (newOwner != address(0)) {
-      owner = newOwner;
-    }
-  }
-
-}
-
-/**
- * @title Pausable
- * @dev Base contract which allows children to implement an emergency stop mechanism.
- */
-contract Pausable is Ownable {
-  event Pause();
-  event Unpause();
-
-  bool public paused = false;
-
-  function Pausable() public {}
-
-  /**
-   * @dev modifier to allow actions only when the contract IS paused
-   */
-  modifier whenNotPaused() {
-    require(!paused);
-    _;
-  }
-
-  /**
-   * @dev modifier to allow actions only when the contract IS NOT paused
-   */
-  modifier whenPaused {
-    require(paused);
-    _;
-  }
-
-  /**
-   * @dev called by the owner to pause, triggers stopped state
-   */
-  function pause() public onlyOwner whenNotPaused returns (bool) {
-    paused = true;
-    Pause();
-    return true;
-  }
-
-  /**
-   * @dev called by the owner to unpause, returns to normal state
-   */
-  function unpause() public onlyOwner whenPaused returns (bool) {
-    paused = false;
-    Unpause();
-    return true;
-  }
-}
-
 /**
  * @title Presale
  * Presale allows investors to make token purchases and assigns them tokens based
@@ -802,6 +873,8 @@ contract Presale is Pausable, TokenInfo {
   uint256 public startTime;
   uint256 public endTime;
   uint256 public surplusTokens;
+
+  address public owner;
 
   mapping (address => bool) public whitelisted;
 
@@ -831,6 +904,7 @@ contract Presale is Pausable, TokenInfo {
     startTime = _startTime;
     endTime = _endTime;
     ledToken = LedTokenInterface(_tokenAddress);
+    owner = msg.sender;
 
     decimalsMultiplier = (1 ether);
   }
@@ -951,7 +1025,7 @@ contract Presale is Pausable, TokenInfo {
   * Change the Led Token controller
   * @param _newController {address} New Led Token controller
   */
-  function changeController(address _newController) public {
+  function changeController(address _newController) public onlyOwner {
     require(isContract(_newController));
     ledToken.transferControl(_newController);
   }
@@ -973,6 +1047,7 @@ contract Presale is Pausable, TokenInfo {
     require(!finalized);
     surplusTokens = cap - tokensMinted;
     ledToken.mint(ledMultiSig, surplusTokens);
+    ledToken.transferControl(owner);
 
     Finalized();
 
@@ -991,7 +1066,7 @@ contract Presale is Pausable, TokenInfo {
       transfersEnabled,
       contributors,
       totalWeiRaised,
-      cap, // Tokencap for the presale without the decimal point in place. Will be a huge number.
+      tokenCap, // Tokencap for the presale with the decimal point in place.
       started,
       startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
       endTime
@@ -1032,12 +1107,6 @@ contract Presale is Pausable, TokenInfo {
 
 }
 
-/**
- * @title PrivateSale
- * PrivateSale allows investors to make token purchases and assigns them tokens based
-
- * on a token per ETH rate. Funds collected are forwarded to a wallet as they arrive.
- */
 contract PrivateSale is Pausable, TokenInfo {
 
   using SafeMath for uint256;
@@ -1051,6 +1120,8 @@ contract PrivateSale is Pausable, TokenInfo {
   uint256 public startTime;
   uint256 public endTime;
   uint256 public surplusTokens;
+
+  address public owner;
 
   mapping (address => bool) public whitelisted;
 
@@ -1080,6 +1151,7 @@ contract PrivateSale is Pausable, TokenInfo {
     startTime = _startTime;
     endTime = _endTime;
     ledToken = LedTokenInterface(_tokenAddress);
+    owner = msg.sender;
 
     decimalsMultiplier = (1 ether);
   }
@@ -1200,7 +1272,7 @@ contract PrivateSale is Pausable, TokenInfo {
   * Change the Led Token controller
   * @param _newController {address} New Led Token controller
   */
-  function changeController(address _newController) public {
+  function changeController(address _newController) public onlyOwner {
     require(isContract(_newController));
     ledToken.transferControl(_newController);
   }
@@ -1222,6 +1294,7 @@ contract PrivateSale is Pausable, TokenInfo {
     require(!finalized);
     surplusTokens = cap - tokensMinted;
     ledToken.mint(ledMultiSig, surplusTokens);
+    ledToken.transferControl(owner);
 
     Finalized();
 
@@ -1240,7 +1313,7 @@ contract PrivateSale is Pausable, TokenInfo {
       transfersEnabled,
       contributors,
       totalWeiRaised,
-      cap, // Tokencap for the private sale without the decimal point in place. Will be a huge number.
+      tokenCap, // Tokencap for the private sale with the decimal point in place.
       started,
       startTime, // Start time and end time in Unix timestamp format with a length of 10 numbers.
       endTime
@@ -1512,7 +1585,7 @@ contract TokenSale is Pausable, TokenInfo {
   * Change the Led Token controller
   * @param _newController {address} New Led Token controller
   */
-  function changeController(address _newController) public {
+  function changeController(address _newController) public onlyOwner {
     require(isContract(_newController));
     ledToken.transferControl(_newController);
   }
@@ -1546,14 +1619,15 @@ contract TokenSale is Pausable, TokenInfo {
     require(!ledTokensAllocated);
     allocatedTokens = LEDTEAM_TOKENS.mul(decimalsMultiplier);
     ledToken.mint(ledMultiSig, allocatedTokens);
-    surplusTokens = cap - tokensMinted;
-    ledToken.mint(ledMultiSig, surplusTokens);
     ledTokensAllocated = true;
   }
 
   function finalize() public onlyOwner {
     require(paused);
     require(ledTokensAllocated);
+
+    surplusTokens = cap - tokensMinted;
+    ledToken.mint(ledMultiSig, surplusTokens);
 
     ledToken.finishMinting();
     ledToken.enableTransfers(true);

@@ -172,6 +172,20 @@
     {
       "constant": true,
       "inputs": [],
+      "name": "MAX_PURCHASE",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
       "name": "PRESALE_LEVEL_2",
       "outputs": [
         {
@@ -466,6 +480,20 @@
     {
       "constant": true,
       "inputs": [],
+      "name": "MIN_PURCHASE",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
       "name": "ICO_PERCENTAGE_4",
       "outputs": [
         {
@@ -576,24 +604,24 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b5061061a806100206000396000f3006080604052600436106101f85763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166302c6f42781146101fd57806304df48ef14610224578063118e09c81461023957806317a4a8a31461024e57806317f6252f146102635780631a11415e14610278578063217477f61461028d57806345078531146102a257806356dcd2fa146101fd5780635e48f58f1461028d57806361ad487c146102b757806369b8f38d146102cc578063733b679e146102e15780637530b54d146102f657806387c5d1be1461030b57806394c0f3e2146103205780639745272a14610335578063975c95da14610263578063978d6cff1461034a57806397e1d68d1461035f5780639957b8da146102b757806399abd78814610374578063a0f68eba14610263578063a28a0ac214610389578063a69ade721461039e578063aa487f49146102cc578063ac20e2a0146103dc578063b0a0662a146103f1578063b1fc079214610406578063b77dfb59146101fd578063c4b71cec1461041b578063cb4de96814610430578063ce72a69614610445578063e08155dd146102b7578063e08d84971461045a578063e73c032b1461046f578063e7a50a9d14610320578063e9e55c7114610484578063edca139214610406578063ef7533cf14610499578063f0004ab4146104ae575b600080fd5b34801561020957600080fd5b506102126104c3565b60408051918252519081900360200190f35b34801561023057600080fd5b506102126104cf565b34801561024557600080fd5b506102126104db565b34801561025a57600080fd5b506102126104e7565b34801561026f57600080fd5b506102126104f3565b34801561028457600080fd5b506102126104f8565b34801561029957600080fd5b50610212610503565b3480156102ae57600080fd5b50610212610508565b3480156102c357600080fd5b50610212610514565b3480156102d857600080fd5b50610212610519565b3480156102ed57600080fd5b5061021261051e565b34801561030257600080fd5b5061021261052a565b34801561031757600080fd5b50610212610536565b34801561032c57600080fd5b5061021261053e565b34801561034157600080fd5b50610212610543565b34801561035657600080fd5b50610212610548565b34801561036b57600080fd5b50610212610550565b34801561038057600080fd5b5061021261055b565b34801561039557600080fd5b50610212610562565b3480156103aa57600080fd5b506103b361056e565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b3480156103e857600080fd5b50610212610586565b3480156103fd57600080fd5b5061021261058e565b34801561041257600080fd5b50610212610598565b34801561042757600080fd5b506102126105a5565b34801561043c57600080fd5b506102126105b1565b34801561045157600080fd5b506102126105bc565b34801561046657600080fd5b506102126105c1565b34801561047b57600080fd5b506102126105cd565b34801561049057600080fd5b506102126105d5565b3480156104a557600080fd5b506102126105e1565b3480156104ba57600080fd5b506102126105e6565b67a688906bd8b0000081565b67de0b6b3a7640000081565b67214e8348c4f0000081565b677068fb1598aa000081565b601981565b66012f2a36b9f88081565b600f81565b67d02ab486cedc000081565b601481565b600a81565b6753444835ec58000081565b677ce66c50e284000081565b6302160ec081565b602381565b606481565b63015752a081565b6601c6bf5263400081565b620f424081565b674563918244f4000081565b739c0e9941a4c554f6e1aa1930268a7c992e3c860281565b6305f5e10081565b6597951b10b10081565b6801158e460913d0000081565b673782dace9d90000081565b66025e546d73f10081565b600581565b676f05b59d3b20000081565b63011e1a3081565b6729a2241af62c000081565b603281565b63015b2330815600a165627a7a72305820b188db9311203250a8baf5e60eb062599c2bd03391bc679d1e7fc72bc5b699d80029",
-  "deployedBytecode": "0x6080604052600436106101f85763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166302c6f42781146101fd57806304df48ef14610224578063118e09c81461023957806317a4a8a31461024e57806317f6252f146102635780631a11415e14610278578063217477f61461028d57806345078531146102a257806356dcd2fa146101fd5780635e48f58f1461028d57806361ad487c146102b757806369b8f38d146102cc578063733b679e146102e15780637530b54d146102f657806387c5d1be1461030b57806394c0f3e2146103205780639745272a14610335578063975c95da14610263578063978d6cff1461034a57806397e1d68d1461035f5780639957b8da146102b757806399abd78814610374578063a0f68eba14610263578063a28a0ac214610389578063a69ade721461039e578063aa487f49146102cc578063ac20e2a0146103dc578063b0a0662a146103f1578063b1fc079214610406578063b77dfb59146101fd578063c4b71cec1461041b578063cb4de96814610430578063ce72a69614610445578063e08155dd146102b7578063e08d84971461045a578063e73c032b1461046f578063e7a50a9d14610320578063e9e55c7114610484578063edca139214610406578063ef7533cf14610499578063f0004ab4146104ae575b600080fd5b34801561020957600080fd5b506102126104c3565b60408051918252519081900360200190f35b34801561023057600080fd5b506102126104cf565b34801561024557600080fd5b506102126104db565b34801561025a57600080fd5b506102126104e7565b34801561026f57600080fd5b506102126104f3565b34801561028457600080fd5b506102126104f8565b34801561029957600080fd5b50610212610503565b3480156102ae57600080fd5b50610212610508565b3480156102c357600080fd5b50610212610514565b3480156102d857600080fd5b50610212610519565b3480156102ed57600080fd5b5061021261051e565b34801561030257600080fd5b5061021261052a565b34801561031757600080fd5b50610212610536565b34801561032c57600080fd5b5061021261053e565b34801561034157600080fd5b50610212610543565b34801561035657600080fd5b50610212610548565b34801561036b57600080fd5b50610212610550565b34801561038057600080fd5b5061021261055b565b34801561039557600080fd5b50610212610562565b3480156103aa57600080fd5b506103b361056e565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b3480156103e857600080fd5b50610212610586565b3480156103fd57600080fd5b5061021261058e565b34801561041257600080fd5b50610212610598565b34801561042757600080fd5b506102126105a5565b34801561043c57600080fd5b506102126105b1565b34801561045157600080fd5b506102126105bc565b34801561046657600080fd5b506102126105c1565b34801561047b57600080fd5b506102126105cd565b34801561049057600080fd5b506102126105d5565b3480156104a557600080fd5b506102126105e1565b3480156104ba57600080fd5b506102126105e6565b67a688906bd8b0000081565b67de0b6b3a7640000081565b67214e8348c4f0000081565b677068fb1598aa000081565b601981565b66012f2a36b9f88081565b600f81565b67d02ab486cedc000081565b601481565b600a81565b6753444835ec58000081565b677ce66c50e284000081565b6302160ec081565b602381565b606481565b63015752a081565b6601c6bf5263400081565b620f424081565b674563918244f4000081565b739c0e9941a4c554f6e1aa1930268a7c992e3c860281565b6305f5e10081565b6597951b10b10081565b6801158e460913d0000081565b673782dace9d90000081565b66025e546d73f10081565b600581565b676f05b59d3b20000081565b63011e1a3081565b6729a2241af62c000081565b603281565b63015b2330815600a165627a7a72305820b188db9311203250a8baf5e60eb062599c2bd03391bc679d1e7fc72bc5b699d80029",
-  "sourceMap": "26:2861:17:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:2861:17;;;;;;;",
-  "deployedSourceMap": "26:2861:17:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1907:62;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1907:62:17;;;;;;;;;;;;;;;;;;;;2234:58;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2234:58:17;;;;1348:65;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1348:65:17;;;;1490;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1490:65:17;;;;929:49;;8:9:-1;5:2;;;30:1;27;20:12;5:2;929:49:17;;;;116:71;;8:9:-1;5:2;;;30:1;27;20:12;5:2;116:71:17;;;;1141:45;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1141:45:17;;;;1975:62;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1975:62:17;;;;874:49;;8:9:-1;5:2;;;30:1;27;20:12;5:2;874:49:17;;;;1090:45;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1090:45:17;;;;1773:61;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1773:61:17;;;;1840;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1840:61:17;;;;2691:49;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2691:49:17;;;;984;;8:9:-1;5:2;;;30:1;27;20:12;5:2;984:49:17;;;;703:54;;8:9:-1;5:2;;;30:1;27;20:12;5:2;703:54:17;;;;2580:47;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2580:47:17;;;;193:67;;8:9:-1;5:2;;;30:1;27;20:12;5:2;193:67:17;;;;2633:52;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2633:52:17;;;;1419:65;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1419:65:17;;;;2803:81;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2803:81:17;;;;;;;;;;;;;;;;;;;;;;;2746:50;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2746:50:17;;;;335:69;;8:9:-1;5:2;;;30:1;27;20:12;5:2;335:69:17;;;;2298:58;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2298:58:17;;;;2044:57;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2044:57:17;;;;266:63;;8:9:-1;5:2;;;30:1;27;20:12;5:2;266:63:17;;;;1040:44;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1040:44:17;;;;2107:57;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2107:57:17;;;;2523:51;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2523:51:17;;;;1706:61;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1706:61:17;;;;644:53;;8:9:-1;5:2;;;30:1;27;20:12;5:2;644:53:17;;;;2462:55;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2462:55:17;;;;1907:62;1949:20;1907:62;:::o;2234:58::-;2272:20;2234:58;:::o;1348:65::-;1394:19;1348:65;:::o;1490:::-;1536:19;1490:65;:::o;929:49::-;976:2;929:49;:::o;116:71::-;172:15;116:71;:::o;1141:45::-;1184:2;1141:45;:::o;1975:62::-;2017:20;1975:62;:::o;874:49::-;921:2;874:49;:::o;1090:45::-;1133:2;1090:45;:::o;1773:61::-;1815:19;1773:61;:::o;1840:::-;1882:19;1840:61;:::o;2691:49::-;2732:8;2691:49;:::o;984:::-;1031:2;984:49;:::o;703:54::-;754:3;703:54;:::o;2580:47::-;2619:8;2580:47;:::o;193:67::-;245:15;193:67;:::o;2633:52::-;2678:7;2633:52;:::o;1419:65::-;1465:19;1419:65;:::o;2803:81::-;2842:42;2803:81;:::o;2746:50::-;2787:9;2746:50;:::o;335:69::-;389:15;335:69;:::o;2298:58::-;2336:20;2298:58;:::o;2044:57::-;2082:19;2044:57;:::o;266:63::-;314:15;266:63;:::o;1040:44::-;1083:1;1040:44;:::o;2107:57::-;2145:19;2107:57;:::o;2523:51::-;2566:8;2523:51;:::o;1706:61::-;1748:19;1706:61;:::o;644:53::-;695:2;644:53;:::o;2462:55::-;2509:8;2462:55;:::o",
-  "source": "pragma solidity ^0.4.13;\n\ncontract TokenInfo {\n    // Base prices in wei, going off from an Ether value of $600\n    uint256 public constant PRIVATESALE_BASE_PRICE_IN_WEI = 333333330000000;\n    uint256 public constant PRESALE_BASE_PRICE_IN_WEI = 500000000000000;\n    uint256 public constant ICO_BASE_PRICE_IN_WEI = 666666660000000;\n    uint256 public constant FIRSTSALE_BASE_PRICE_IN_WEI = 166666660000000;\n\n    // Bonus percentages for each respective sale level\n    uint256 public constant PRIVATESALE_PERCENTAGE_1 = 20;\n    uint256 public constant PRIVATESALE_PERCENTAGE_2 = 25;\n    uint256 public constant PRIVATESALE_PERCENTAGE_3 = 35;\n    uint256 public constant PRIVATESALE_PERCENTAGE_4 = 50;\n    uint256 public constant PRIVATESALE_PERCENTAGE_5 = 100;\n\n    uint256 public constant PRESALE_PERCENTAGE_1 = 10;\n    uint256 public constant PRESALE_PERCENTAGE_2 = 15;\n    uint256 public constant PRESALE_PERCENTAGE_3 = 20;\n    uint256 public constant PRESALE_PERCENTAGE_4 = 25;\n    uint256 public constant PRESALE_PERCENTAGE_5 = 35;\n\n    uint256 public constant ICO_PERCENTAGE_1 = 5;\n    uint256 public constant ICO_PERCENTAGE_2 = 10;\n    uint256 public constant ICO_PERCENTAGE_3 = 15;\n    uint256 public constant ICO_PERCENTAGE_4 = 20;\n    uint256 public constant ICO_PERCENTAGE_5 = 25;\n\n    // Bonus levels in wei for each respective level\n    uint256 public constant PRIVATESALE_LEVEL_1 = 2400000000000000000;\n    uint256 public constant PRIVATESALE_LEVEL_2 = 5000000000000000000;\n    uint256 public constant PRIVATESALE_LEVEL_3 = 8100000000000000000;\n    uint256 public constant PRIVATESALE_LEVEL_4 = 12000000000000000000;\n    uint256 public constant PRIVATESALE_LEVEL_5 = 20000000000000000000;\n\n    uint256 public constant PRESALE_LEVEL_1 = 3000000000000000000;\n    uint256 public constant PRESALE_LEVEL_2 = 6000000000000000000;\n    uint256 public constant PRESALE_LEVEL_3 = 9000000000000000000;\n    uint256 public constant PRESALE_LEVEL_4 = 12000000000000000000;\n    uint256 public constant PRESALE_LEVEL_5 = 15000000000000000000;\n\n    uint256 public constant ICO_LEVEL_1 = 4000000000000000000;\n    uint256 public constant ICO_LEVEL_2 = 8000000000000000000;\n    uint256 public constant ICO_LEVEL_3 = 12000000000000000000;\n    uint256 public constant ICO_LEVEL_4 = 16000000000000000000;\n    uint256 public constant ICO_LEVEL_5 = 20000000000000000000;\n\n    // Caps for the respective sales, the amount of tokens allocated to the team and the total cap\n    uint256 public constant PRIVATESALE_TOKENCAP = 22750000;\n    uint256 public constant PRESALE_TOKENCAP = 18750000;\n    uint256 public constant ICO_TOKENCAP = 22500000;\n    uint256 public constant FIRSTSALE_TOKENCAP = 1000000;\n    uint256 public constant LEDTEAM_TOKENS = 35000000;\n    uint256 public constant TOTAL_TOKENCAP = 100000000;\n\n    address public constant LED_MULTISIG = 0x9c0e9941a4c554f6e1aa1930268a7c992e3c8602;\n}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610654806100206000396000f30060806040526004361061020e5763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166302c6f427811461021357806304df48ef1461023a578063118e09c81461024f57806317a4a8a31461026457806317f6252f146102795780631a11415e1461028e578063217477f6146102a357806345078531146102b857806356dcd2fa146102135780635e48f58f146102a357806361ad487c146102cd57806369b8f38d146102e25780637146bd08146102f7578063733b679e1461030c5780637530b54d1461032157806387c5d1be1461033657806394c0f3e21461034b5780639745272a14610360578063975c95da14610279578063978d6cff1461037557806397e1d68d1461038a5780639957b8da146102cd57806399abd7881461039f578063a0f68eba14610279578063a28a0ac2146103b4578063a69ade72146103c9578063aa487f49146102e2578063ac20e2a014610407578063b0a0662a1461041c578063b1fc0792146102f7578063b77dfb5914610213578063c4b71cec14610431578063cb4de96814610446578063ce72a6961461045b578063d439390c14610470578063e08155dd146102cd578063e08d849714610485578063e73c032b1461049a578063e7a50a9d1461034b578063e9e55c71146104af578063edca1392146102f7578063ef7533cf146104c4578063f0004ab4146104d9575b600080fd5b34801561021f57600080fd5b506102286104ee565b60408051918252519081900360200190f35b34801561024657600080fd5b506102286104fb565b34801561025b57600080fd5b50610228610508565b34801561027057600080fd5b50610228610514565b34801561028557600080fd5b50610228610520565b34801561029a57600080fd5b50610228610525565b3480156102af57600080fd5b50610228610530565b3480156102c457600080fd5b50610228610535565b3480156102d957600080fd5b50610228610542565b3480156102ee57600080fd5b50610228610547565b34801561030357600080fd5b5061022861054c565b34801561031857600080fd5b50610228610559565b34801561032d57600080fd5b50610228610565565b34801561034257600080fd5b50610228610571565b34801561035757600080fd5b50610228610579565b34801561036c57600080fd5b5061022861057e565b34801561038157600080fd5b50610228610583565b34801561039657600080fd5b5061022861058b565b3480156103ab57600080fd5b50610228610596565b3480156103c057600080fd5b5061022861059d565b3480156103d557600080fd5b506103de6105a9565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b34801561041357600080fd5b506102286105c1565b34801561042857600080fd5b506102286105c9565b34801561043d57600080fd5b506102286105d3565b34801561045257600080fd5b506102286105df565b34801561046757600080fd5b506102286105ea565b34801561047c57600080fd5b506102286105ef565b34801561049157600080fd5b506102286105fb565b3480156104a657600080fd5b50610228610607565b3480156104bb57600080fd5b5061022861060f565b3480156104d057600080fd5b5061022861061b565b3480156104e557600080fd5b50610228610620565b6801158e460913d0000081565b68017213080c1a6aaaaa81565b673782dace9d90000081565b67bb59a27953c6000081565b601981565b66012f2a36b9f88081565b600f81565b68015af1d78b58c4000081565b601481565b600a81565b6801ce97ca0f2105555581565b678ac7230489e8000081565b67d02ab486cedc000081565b6302160ec081565b602381565b606481565b63015752a081565b6601c6bf5263400081565b621e848081565b6773a5f283c841555581565b739c0e9941a4c554f6e1aa1930268a7c992e3c860281565b6305f5e10081565b6597951b10b10081565b675c84c203069aaaaa81565b66025e546d73f10081565b600581565b6717213080c1a6aaaa81565b67b90984060d35555581565b63011e1a3081565b674563918244f4000081565b603281565b63014be0f0815600a165627a7a723058204a919b994569d58b0396ea19d895a015508a45eaec1388c9e0349a256e56115e0029",
+  "deployedBytecode": "0x60806040526004361061020e5763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166302c6f427811461021357806304df48ef1461023a578063118e09c81461024f57806317a4a8a31461026457806317f6252f146102795780631a11415e1461028e578063217477f6146102a357806345078531146102b857806356dcd2fa146102135780635e48f58f146102a357806361ad487c146102cd57806369b8f38d146102e25780637146bd08146102f7578063733b679e1461030c5780637530b54d1461032157806387c5d1be1461033657806394c0f3e21461034b5780639745272a14610360578063975c95da14610279578063978d6cff1461037557806397e1d68d1461038a5780639957b8da146102cd57806399abd7881461039f578063a0f68eba14610279578063a28a0ac2146103b4578063a69ade72146103c9578063aa487f49146102e2578063ac20e2a014610407578063b0a0662a1461041c578063b1fc0792146102f7578063b77dfb5914610213578063c4b71cec14610431578063cb4de96814610446578063ce72a6961461045b578063d439390c14610470578063e08155dd146102cd578063e08d849714610485578063e73c032b1461049a578063e7a50a9d1461034b578063e9e55c71146104af578063edca1392146102f7578063ef7533cf146104c4578063f0004ab4146104d9575b600080fd5b34801561021f57600080fd5b506102286104ee565b60408051918252519081900360200190f35b34801561024657600080fd5b506102286104fb565b34801561025b57600080fd5b50610228610508565b34801561027057600080fd5b50610228610514565b34801561028557600080fd5b50610228610520565b34801561029a57600080fd5b50610228610525565b3480156102af57600080fd5b50610228610530565b3480156102c457600080fd5b50610228610535565b3480156102d957600080fd5b50610228610542565b3480156102ee57600080fd5b50610228610547565b34801561030357600080fd5b5061022861054c565b34801561031857600080fd5b50610228610559565b34801561032d57600080fd5b50610228610565565b34801561034257600080fd5b50610228610571565b34801561035757600080fd5b50610228610579565b34801561036c57600080fd5b5061022861057e565b34801561038157600080fd5b50610228610583565b34801561039657600080fd5b5061022861058b565b3480156103ab57600080fd5b50610228610596565b3480156103c057600080fd5b5061022861059d565b3480156103d557600080fd5b506103de6105a9565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b34801561041357600080fd5b506102286105c1565b34801561042857600080fd5b506102286105c9565b34801561043d57600080fd5b506102286105d3565b34801561045257600080fd5b506102286105df565b34801561046757600080fd5b506102286105ea565b34801561047c57600080fd5b506102286105ef565b34801561049157600080fd5b506102286105fb565b3480156104a657600080fd5b50610228610607565b3480156104bb57600080fd5b5061022861060f565b3480156104d057600080fd5b5061022861061b565b3480156104e557600080fd5b50610228610620565b6801158e460913d0000081565b68017213080c1a6aaaaa81565b673782dace9d90000081565b67bb59a27953c6000081565b601981565b66012f2a36b9f88081565b600f81565b68015af1d78b58c4000081565b601481565b600a81565b6801ce97ca0f2105555581565b678ac7230489e8000081565b67d02ab486cedc000081565b6302160ec081565b602381565b606481565b63015752a081565b6601c6bf5263400081565b621e848081565b6773a5f283c841555581565b739c0e9941a4c554f6e1aa1930268a7c992e3c860281565b6305f5e10081565b6597951b10b10081565b675c84c203069aaaaa81565b66025e546d73f10081565b600581565b6717213080c1a6aaaa81565b67b90984060d35555581565b63011e1a3081565b674563918244f4000081565b603281565b63014be0f0815600a165627a7a723058204a919b994569d58b0396ea19d895a015508a45eaec1388c9e0349a256e56115e0029",
+  "sourceMap": "26:3085:15:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:3085:15;;;;;;;",
+  "deployedSourceMap": "26:3085:15:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2130:62;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2130:62:15;;;;;;;;;;;;;;;;;;;;2458:58;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2458:58:15;;;;1568:65;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1568:65:15;;;;1710:66;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1710:66:15;;;;1149:49;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1149:49:15;;;;116:71;;8:9:-1;5:2;;;30:1;27;20:12;5:2;116:71:15;;;;1361:45;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1361:45:15;;;;2198:62;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2198:62:15;;;;1094:49;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1094:49:15;;;;1310:45;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1310:45:15;;;;565:59;;8:9:-1;5:2;;;30:1;27;20:12;5:2;565:59:15;;;;1994:62;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1994:62:15;;;;2062;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2062:62:15;;;;2915:49;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2915:49:15;;;;1204;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1204:49:15;;;;923:54;;8:9:-1;5:2;;;30:1;27;20:12;5:2;923:54:15;;;;2804:47;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2804:47:15;;;;193:67;;8:9:-1;5:2;;;30:1;27;20:12;5:2;193:67:15;;;;2857:52;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2857:52:15;;;;1639:65;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1639:65:15;;;;3027:81;;8:9:-1;5:2;;;30:1;27;20:12;5:2;3027:81:15;;;;;;;;;;;;;;;;;;;;;;;2970:50;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2970:50:15;;;;335:69;;8:9:-1;5:2;;;30:1;27;20:12;5:2;335:69:15;;;;2267:57;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2267:57:15;;;;266:63;;8:9:-1;5:2;;;30:1;27;20:12;5:2;266:63:15;;;;1260:44;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1260:44:15;;;;501:58;;8:9:-1;5:2;;;30:1;27;20:12;5:2;501:58:15;;;;2330;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2330:58:15;;;;2747:51;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2747:51:15;;;;1927:61;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1927:61:15;;;;864:53;;8:9:-1;5:2;;;30:1;27;20:12;5:2;864:53:15;;;;2686:55;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2686:55:15;;;;2130:62;2172:20;2130:62;:::o;2458:58::-;2496:20;2458:58;:::o;1568:65::-;1614:19;1568:65;:::o;1710:66::-;1756:20;1710:66;:::o;1149:49::-;1196:2;1149:49;:::o;116:71::-;172:15;116:71;:::o;1361:45::-;1404:2;1361:45;:::o;2198:62::-;2240:20;2198:62;:::o;1094:49::-;1141:2;1094:49;:::o;1310:45::-;1353:2;1310:45;:::o;565:59::-;604:20;565:59;:::o;1994:62::-;2036:20;1994:62;:::o;2062:::-;2104:20;2062:62;:::o;2915:49::-;2956:8;2915:49;:::o;1204:::-;1251:2;1204:49;:::o;923:54::-;974:3;923:54;:::o;2804:47::-;2843:8;2804:47;:::o;193:67::-;245:15;193:67;:::o;2857:52::-;2902:7;2857:52;:::o;1639:65::-;1685:19;1639:65;:::o;3027:81::-;3066:42;3027:81;:::o;2970:50::-;3011:9;2970:50;:::o;335:69::-;389:15;335:69;:::o;2267:57::-;2305:19;2267:57;:::o;266:63::-;314:15;266:63;:::o;1260:44::-;1303:1;1260:44;:::o;501:58::-;540:19;501:58;:::o;2330:::-;2368:20;2330:58;:::o;2747:51::-;2790:8;2747:51;:::o;1927:61::-;1969:19;1927:61;:::o;864:53::-;915:2;864:53;:::o;2686:55::-;2733:8;2686:55;:::o",
+  "source": "pragma solidity ^0.4.13;\n\ncontract TokenInfo {\n    // Base prices in wei, going off from an Ether value of $600\n    uint256 public constant PRIVATESALE_BASE_PRICE_IN_WEI = 333333330000000;\n    uint256 public constant PRESALE_BASE_PRICE_IN_WEI = 500000000000000;\n    uint256 public constant ICO_BASE_PRICE_IN_WEI = 666666660000000;\n    uint256 public constant FIRSTSALE_BASE_PRICE_IN_WEI = 166666660000000;\n\n    // First sale minimum and maximum contribution, going off from an Ether value of $600\n    uint256 public constant MIN_PURCHASE = 1666666666666666666;\n    uint256 public constant MAX_PURCHASE = 33333333333333333333;\n\n    // Bonus percentages for each respective sale level\n    uint256 public constant PRIVATESALE_PERCENTAGE_1 = 20;\n    uint256 public constant PRIVATESALE_PERCENTAGE_2 = 25;\n    uint256 public constant PRIVATESALE_PERCENTAGE_3 = 35;\n    uint256 public constant PRIVATESALE_PERCENTAGE_4 = 50;\n    uint256 public constant PRIVATESALE_PERCENTAGE_5 = 100;\n\n    uint256 public constant PRESALE_PERCENTAGE_1 = 10;\n    uint256 public constant PRESALE_PERCENTAGE_2 = 15;\n    uint256 public constant PRESALE_PERCENTAGE_3 = 20;\n    uint256 public constant PRESALE_PERCENTAGE_4 = 25;\n    uint256 public constant PRESALE_PERCENTAGE_5 = 35;\n\n    uint256 public constant ICO_PERCENTAGE_1 = 5;\n    uint256 public constant ICO_PERCENTAGE_2 = 10;\n    uint256 public constant ICO_PERCENTAGE_3 = 15;\n    uint256 public constant ICO_PERCENTAGE_4 = 20;\n    uint256 public constant ICO_PERCENTAGE_5 = 25;\n\n    // Bonus levels in wei for each respective level\n    uint256 public constant PRIVATESALE_LEVEL_1 = 4000000000000000000;\n    uint256 public constant PRIVATESALE_LEVEL_2 = 8333333333333333333;\n    uint256 public constant PRIVATESALE_LEVEL_3 = 13500000000000000000;\n    uint256 public constant PRIVATESALE_LEVEL_4 = 20000000000000000000;\n    uint256 public constant PRIVATESALE_LEVEL_5 = 33333333333333333333;\n\n    uint256 public constant PRESALE_LEVEL_1 = 5000000000000000000;\n    uint256 public constant PRESALE_LEVEL_2 = 10000000000000000000;\n    uint256 public constant PRESALE_LEVEL_3 = 15000000000000000000;\n    uint256 public constant PRESALE_LEVEL_4 = 20000000000000000000;\n    uint256 public constant PRESALE_LEVEL_5 = 25000000000000000000;\n\n    uint256 public constant ICO_LEVEL_1 = 6666666666666666666;\n    uint256 public constant ICO_LEVEL_2 = 13333333333333333333;\n    uint256 public constant ICO_LEVEL_3 = 20000000000000000000;\n    uint256 public constant ICO_LEVEL_4 = 26666666666666666666;\n    uint256 public constant ICO_LEVEL_5 = 33333333333333333333;\n\n    // Caps for the respective sales, the amount of tokens allocated to the team and the total cap\n    uint256 public constant PRIVATESALE_TOKENCAP = 21750000;\n    uint256 public constant PRESALE_TOKENCAP = 18750000;\n    uint256 public constant ICO_TOKENCAP = 22500000;\n    uint256 public constant FIRSTSALE_TOKENCAP = 2000000;\n    uint256 public constant LEDTEAM_TOKENS = 35000000;\n    uint256 public constant TOTAL_TOKENCAP = 100000000;\n\n    address public constant LED_MULTISIG = 0x9c0e9941a4c554f6e1aa1930268a7c992e3c8602;\n}",
   "sourcePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/TokenInfo.sol",
   "ast": {
     "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/TokenInfo.sol",
     "exportedSymbols": {
       "TokenInfo": [
-        3933
+        3603
       ]
     },
-    "id": 3934,
+    "id": 3604,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3809,
+        "id": 3473,
         "literals": [
           "solidity",
           "^",
@@ -601,7 +629,7 @@
           ".13"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:17"
+        "src": "0:24:15"
       },
       {
         "baseContracts": [],
@@ -609,20 +637,20 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 3933,
+        "id": 3603,
         "linearizedBaseContracts": [
-          3933
+          3603
         ],
         "name": "TokenInfo",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 3812,
+            "id": 3476,
             "name": "PRIVATESALE_BASE_PRICE_IN_WEI",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "116:71:17",
+            "scope": 3603,
+            "src": "116:71:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -630,10 +658,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3810,
+              "id": 3474,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "116:7:17",
+              "src": "116:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -642,14 +670,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "333333333333333330303030303030",
-              "id": 3811,
+              "id": 3475,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "172:15:17",
+              "src": "172:15:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_333333330000000_by_1",
@@ -661,11 +689,11 @@
           },
           {
             "constant": true,
-            "id": 3815,
+            "id": 3479,
             "name": "PRESALE_BASE_PRICE_IN_WEI",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "193:67:17",
+            "scope": 3603,
+            "src": "193:67:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -673,10 +701,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3813,
+              "id": 3477,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "193:7:17",
+              "src": "193:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -685,14 +713,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "353030303030303030303030303030",
-              "id": 3814,
+              "id": 3478,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "245:15:17",
+              "src": "245:15:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_500000000000000_by_1",
@@ -704,11 +732,11 @@
           },
           {
             "constant": true,
-            "id": 3818,
+            "id": 3482,
             "name": "ICO_BASE_PRICE_IN_WEI",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "266:63:17",
+            "scope": 3603,
+            "src": "266:63:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -716,10 +744,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3816,
+              "id": 3480,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "266:7:17",
+              "src": "266:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -728,14 +756,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "363636363636363630303030303030",
-              "id": 3817,
+              "id": 3481,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "314:15:17",
+              "src": "314:15:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_666666660000000_by_1",
@@ -747,11 +775,11 @@
           },
           {
             "constant": true,
-            "id": 3821,
+            "id": 3485,
             "name": "FIRSTSALE_BASE_PRICE_IN_WEI",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "335:69:17",
+            "scope": 3603,
+            "src": "335:69:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -759,10 +787,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3819,
+              "id": 3483,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "335:7:17",
+              "src": "335:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -771,14 +799,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "313636363636363630303030303030",
-              "id": 3820,
+              "id": 3484,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "389:15:17",
+              "src": "389:15:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_166666660000000_by_1",
@@ -790,11 +818,11 @@
           },
           {
             "constant": true,
-            "id": 3824,
-            "name": "PRIVATESALE_PERCENTAGE_1",
+            "id": 3488,
+            "name": "MIN_PURCHASE",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "467:53:17",
+            "scope": 3603,
+            "src": "501:58:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -802,10 +830,96 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3822,
+              "id": 3486,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "467:7:17",
+              "src": "501:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "31363636363636363636363636363636363636",
+              "id": 3487,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "540:19:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_1666666666666666666_by_1",
+                "typeString": "int_const 1666666666666666666"
+              },
+              "value": "1666666666666666666"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3491,
+            "name": "MAX_PURCHASE",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "565:59:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3489,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "565:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3333333333333333333333333333333333333333",
+              "id": 3490,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "604:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_33333333333333333333_by_1",
+                "typeString": "int_const 33333333333333333333"
+              },
+              "value": "33333333333333333333"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3494,
+            "name": "PRIVATESALE_PERCENTAGE_1",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "687:53:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3492,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "687:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -814,14 +928,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3230",
-              "id": 3823,
+              "id": 3493,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "518:2:17",
+              "src": "738:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_20_by_1",
@@ -833,11 +947,11 @@
           },
           {
             "constant": true,
-            "id": 3827,
+            "id": 3497,
             "name": "PRIVATESALE_PERCENTAGE_2",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "526:53:17",
+            "scope": 3603,
+            "src": "746:53:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -845,10 +959,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3825,
+              "id": 3495,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "526:7:17",
+              "src": "746:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -857,14 +971,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3235",
-              "id": 3826,
+              "id": 3496,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "577:2:17",
+              "src": "797:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_25_by_1",
@@ -876,11 +990,11 @@
           },
           {
             "constant": true,
-            "id": 3830,
+            "id": 3500,
             "name": "PRIVATESALE_PERCENTAGE_3",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "585:53:17",
+            "scope": 3603,
+            "src": "805:53:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -888,10 +1002,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3828,
+              "id": 3498,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "585:7:17",
+              "src": "805:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -900,14 +1014,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3335",
-              "id": 3829,
+              "id": 3499,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "636:2:17",
+              "src": "856:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_35_by_1",
@@ -919,11 +1033,11 @@
           },
           {
             "constant": true,
-            "id": 3833,
+            "id": 3503,
             "name": "PRIVATESALE_PERCENTAGE_4",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "644:53:17",
+            "scope": 3603,
+            "src": "864:53:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -931,10 +1045,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3831,
+              "id": 3501,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "644:7:17",
+              "src": "864:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -943,14 +1057,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3530",
-              "id": 3832,
+              "id": 3502,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "695:2:17",
+              "src": "915:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_50_by_1",
@@ -962,11 +1076,11 @@
           },
           {
             "constant": true,
-            "id": 3836,
+            "id": 3506,
             "name": "PRIVATESALE_PERCENTAGE_5",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "703:54:17",
+            "scope": 3603,
+            "src": "923:54:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -974,10 +1088,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3834,
+              "id": 3504,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "703:7:17",
+              "src": "923:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -986,14 +1100,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "313030",
-              "id": 3835,
+              "id": 3505,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "754:3:17",
+              "src": "974:3:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_100_by_1",
@@ -1005,11 +1119,11 @@
           },
           {
             "constant": true,
-            "id": 3839,
+            "id": 3509,
             "name": "PRESALE_PERCENTAGE_1",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "764:49:17",
+            "scope": 3603,
+            "src": "984:49:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1017,10 +1131,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3837,
+              "id": 3507,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "764:7:17",
+              "src": "984:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1029,14 +1143,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3130",
-              "id": 3838,
+              "id": 3508,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "811:2:17",
+              "src": "1031:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_10_by_1",
@@ -1048,11 +1162,11 @@
           },
           {
             "constant": true,
-            "id": 3842,
+            "id": 3512,
             "name": "PRESALE_PERCENTAGE_2",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "819:49:17",
+            "scope": 3603,
+            "src": "1039:49:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1060,10 +1174,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3840,
+              "id": 3510,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "819:7:17",
+              "src": "1039:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1072,14 +1186,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3135",
-              "id": 3841,
+              "id": 3511,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "866:2:17",
+              "src": "1086:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_15_by_1",
@@ -1091,11 +1205,11 @@
           },
           {
             "constant": true,
-            "id": 3845,
+            "id": 3515,
             "name": "PRESALE_PERCENTAGE_3",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "874:49:17",
+            "scope": 3603,
+            "src": "1094:49:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1103,10 +1217,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3843,
+              "id": 3513,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "874:7:17",
+              "src": "1094:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1115,14 +1229,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3230",
-              "id": 3844,
+              "id": 3514,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "921:2:17",
+              "src": "1141:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_20_by_1",
@@ -1134,11 +1248,11 @@
           },
           {
             "constant": true,
-            "id": 3848,
+            "id": 3518,
             "name": "PRESALE_PERCENTAGE_4",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "929:49:17",
+            "scope": 3603,
+            "src": "1149:49:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1146,10 +1260,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3846,
+              "id": 3516,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "929:7:17",
+              "src": "1149:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1158,14 +1272,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3235",
-              "id": 3847,
+              "id": 3517,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "976:2:17",
+              "src": "1196:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_25_by_1",
@@ -1177,11 +1291,11 @@
           },
           {
             "constant": true,
-            "id": 3851,
+            "id": 3521,
             "name": "PRESALE_PERCENTAGE_5",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "984:49:17",
+            "scope": 3603,
+            "src": "1204:49:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1189,10 +1303,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3849,
+              "id": 3519,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "984:7:17",
+              "src": "1204:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1201,14 +1315,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3335",
-              "id": 3850,
+              "id": 3520,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1031:2:17",
+              "src": "1251:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_35_by_1",
@@ -1220,11 +1334,11 @@
           },
           {
             "constant": true,
-            "id": 3854,
+            "id": 3524,
             "name": "ICO_PERCENTAGE_1",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1040:44:17",
+            "scope": 3603,
+            "src": "1260:44:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1232,10 +1346,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3852,
+              "id": 3522,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "1040:7:17",
+              "src": "1260:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1244,14 +1358,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "35",
-              "id": 3853,
+              "id": 3523,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1083:1:17",
+              "src": "1303:1:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_5_by_1",
@@ -1263,11 +1377,11 @@
           },
           {
             "constant": true,
-            "id": 3857,
+            "id": 3527,
             "name": "ICO_PERCENTAGE_2",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1090:45:17",
+            "scope": 3603,
+            "src": "1310:45:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1275,10 +1389,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3855,
+              "id": 3525,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "1090:7:17",
+              "src": "1310:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1287,14 +1401,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3130",
-              "id": 3856,
+              "id": 3526,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1133:2:17",
+              "src": "1353:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_10_by_1",
@@ -1306,11 +1420,11 @@
           },
           {
             "constant": true,
-            "id": 3860,
+            "id": 3530,
             "name": "ICO_PERCENTAGE_3",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1141:45:17",
+            "scope": 3603,
+            "src": "1361:45:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1318,10 +1432,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3858,
+              "id": 3528,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "1141:7:17",
+              "src": "1361:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1330,14 +1444,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3135",
-              "id": 3859,
+              "id": 3529,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1184:2:17",
+              "src": "1404:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_15_by_1",
@@ -1349,11 +1463,11 @@
           },
           {
             "constant": true,
-            "id": 3863,
+            "id": 3533,
             "name": "ICO_PERCENTAGE_4",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1192:45:17",
+            "scope": 3603,
+            "src": "1412:45:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1361,10 +1475,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3861,
+              "id": 3531,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "1192:7:17",
+              "src": "1412:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1373,14 +1487,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3230",
-              "id": 3862,
+              "id": 3532,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1235:2:17",
+              "src": "1455:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_20_by_1",
@@ -1392,11 +1506,11 @@
           },
           {
             "constant": true,
-            "id": 3866,
+            "id": 3536,
             "name": "ICO_PERCENTAGE_5",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1243:45:17",
+            "scope": 3603,
+            "src": "1463:45:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1404,10 +1518,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3864,
+              "id": 3534,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "1243:7:17",
+              "src": "1463:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1416,14 +1530,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3235",
-              "id": 3865,
+              "id": 3535,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1286:2:17",
+              "src": "1506:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_25_by_1",
@@ -1435,11 +1549,11 @@
           },
           {
             "constant": true,
-            "id": 3869,
+            "id": 3539,
             "name": "PRIVATESALE_LEVEL_1",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1348:65:17",
+            "scope": 3603,
+            "src": "1568:65:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1447,440 +1561,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3867,
+              "id": 3537,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "1348:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "32343030303030303030303030303030303030",
-              "id": 3868,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1394:19:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_2400000000000000000_by_1",
-                "typeString": "int_const 2400000000000000000"
-              },
-              "value": "2400000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3872,
-            "name": "PRIVATESALE_LEVEL_2",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1419:65:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3870,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1419:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "35303030303030303030303030303030303030",
-              "id": 3871,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1465:19:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_5000000000000000000_by_1",
-                "typeString": "int_const 5000000000000000000"
-              },
-              "value": "5000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3875,
-            "name": "PRIVATESALE_LEVEL_3",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1490:65:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3873,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1490:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "38313030303030303030303030303030303030",
-              "id": 3874,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1536:19:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_8100000000000000000_by_1",
-                "typeString": "int_const 8100000000000000000"
-              },
-              "value": "8100000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3878,
-            "name": "PRIVATESALE_LEVEL_4",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1561:66:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3876,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1561:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "3132303030303030303030303030303030303030",
-              "id": 3877,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1607:20:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_12000000000000000000_by_1",
-                "typeString": "int_const 12000000000000000000"
-              },
-              "value": "12000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3881,
-            "name": "PRIVATESALE_LEVEL_5",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1633:66:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3879,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1633:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "3230303030303030303030303030303030303030",
-              "id": 3880,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1679:20:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_20000000000000000000_by_1",
-                "typeString": "int_const 20000000000000000000"
-              },
-              "value": "20000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3884,
-            "name": "PRESALE_LEVEL_1",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1706:61:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3882,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1706:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "33303030303030303030303030303030303030",
-              "id": 3883,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1748:19:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_3000000000000000000_by_1",
-                "typeString": "int_const 3000000000000000000"
-              },
-              "value": "3000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3887,
-            "name": "PRESALE_LEVEL_2",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1773:61:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3885,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1773:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "36303030303030303030303030303030303030",
-              "id": 3886,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1815:19:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_6000000000000000000_by_1",
-                "typeString": "int_const 6000000000000000000"
-              },
-              "value": "6000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3890,
-            "name": "PRESALE_LEVEL_3",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1840:61:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3888,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1840:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "39303030303030303030303030303030303030",
-              "id": 3889,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1882:19:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_9000000000000000000_by_1",
-                "typeString": "int_const 9000000000000000000"
-              },
-              "value": "9000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3893,
-            "name": "PRESALE_LEVEL_4",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1907:62:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3891,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1907:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "3132303030303030303030303030303030303030",
-              "id": 3892,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1949:20:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_12000000000000000000_by_1",
-                "typeString": "int_const 12000000000000000000"
-              },
-              "value": "12000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3896,
-            "name": "PRESALE_LEVEL_5",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1975:62:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3894,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1975:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "3135303030303030303030303030303030303030",
-              "id": 3895,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "2017:20:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_15000000000000000000_by_1",
-                "typeString": "int_const 15000000000000000000"
-              },
-              "value": "15000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3899,
-            "name": "ICO_LEVEL_1",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2044:57:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3897,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "2044:7:17",
+              "src": "1568:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1889,14 +1573,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "34303030303030303030303030303030303030",
-              "id": 3898,
+              "id": 3538,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2082:19:17",
+              "src": "1614:19:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_4000000000000000000_by_1",
@@ -1908,11 +1592,11 @@
           },
           {
             "constant": true,
-            "id": 3902,
-            "name": "ICO_LEVEL_2",
+            "id": 3542,
+            "name": "PRIVATESALE_LEVEL_2",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2107:57:17",
+            "scope": 3603,
+            "src": "1639:65:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1920,10 +1604,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3900,
+              "id": 3540,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2107:7:17",
+              "src": "1639:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1931,31 +1615,31 @@
             },
             "value": {
               "argumentTypes": null,
-              "hexValue": "38303030303030303030303030303030303030",
-              "id": 3901,
+              "hexValue": "38333333333333333333333333333333333333",
+              "id": 3541,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2145:19:17",
+              "src": "1685:19:15",
               "subdenomination": null,
               "typeDescriptions": {
-                "typeIdentifier": "t_rational_8000000000000000000_by_1",
-                "typeString": "int_const 8000000000000000000"
+                "typeIdentifier": "t_rational_8333333333333333333_by_1",
+                "typeString": "int_const 8333333333333333333"
               },
-              "value": "8000000000000000000"
+              "value": "8333333333333333333"
             },
             "visibility": "public"
           },
           {
             "constant": true,
-            "id": 3905,
-            "name": "ICO_LEVEL_3",
+            "id": 3545,
+            "name": "PRIVATESALE_LEVEL_3",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2170:58:17",
+            "scope": 3603,
+            "src": "1710:66:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1963,10 +1647,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3903,
+              "id": 3543,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2170:7:17",
+              "src": "1710:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -1974,31 +1658,31 @@
             },
             "value": {
               "argumentTypes": null,
-              "hexValue": "3132303030303030303030303030303030303030",
-              "id": 3904,
+              "hexValue": "3133353030303030303030303030303030303030",
+              "id": 3544,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2208:20:17",
+              "src": "1756:20:15",
               "subdenomination": null,
               "typeDescriptions": {
-                "typeIdentifier": "t_rational_12000000000000000000_by_1",
-                "typeString": "int_const 12000000000000000000"
+                "typeIdentifier": "t_rational_13500000000000000000_by_1",
+                "typeString": "int_const 13500000000000000000"
               },
-              "value": "12000000000000000000"
+              "value": "13500000000000000000"
             },
             "visibility": "public"
           },
           {
             "constant": true,
-            "id": 3908,
-            "name": "ICO_LEVEL_4",
+            "id": 3548,
+            "name": "PRIVATESALE_LEVEL_4",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2234:58:17",
+            "scope": 3603,
+            "src": "1782:66:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2006,53 +1690,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3906,
+              "id": 3546,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2234:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "3136303030303030303030303030303030303030",
-              "id": 3907,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "2272:20:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_16000000000000000000_by_1",
-                "typeString": "int_const 16000000000000000000"
-              },
-              "value": "16000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3911,
-            "name": "ICO_LEVEL_5",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2298:58:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3909,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "2298:7:17",
+              "src": "1782:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2061,14 +1702,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3230303030303030303030303030303030303030",
-              "id": 3910,
+              "id": 3547,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2336:20:17",
+              "src": "1828:20:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_20000000000000000000_by_1",
@@ -2080,11 +1721,11 @@
           },
           {
             "constant": true,
-            "id": 3914,
-            "name": "PRIVATESALE_TOKENCAP",
+            "id": 3551,
+            "name": "PRIVATESALE_LEVEL_5",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2462:55:17",
+            "scope": 3603,
+            "src": "1854:66:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2092,10 +1733,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3912,
+              "id": 3549,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2462:7:17",
+              "src": "1854:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2103,31 +1744,31 @@
             },
             "value": {
               "argumentTypes": null,
-              "hexValue": "3232373530303030",
-              "id": 3913,
+              "hexValue": "3333333333333333333333333333333333333333",
+              "id": 3550,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2509:8:17",
+              "src": "1900:20:15",
               "subdenomination": null,
               "typeDescriptions": {
-                "typeIdentifier": "t_rational_22750000_by_1",
-                "typeString": "int_const 22750000"
+                "typeIdentifier": "t_rational_33333333333333333333_by_1",
+                "typeString": "int_const 33333333333333333333"
               },
-              "value": "22750000"
+              "value": "33333333333333333333"
             },
             "visibility": "public"
           },
           {
             "constant": true,
-            "id": 3917,
-            "name": "PRESALE_TOKENCAP",
+            "id": 3554,
+            "name": "PRESALE_LEVEL_1",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2523:51:17",
+            "scope": 3603,
+            "src": "1927:61:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2135,10 +1776,483 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3915,
+              "id": 3552,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2523:7:17",
+              "src": "1927:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "35303030303030303030303030303030303030",
+              "id": 3553,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1969:19:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_5000000000000000000_by_1",
+                "typeString": "int_const 5000000000000000000"
+              },
+              "value": "5000000000000000000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3557,
+            "name": "PRESALE_LEVEL_2",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "1994:62:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3555,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "1994:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3130303030303030303030303030303030303030",
+              "id": 3556,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2036:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_10000000000000000000_by_1",
+                "typeString": "int_const 10000000000000000000"
+              },
+              "value": "10000000000000000000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3560,
+            "name": "PRESALE_LEVEL_3",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2062:62:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3558,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2062:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3135303030303030303030303030303030303030",
+              "id": 3559,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2104:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_15000000000000000000_by_1",
+                "typeString": "int_const 15000000000000000000"
+              },
+              "value": "15000000000000000000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3563,
+            "name": "PRESALE_LEVEL_4",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2130:62:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3561,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2130:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3230303030303030303030303030303030303030",
+              "id": 3562,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2172:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_20000000000000000000_by_1",
+                "typeString": "int_const 20000000000000000000"
+              },
+              "value": "20000000000000000000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3566,
+            "name": "PRESALE_LEVEL_5",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2198:62:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3564,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2198:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3235303030303030303030303030303030303030",
+              "id": 3565,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2240:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_25000000000000000000_by_1",
+                "typeString": "int_const 25000000000000000000"
+              },
+              "value": "25000000000000000000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3569,
+            "name": "ICO_LEVEL_1",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2267:57:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3567,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2267:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "36363636363636363636363636363636363636",
+              "id": 3568,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2305:19:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_6666666666666666666_by_1",
+                "typeString": "int_const 6666666666666666666"
+              },
+              "value": "6666666666666666666"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3572,
+            "name": "ICO_LEVEL_2",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2330:58:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3570,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2330:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3133333333333333333333333333333333333333",
+              "id": 3571,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2368:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_13333333333333333333_by_1",
+                "typeString": "int_const 13333333333333333333"
+              },
+              "value": "13333333333333333333"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3575,
+            "name": "ICO_LEVEL_3",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2394:58:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3573,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2394:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3230303030303030303030303030303030303030",
+              "id": 3574,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2432:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_20000000000000000000_by_1",
+                "typeString": "int_const 20000000000000000000"
+              },
+              "value": "20000000000000000000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3578,
+            "name": "ICO_LEVEL_4",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2458:58:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3576,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2458:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3236363636363636363636363636363636363636",
+              "id": 3577,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2496:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_26666666666666666666_by_1",
+                "typeString": "int_const 26666666666666666666"
+              },
+              "value": "26666666666666666666"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3581,
+            "name": "ICO_LEVEL_5",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2522:58:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3579,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2522:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3333333333333333333333333333333333333333",
+              "id": 3580,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2560:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_33333333333333333333_by_1",
+                "typeString": "int_const 33333333333333333333"
+              },
+              "value": "33333333333333333333"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3584,
+            "name": "PRIVATESALE_TOKENCAP",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2686:55:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3582,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2686:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3231373530303030",
+              "id": 3583,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2733:8:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_21750000_by_1",
+                "typeString": "int_const 21750000"
+              },
+              "value": "21750000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3587,
+            "name": "PRESALE_TOKENCAP",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2747:51:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3585,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2747:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2147,14 +2261,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3138373530303030",
-              "id": 3916,
+              "id": 3586,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2566:8:17",
+              "src": "2790:8:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_18750000_by_1",
@@ -2166,11 +2280,11 @@
           },
           {
             "constant": true,
-            "id": 3920,
+            "id": 3590,
             "name": "ICO_TOKENCAP",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2580:47:17",
+            "scope": 3603,
+            "src": "2804:47:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2178,10 +2292,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3918,
+              "id": 3588,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2580:7:17",
+              "src": "2804:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2190,14 +2304,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3232353030303030",
-              "id": 3919,
+              "id": 3589,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2619:8:17",
+              "src": "2843:8:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_22500000_by_1",
@@ -2209,11 +2323,11 @@
           },
           {
             "constant": true,
-            "id": 3923,
+            "id": 3593,
             "name": "FIRSTSALE_TOKENCAP",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2633:52:17",
+            "scope": 3603,
+            "src": "2857:52:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2221,10 +2335,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3921,
+              "id": 3591,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2633:7:17",
+              "src": "2857:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2232,31 +2346,31 @@
             },
             "value": {
               "argumentTypes": null,
-              "hexValue": "31303030303030",
-              "id": 3922,
+              "hexValue": "32303030303030",
+              "id": 3592,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2678:7:17",
+              "src": "2902:7:15",
               "subdenomination": null,
               "typeDescriptions": {
-                "typeIdentifier": "t_rational_1000000_by_1",
-                "typeString": "int_const 1000000"
+                "typeIdentifier": "t_rational_2000000_by_1",
+                "typeString": "int_const 2000000"
               },
-              "value": "1000000"
+              "value": "2000000"
             },
             "visibility": "public"
           },
           {
             "constant": true,
-            "id": 3926,
+            "id": 3596,
             "name": "LEDTEAM_TOKENS",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2691:49:17",
+            "scope": 3603,
+            "src": "2915:49:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2264,10 +2378,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3924,
+              "id": 3594,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2691:7:17",
+              "src": "2915:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2276,14 +2390,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3335303030303030",
-              "id": 3925,
+              "id": 3595,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2732:8:17",
+              "src": "2956:8:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_35000000_by_1",
@@ -2295,11 +2409,11 @@
           },
           {
             "constant": true,
-            "id": 3929,
+            "id": 3599,
             "name": "TOTAL_TOKENCAP",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2746:50:17",
+            "scope": 3603,
+            "src": "2970:50:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2307,10 +2421,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3927,
+              "id": 3597,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2746:7:17",
+              "src": "2970:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2319,14 +2433,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "313030303030303030",
-              "id": 3928,
+              "id": 3598,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2787:9:17",
+              "src": "3011:9:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_100000000_by_1",
@@ -2338,11 +2452,11 @@
           },
           {
             "constant": true,
-            "id": 3932,
+            "id": 3602,
             "name": "LED_MULTISIG",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2803:81:17",
+            "scope": 3603,
+            "src": "3027:81:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2350,10 +2464,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 3930,
+              "id": 3600,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "2803:7:17",
+              "src": "3027:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -2362,14 +2476,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "307839633065393934316134633535346636653161613139333032363861376339393265336338363032",
-              "id": 3931,
+              "id": 3601,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2842:42:17",
+              "src": "3066:42:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_890928121198417800755321016563183021789449848322_by_1",
@@ -2380,24 +2494,24 @@
             "visibility": "public"
           }
         ],
-        "scope": 3934,
-        "src": "26:2861:17"
+        "scope": 3604,
+        "src": "26:3085:15"
       }
     ],
-    "src": "0:2887:17"
+    "src": "0:3111:15"
   },
   "legacyAST": {
     "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/TokenInfo.sol",
     "exportedSymbols": {
       "TokenInfo": [
-        3933
+        3603
       ]
     },
-    "id": 3934,
+    "id": 3604,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 3809,
+        "id": 3473,
         "literals": [
           "solidity",
           "^",
@@ -2405,7 +2519,7 @@
           ".13"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:17"
+        "src": "0:24:15"
       },
       {
         "baseContracts": [],
@@ -2413,20 +2527,20 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 3933,
+        "id": 3603,
         "linearizedBaseContracts": [
-          3933
+          3603
         ],
         "name": "TokenInfo",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 3812,
+            "id": 3476,
             "name": "PRIVATESALE_BASE_PRICE_IN_WEI",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "116:71:17",
+            "scope": 3603,
+            "src": "116:71:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2434,10 +2548,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3810,
+              "id": 3474,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "116:7:17",
+              "src": "116:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2446,14 +2560,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "333333333333333330303030303030",
-              "id": 3811,
+              "id": 3475,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "172:15:17",
+              "src": "172:15:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_333333330000000_by_1",
@@ -2465,11 +2579,11 @@
           },
           {
             "constant": true,
-            "id": 3815,
+            "id": 3479,
             "name": "PRESALE_BASE_PRICE_IN_WEI",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "193:67:17",
+            "scope": 3603,
+            "src": "193:67:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2477,10 +2591,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3813,
+              "id": 3477,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "193:7:17",
+              "src": "193:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2489,14 +2603,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "353030303030303030303030303030",
-              "id": 3814,
+              "id": 3478,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "245:15:17",
+              "src": "245:15:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_500000000000000_by_1",
@@ -2508,11 +2622,11 @@
           },
           {
             "constant": true,
-            "id": 3818,
+            "id": 3482,
             "name": "ICO_BASE_PRICE_IN_WEI",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "266:63:17",
+            "scope": 3603,
+            "src": "266:63:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2520,10 +2634,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3816,
+              "id": 3480,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "266:7:17",
+              "src": "266:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2532,14 +2646,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "363636363636363630303030303030",
-              "id": 3817,
+              "id": 3481,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "314:15:17",
+              "src": "314:15:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_666666660000000_by_1",
@@ -2551,11 +2665,11 @@
           },
           {
             "constant": true,
-            "id": 3821,
+            "id": 3485,
             "name": "FIRSTSALE_BASE_PRICE_IN_WEI",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "335:69:17",
+            "scope": 3603,
+            "src": "335:69:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2563,10 +2677,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3819,
+              "id": 3483,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "335:7:17",
+              "src": "335:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2575,14 +2689,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "313636363636363630303030303030",
-              "id": 3820,
+              "id": 3484,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "389:15:17",
+              "src": "389:15:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_166666660000000_by_1",
@@ -2594,11 +2708,11 @@
           },
           {
             "constant": true,
-            "id": 3824,
-            "name": "PRIVATESALE_PERCENTAGE_1",
+            "id": 3488,
+            "name": "MIN_PURCHASE",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "467:53:17",
+            "scope": 3603,
+            "src": "501:58:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2606,10 +2720,96 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3822,
+              "id": 3486,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "467:7:17",
+              "src": "501:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "31363636363636363636363636363636363636",
+              "id": 3487,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "540:19:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_1666666666666666666_by_1",
+                "typeString": "int_const 1666666666666666666"
+              },
+              "value": "1666666666666666666"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3491,
+            "name": "MAX_PURCHASE",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "565:59:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3489,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "565:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3333333333333333333333333333333333333333",
+              "id": 3490,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "604:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_33333333333333333333_by_1",
+                "typeString": "int_const 33333333333333333333"
+              },
+              "value": "33333333333333333333"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3494,
+            "name": "PRIVATESALE_PERCENTAGE_1",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "687:53:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3492,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "687:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2618,14 +2818,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3230",
-              "id": 3823,
+              "id": 3493,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "518:2:17",
+              "src": "738:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_20_by_1",
@@ -2637,11 +2837,11 @@
           },
           {
             "constant": true,
-            "id": 3827,
+            "id": 3497,
             "name": "PRIVATESALE_PERCENTAGE_2",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "526:53:17",
+            "scope": 3603,
+            "src": "746:53:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2649,10 +2849,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3825,
+              "id": 3495,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "526:7:17",
+              "src": "746:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2661,14 +2861,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3235",
-              "id": 3826,
+              "id": 3496,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "577:2:17",
+              "src": "797:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_25_by_1",
@@ -2680,11 +2880,11 @@
           },
           {
             "constant": true,
-            "id": 3830,
+            "id": 3500,
             "name": "PRIVATESALE_PERCENTAGE_3",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "585:53:17",
+            "scope": 3603,
+            "src": "805:53:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2692,10 +2892,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3828,
+              "id": 3498,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "585:7:17",
+              "src": "805:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2704,14 +2904,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3335",
-              "id": 3829,
+              "id": 3499,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "636:2:17",
+              "src": "856:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_35_by_1",
@@ -2723,11 +2923,11 @@
           },
           {
             "constant": true,
-            "id": 3833,
+            "id": 3503,
             "name": "PRIVATESALE_PERCENTAGE_4",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "644:53:17",
+            "scope": 3603,
+            "src": "864:53:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2735,10 +2935,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3831,
+              "id": 3501,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "644:7:17",
+              "src": "864:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2747,14 +2947,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3530",
-              "id": 3832,
+              "id": 3502,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "695:2:17",
+              "src": "915:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_50_by_1",
@@ -2766,11 +2966,11 @@
           },
           {
             "constant": true,
-            "id": 3836,
+            "id": 3506,
             "name": "PRIVATESALE_PERCENTAGE_5",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "703:54:17",
+            "scope": 3603,
+            "src": "923:54:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2778,10 +2978,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3834,
+              "id": 3504,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "703:7:17",
+              "src": "923:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2790,14 +2990,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "313030",
-              "id": 3835,
+              "id": 3505,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "754:3:17",
+              "src": "974:3:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_100_by_1",
@@ -2809,11 +3009,11 @@
           },
           {
             "constant": true,
-            "id": 3839,
+            "id": 3509,
             "name": "PRESALE_PERCENTAGE_1",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "764:49:17",
+            "scope": 3603,
+            "src": "984:49:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2821,10 +3021,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3837,
+              "id": 3507,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "764:7:17",
+              "src": "984:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2833,14 +3033,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3130",
-              "id": 3838,
+              "id": 3508,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "811:2:17",
+              "src": "1031:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_10_by_1",
@@ -2852,11 +3052,11 @@
           },
           {
             "constant": true,
-            "id": 3842,
+            "id": 3512,
             "name": "PRESALE_PERCENTAGE_2",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "819:49:17",
+            "scope": 3603,
+            "src": "1039:49:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2864,10 +3064,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3840,
+              "id": 3510,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "819:7:17",
+              "src": "1039:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2876,14 +3076,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3135",
-              "id": 3841,
+              "id": 3511,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "866:2:17",
+              "src": "1086:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_15_by_1",
@@ -2895,11 +3095,11 @@
           },
           {
             "constant": true,
-            "id": 3845,
+            "id": 3515,
             "name": "PRESALE_PERCENTAGE_3",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "874:49:17",
+            "scope": 3603,
+            "src": "1094:49:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2907,10 +3107,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3843,
+              "id": 3513,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "874:7:17",
+              "src": "1094:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2919,14 +3119,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3230",
-              "id": 3844,
+              "id": 3514,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "921:2:17",
+              "src": "1141:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_20_by_1",
@@ -2938,11 +3138,11 @@
           },
           {
             "constant": true,
-            "id": 3848,
+            "id": 3518,
             "name": "PRESALE_PERCENTAGE_4",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "929:49:17",
+            "scope": 3603,
+            "src": "1149:49:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2950,10 +3150,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3846,
+              "id": 3516,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "929:7:17",
+              "src": "1149:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -2962,14 +3162,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3235",
-              "id": 3847,
+              "id": 3517,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "976:2:17",
+              "src": "1196:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_25_by_1",
@@ -2981,11 +3181,11 @@
           },
           {
             "constant": true,
-            "id": 3851,
+            "id": 3521,
             "name": "PRESALE_PERCENTAGE_5",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "984:49:17",
+            "scope": 3603,
+            "src": "1204:49:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -2993,10 +3193,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3849,
+              "id": 3519,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "984:7:17",
+              "src": "1204:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -3005,14 +3205,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3335",
-              "id": 3850,
+              "id": 3520,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1031:2:17",
+              "src": "1251:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_35_by_1",
@@ -3024,11 +3224,11 @@
           },
           {
             "constant": true,
-            "id": 3854,
+            "id": 3524,
             "name": "ICO_PERCENTAGE_1",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1040:44:17",
+            "scope": 3603,
+            "src": "1260:44:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -3036,10 +3236,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3852,
+              "id": 3522,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "1040:7:17",
+              "src": "1260:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -3048,14 +3248,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "35",
-              "id": 3853,
+              "id": 3523,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1083:1:17",
+              "src": "1303:1:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_5_by_1",
@@ -3067,11 +3267,11 @@
           },
           {
             "constant": true,
-            "id": 3857,
+            "id": 3527,
             "name": "ICO_PERCENTAGE_2",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1090:45:17",
+            "scope": 3603,
+            "src": "1310:45:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -3079,10 +3279,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3855,
+              "id": 3525,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "1090:7:17",
+              "src": "1310:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -3091,14 +3291,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3130",
-              "id": 3856,
+              "id": 3526,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1133:2:17",
+              "src": "1353:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_10_by_1",
@@ -3110,11 +3310,11 @@
           },
           {
             "constant": true,
-            "id": 3860,
+            "id": 3530,
             "name": "ICO_PERCENTAGE_3",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1141:45:17",
+            "scope": 3603,
+            "src": "1361:45:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -3122,10 +3322,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3858,
+              "id": 3528,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "1141:7:17",
+              "src": "1361:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -3134,14 +3334,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3135",
-              "id": 3859,
+              "id": 3529,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1184:2:17",
+              "src": "1404:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_15_by_1",
@@ -3153,11 +3353,11 @@
           },
           {
             "constant": true,
-            "id": 3863,
+            "id": 3533,
             "name": "ICO_PERCENTAGE_4",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1192:45:17",
+            "scope": 3603,
+            "src": "1412:45:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -3165,10 +3365,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3861,
+              "id": 3531,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "1192:7:17",
+              "src": "1412:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -3177,14 +3377,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3230",
-              "id": 3862,
+              "id": 3532,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1235:2:17",
+              "src": "1455:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_20_by_1",
@@ -3196,11 +3396,11 @@
           },
           {
             "constant": true,
-            "id": 3866,
+            "id": 3536,
             "name": "ICO_PERCENTAGE_5",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1243:45:17",
+            "scope": 3603,
+            "src": "1463:45:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -3208,10 +3408,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3864,
+              "id": 3534,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "1243:7:17",
+              "src": "1463:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -3220,14 +3420,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3235",
-              "id": 3865,
+              "id": 3535,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "1286:2:17",
+              "src": "1506:2:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_25_by_1",
@@ -3239,11 +3439,11 @@
           },
           {
             "constant": true,
-            "id": 3869,
+            "id": 3539,
             "name": "PRIVATESALE_LEVEL_1",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1348:65:17",
+            "scope": 3603,
+            "src": "1568:65:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -3251,440 +3451,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3867,
+              "id": 3537,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "1348:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "32343030303030303030303030303030303030",
-              "id": 3868,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1394:19:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_2400000000000000000_by_1",
-                "typeString": "int_const 2400000000000000000"
-              },
-              "value": "2400000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3872,
-            "name": "PRIVATESALE_LEVEL_2",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1419:65:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3870,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1419:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "35303030303030303030303030303030303030",
-              "id": 3871,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1465:19:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_5000000000000000000_by_1",
-                "typeString": "int_const 5000000000000000000"
-              },
-              "value": "5000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3875,
-            "name": "PRIVATESALE_LEVEL_3",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1490:65:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3873,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1490:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "38313030303030303030303030303030303030",
-              "id": 3874,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1536:19:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_8100000000000000000_by_1",
-                "typeString": "int_const 8100000000000000000"
-              },
-              "value": "8100000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3878,
-            "name": "PRIVATESALE_LEVEL_4",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1561:66:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3876,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1561:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "3132303030303030303030303030303030303030",
-              "id": 3877,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1607:20:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_12000000000000000000_by_1",
-                "typeString": "int_const 12000000000000000000"
-              },
-              "value": "12000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3881,
-            "name": "PRIVATESALE_LEVEL_5",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1633:66:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3879,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1633:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "3230303030303030303030303030303030303030",
-              "id": 3880,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1679:20:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_20000000000000000000_by_1",
-                "typeString": "int_const 20000000000000000000"
-              },
-              "value": "20000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3884,
-            "name": "PRESALE_LEVEL_1",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1706:61:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3882,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1706:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "33303030303030303030303030303030303030",
-              "id": 3883,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1748:19:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_3000000000000000000_by_1",
-                "typeString": "int_const 3000000000000000000"
-              },
-              "value": "3000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3887,
-            "name": "PRESALE_LEVEL_2",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1773:61:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3885,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1773:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "36303030303030303030303030303030303030",
-              "id": 3886,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1815:19:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_6000000000000000000_by_1",
-                "typeString": "int_const 6000000000000000000"
-              },
-              "value": "6000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3890,
-            "name": "PRESALE_LEVEL_3",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1840:61:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3888,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1840:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "39303030303030303030303030303030303030",
-              "id": 3889,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1882:19:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_9000000000000000000_by_1",
-                "typeString": "int_const 9000000000000000000"
-              },
-              "value": "9000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3893,
-            "name": "PRESALE_LEVEL_4",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1907:62:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3891,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1907:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "3132303030303030303030303030303030303030",
-              "id": 3892,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "1949:20:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_12000000000000000000_by_1",
-                "typeString": "int_const 12000000000000000000"
-              },
-              "value": "12000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3896,
-            "name": "PRESALE_LEVEL_5",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "1975:62:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3894,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "1975:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "3135303030303030303030303030303030303030",
-              "id": 3895,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "2017:20:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_15000000000000000000_by_1",
-                "typeString": "int_const 15000000000000000000"
-              },
-              "value": "15000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3899,
-            "name": "ICO_LEVEL_1",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2044:57:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3897,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "2044:7:17",
+              "src": "1568:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -3693,14 +3463,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "34303030303030303030303030303030303030",
-              "id": 3898,
+              "id": 3538,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2082:19:17",
+              "src": "1614:19:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_4000000000000000000_by_1",
@@ -3712,11 +3482,11 @@
           },
           {
             "constant": true,
-            "id": 3902,
-            "name": "ICO_LEVEL_2",
+            "id": 3542,
+            "name": "PRIVATESALE_LEVEL_2",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2107:57:17",
+            "scope": 3603,
+            "src": "1639:65:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -3724,10 +3494,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3900,
+              "id": 3540,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2107:7:17",
+              "src": "1639:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -3735,31 +3505,31 @@
             },
             "value": {
               "argumentTypes": null,
-              "hexValue": "38303030303030303030303030303030303030",
-              "id": 3901,
+              "hexValue": "38333333333333333333333333333333333333",
+              "id": 3541,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2145:19:17",
+              "src": "1685:19:15",
               "subdenomination": null,
               "typeDescriptions": {
-                "typeIdentifier": "t_rational_8000000000000000000_by_1",
-                "typeString": "int_const 8000000000000000000"
+                "typeIdentifier": "t_rational_8333333333333333333_by_1",
+                "typeString": "int_const 8333333333333333333"
               },
-              "value": "8000000000000000000"
+              "value": "8333333333333333333"
             },
             "visibility": "public"
           },
           {
             "constant": true,
-            "id": 3905,
-            "name": "ICO_LEVEL_3",
+            "id": 3545,
+            "name": "PRIVATESALE_LEVEL_3",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2170:58:17",
+            "scope": 3603,
+            "src": "1710:66:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -3767,10 +3537,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3903,
+              "id": 3543,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2170:7:17",
+              "src": "1710:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -3778,31 +3548,31 @@
             },
             "value": {
               "argumentTypes": null,
-              "hexValue": "3132303030303030303030303030303030303030",
-              "id": 3904,
+              "hexValue": "3133353030303030303030303030303030303030",
+              "id": 3544,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2208:20:17",
+              "src": "1756:20:15",
               "subdenomination": null,
               "typeDescriptions": {
-                "typeIdentifier": "t_rational_12000000000000000000_by_1",
-                "typeString": "int_const 12000000000000000000"
+                "typeIdentifier": "t_rational_13500000000000000000_by_1",
+                "typeString": "int_const 13500000000000000000"
               },
-              "value": "12000000000000000000"
+              "value": "13500000000000000000"
             },
             "visibility": "public"
           },
           {
             "constant": true,
-            "id": 3908,
-            "name": "ICO_LEVEL_4",
+            "id": 3548,
+            "name": "PRIVATESALE_LEVEL_4",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2234:58:17",
+            "scope": 3603,
+            "src": "1782:66:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -3810,53 +3580,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3906,
+              "id": 3546,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2234:7:17",
-              "typeDescriptions": {
-                "typeIdentifier": "t_uint256",
-                "typeString": "uint256"
-              }
-            },
-            "value": {
-              "argumentTypes": null,
-              "hexValue": "3136303030303030303030303030303030303030",
-              "id": 3907,
-              "isConstant": false,
-              "isLValue": false,
-              "isPure": true,
-              "kind": "number",
-              "lValueRequested": false,
-              "nodeType": "Literal",
-              "src": "2272:20:17",
-              "subdenomination": null,
-              "typeDescriptions": {
-                "typeIdentifier": "t_rational_16000000000000000000_by_1",
-                "typeString": "int_const 16000000000000000000"
-              },
-              "value": "16000000000000000000"
-            },
-            "visibility": "public"
-          },
-          {
-            "constant": true,
-            "id": 3911,
-            "name": "ICO_LEVEL_5",
-            "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2298:58:17",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_uint256",
-              "typeString": "uint256"
-            },
-            "typeName": {
-              "id": 3909,
-              "name": "uint256",
-              "nodeType": "ElementaryTypeName",
-              "src": "2298:7:17",
+              "src": "1782:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -3865,14 +3592,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3230303030303030303030303030303030303030",
-              "id": 3910,
+              "id": 3547,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2336:20:17",
+              "src": "1828:20:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_20000000000000000000_by_1",
@@ -3884,11 +3611,11 @@
           },
           {
             "constant": true,
-            "id": 3914,
-            "name": "PRIVATESALE_TOKENCAP",
+            "id": 3551,
+            "name": "PRIVATESALE_LEVEL_5",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2462:55:17",
+            "scope": 3603,
+            "src": "1854:66:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -3896,10 +3623,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3912,
+              "id": 3549,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2462:7:17",
+              "src": "1854:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -3907,31 +3634,31 @@
             },
             "value": {
               "argumentTypes": null,
-              "hexValue": "3232373530303030",
-              "id": 3913,
+              "hexValue": "3333333333333333333333333333333333333333",
+              "id": 3550,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2509:8:17",
+              "src": "1900:20:15",
               "subdenomination": null,
               "typeDescriptions": {
-                "typeIdentifier": "t_rational_22750000_by_1",
-                "typeString": "int_const 22750000"
+                "typeIdentifier": "t_rational_33333333333333333333_by_1",
+                "typeString": "int_const 33333333333333333333"
               },
-              "value": "22750000"
+              "value": "33333333333333333333"
             },
             "visibility": "public"
           },
           {
             "constant": true,
-            "id": 3917,
-            "name": "PRESALE_TOKENCAP",
+            "id": 3554,
+            "name": "PRESALE_LEVEL_1",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2523:51:17",
+            "scope": 3603,
+            "src": "1927:61:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -3939,10 +3666,483 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3915,
+              "id": 3552,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2523:7:17",
+              "src": "1927:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "35303030303030303030303030303030303030",
+              "id": 3553,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1969:19:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_5000000000000000000_by_1",
+                "typeString": "int_const 5000000000000000000"
+              },
+              "value": "5000000000000000000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3557,
+            "name": "PRESALE_LEVEL_2",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "1994:62:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3555,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "1994:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3130303030303030303030303030303030303030",
+              "id": 3556,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2036:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_10000000000000000000_by_1",
+                "typeString": "int_const 10000000000000000000"
+              },
+              "value": "10000000000000000000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3560,
+            "name": "PRESALE_LEVEL_3",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2062:62:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3558,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2062:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3135303030303030303030303030303030303030",
+              "id": 3559,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2104:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_15000000000000000000_by_1",
+                "typeString": "int_const 15000000000000000000"
+              },
+              "value": "15000000000000000000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3563,
+            "name": "PRESALE_LEVEL_4",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2130:62:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3561,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2130:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3230303030303030303030303030303030303030",
+              "id": 3562,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2172:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_20000000000000000000_by_1",
+                "typeString": "int_const 20000000000000000000"
+              },
+              "value": "20000000000000000000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3566,
+            "name": "PRESALE_LEVEL_5",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2198:62:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3564,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2198:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3235303030303030303030303030303030303030",
+              "id": 3565,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2240:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_25000000000000000000_by_1",
+                "typeString": "int_const 25000000000000000000"
+              },
+              "value": "25000000000000000000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3569,
+            "name": "ICO_LEVEL_1",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2267:57:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3567,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2267:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "36363636363636363636363636363636363636",
+              "id": 3568,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2305:19:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_6666666666666666666_by_1",
+                "typeString": "int_const 6666666666666666666"
+              },
+              "value": "6666666666666666666"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3572,
+            "name": "ICO_LEVEL_2",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2330:58:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3570,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2330:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3133333333333333333333333333333333333333",
+              "id": 3571,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2368:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_13333333333333333333_by_1",
+                "typeString": "int_const 13333333333333333333"
+              },
+              "value": "13333333333333333333"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3575,
+            "name": "ICO_LEVEL_3",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2394:58:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3573,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2394:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3230303030303030303030303030303030303030",
+              "id": 3574,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2432:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_20000000000000000000_by_1",
+                "typeString": "int_const 20000000000000000000"
+              },
+              "value": "20000000000000000000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3578,
+            "name": "ICO_LEVEL_4",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2458:58:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3576,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2458:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3236363636363636363636363636363636363636",
+              "id": 3577,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2496:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_26666666666666666666_by_1",
+                "typeString": "int_const 26666666666666666666"
+              },
+              "value": "26666666666666666666"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3581,
+            "name": "ICO_LEVEL_5",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2522:58:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3579,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2522:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3333333333333333333333333333333333333333",
+              "id": 3580,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2560:20:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_33333333333333333333_by_1",
+                "typeString": "int_const 33333333333333333333"
+              },
+              "value": "33333333333333333333"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3584,
+            "name": "PRIVATESALE_TOKENCAP",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2686:55:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3582,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2686:7:15",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3231373530303030",
+              "id": 3583,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "2733:8:15",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_21750000_by_1",
+                "typeString": "int_const 21750000"
+              },
+              "value": "21750000"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 3587,
+            "name": "PRESALE_TOKENCAP",
+            "nodeType": "VariableDeclaration",
+            "scope": 3603,
+            "src": "2747:51:15",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 3585,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "2747:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -3951,14 +4151,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3138373530303030",
-              "id": 3916,
+              "id": 3586,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2566:8:17",
+              "src": "2790:8:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_18750000_by_1",
@@ -3970,11 +4170,11 @@
           },
           {
             "constant": true,
-            "id": 3920,
+            "id": 3590,
             "name": "ICO_TOKENCAP",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2580:47:17",
+            "scope": 3603,
+            "src": "2804:47:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -3982,10 +4182,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3918,
+              "id": 3588,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2580:7:17",
+              "src": "2804:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -3994,14 +4194,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3232353030303030",
-              "id": 3919,
+              "id": 3589,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2619:8:17",
+              "src": "2843:8:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_22500000_by_1",
@@ -4013,11 +4213,11 @@
           },
           {
             "constant": true,
-            "id": 3923,
+            "id": 3593,
             "name": "FIRSTSALE_TOKENCAP",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2633:52:17",
+            "scope": 3603,
+            "src": "2857:52:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -4025,10 +4225,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3921,
+              "id": 3591,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2633:7:17",
+              "src": "2857:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -4036,31 +4236,31 @@
             },
             "value": {
               "argumentTypes": null,
-              "hexValue": "31303030303030",
-              "id": 3922,
+              "hexValue": "32303030303030",
+              "id": 3592,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2678:7:17",
+              "src": "2902:7:15",
               "subdenomination": null,
               "typeDescriptions": {
-                "typeIdentifier": "t_rational_1000000_by_1",
-                "typeString": "int_const 1000000"
+                "typeIdentifier": "t_rational_2000000_by_1",
+                "typeString": "int_const 2000000"
               },
-              "value": "1000000"
+              "value": "2000000"
             },
             "visibility": "public"
           },
           {
             "constant": true,
-            "id": 3926,
+            "id": 3596,
             "name": "LEDTEAM_TOKENS",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2691:49:17",
+            "scope": 3603,
+            "src": "2915:49:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -4068,10 +4268,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3924,
+              "id": 3594,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2691:7:17",
+              "src": "2915:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -4080,14 +4280,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "3335303030303030",
-              "id": 3925,
+              "id": 3595,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2732:8:17",
+              "src": "2956:8:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_35000000_by_1",
@@ -4099,11 +4299,11 @@
           },
           {
             "constant": true,
-            "id": 3929,
+            "id": 3599,
             "name": "TOTAL_TOKENCAP",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2746:50:17",
+            "scope": 3603,
+            "src": "2970:50:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -4111,10 +4311,10 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 3927,
+              "id": 3597,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "2746:7:17",
+              "src": "2970:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -4123,14 +4323,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "313030303030303030",
-              "id": 3928,
+              "id": 3598,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2787:9:17",
+              "src": "3011:9:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_100000000_by_1",
@@ -4142,11 +4342,11 @@
           },
           {
             "constant": true,
-            "id": 3932,
+            "id": 3602,
             "name": "LED_MULTISIG",
             "nodeType": "VariableDeclaration",
-            "scope": 3933,
-            "src": "2803:81:17",
+            "scope": 3603,
+            "src": "3027:81:15",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -4154,10 +4354,10 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 3930,
+              "id": 3600,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "2803:7:17",
+              "src": "3027:7:15",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -4166,14 +4366,14 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "307839633065393934316134633535346636653161613139333032363861376339393265336338363032",
-              "id": 3931,
+              "id": 3601,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "2842:42:17",
+              "src": "3066:42:15",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_890928121198417800755321016563183021789449848322_by_1",
@@ -4184,11 +4384,11 @@
             "visibility": "public"
           }
         ],
-        "scope": 3934,
-        "src": "26:2861:17"
+        "scope": 3604,
+        "src": "26:3085:15"
       }
     ],
-    "src": "0:2887:17"
+    "src": "0:3111:15"
   },
   "compiler": {
     "name": "solc",
@@ -4196,5 +4396,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-25T15:25:48.425Z"
+  "updatedAt": "2018-05-29T21:24:59.741Z"
 }
