@@ -1,9 +1,9 @@
 pragma solidity ^0.4.13;
 
-import './SafeMath.sol';
-import './Pausable.sol';
-import './LedTokenInterface.sol';
-import './TokenInfo.sol';
+import "./SafeMath.sol";
+import "./Pausable.sol";
+import "./LedTokenInterface.sol";
+import "./TokenInfo.sol";
 /**
  * @title FirstSale
  * FirstSale allows investors to make token purchases and assigns them tokens based
@@ -77,6 +77,7 @@ contract FirstSale is Pausable, TokenInfo {
     // require(isWhitelisted(_beneficiary));
 
     uint256 weiAmount = msg.value;
+    require(weiAmount >= MIN_PURCHASE && weiAmount <= MAX_PURCHASE);
     uint256 priceInWei = FIRSTSALE_BASE_PRICE_IN_WEI;
     totalWeiRaised = totalWeiRaised.add(weiAmount);
 

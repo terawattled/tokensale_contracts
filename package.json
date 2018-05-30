@@ -38,6 +38,7 @@
     "solidity-coverage": "~0.2.2",
     "style-loader": "^0.13.1",
     "truffle-contract": "^1.1.11",
+    "truffle-flattener": "^1.2.5",
     "web3": "^1.0.0-beta.26",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
