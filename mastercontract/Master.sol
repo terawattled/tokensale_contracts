@@ -7,6 +7,10 @@ contract TokenInfo {
     uint256 public constant ICO_BASE_PRICE_IN_WEI = 666666660000000;
     uint256 public constant FIRSTSALE_BASE_PRICE_IN_WEI = 166666660000000;
 
+    // First sale minimum and maximum contribution, going off from an Ether value of $600
+    uint256 public constant MIN_PURCHASE = 1666666666666666666;
+    uint256 public constant MAX_PURCHASE = 33333333333333333333;
+
     // Bonus percentages for each respective sale level
     uint256 public constant PRIVATESALE_PERCENTAGE_1 = 20;
     uint256 public constant PRIVATESALE_PERCENTAGE_2 = 25;
@@ -46,10 +50,10 @@ contract TokenInfo {
     uint256 public constant ICO_LEVEL_5 = 33333333333333333333;
 
     // Caps for the respective sales, the amount of tokens allocated to the team and the total cap
-    uint256 public constant PRIVATESALE_TOKENCAP = 22750000;
+    uint256 public constant PRIVATESALE_TOKENCAP = 21750000;
     uint256 public constant PRESALE_TOKENCAP = 18750000;
     uint256 public constant ICO_TOKENCAP = 22500000;
-    uint256 public constant FIRSTSALE_TOKENCAP = 1000000;
+    uint256 public constant FIRSTSALE_TOKENCAP = 2000000;
     uint256 public constant LEDTEAM_TOKENS = 35000000;
     uint256 public constant TOTAL_TOKENCAP = 100000000;
 
@@ -279,6 +283,7 @@ contract FirstSale is Pausable, TokenInfo {
     // require(isWhitelisted(_beneficiary));
 
     uint256 weiAmount = msg.value;
+    require(weiAmount >= MIN_PURCHASE && weiAmount <= MAX_PURCHASE);
     uint256 priceInWei = FIRSTSALE_BASE_PRICE_IN_WEI;
     totalWeiRaised = totalWeiRaised.add(weiAmount);
 
@@ -1107,6 +1112,12 @@ contract Presale is Pausable, TokenInfo {
 
 }
 
+/**
+ * @title PrivateSale
+ * PrivateSale allows investors to make token purchases and assigns them tokens based
+
+ * on a token per ETH rate. Funds collected are forwarded to a wallet as they arrive.
+ */
 contract PrivateSale is Pausable, TokenInfo {
 
   using SafeMath for uint256;
