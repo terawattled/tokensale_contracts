@@ -1,4 +1,4 @@
-pragma solidity ^0.4.13;
+pragma solidity ^0.4.24;
 
 import "./SafeMath.sol";
 import "./Controllable.sol";
@@ -51,7 +51,7 @@ contract LedToken is Controllable {
 
 
 
-  function LedToken(
+  constructor(
     address _tokenFactory,
     address _parentToken,
     uint256 _parentSnapShotBlock,
@@ -178,7 +178,7 @@ contract LedToken is Controllable {
     require((_amount == 0) || (allowed[msg.sender][_spender] == 0));
 
     allowed[msg.sender][_spender] = _amount;
-    Approval(msg.sender, _spender, _amount);
+    emit Approval(msg.sender, _spender, _amount);
     return true;
   }
 
@@ -246,7 +246,7 @@ contract LedToken is Controllable {
     updateValueAtNow(balances[_to], previousBalanceTo + _amount);
 
     // An event to make the transfer easy to find on the blockchain
-    Transfer(_from, _to, _amount);
+    emit Transfer(_from, _to, _amount);
     return true;
   }
 
@@ -266,7 +266,7 @@ contract LedToken is Controllable {
 
     updateValueAtNow(totalSupplyHistory, curTotalSupply + _amount);
     updateValueAtNow(balances[_owner], previousBalanceTo + _amount);
-    Transfer(0, _owner, _amount);
+    emit Transfer(0, _owner, _amount);
     return true;
   }
 
@@ -291,7 +291,7 @@ contract LedToken is Controllable {
       totalSupplyAtCheckpoint += _balances[i];
       updateValueAtNow(balances[_addresses[i]], _balances[i]);
       updateValueAtNow(totalSupplyHistory, totalSupplyAtCheckpoint);
-      Transfer(0, _addresses[i], _balances[i]);
+      emit Transfer(0, _addresses[i], _balances[i]);
     }
     return true;
   }
@@ -311,7 +311,7 @@ contract LedToken is Controllable {
   */
   function finishMinting() public onlyController returns (bool) {
     mintingFinished = true;
-    MintFinished();
+    emit MintFinished();
     return true;
   }
 
@@ -378,7 +378,7 @@ contract LedToken is Controllable {
   }
 
 
-  function min(uint256 a, uint256 b) internal constant returns (uint) {
+  function min(uint256 a, uint256 b) internal pure returns (uint) {
       return a < b ? a : b;
   }
 
@@ -410,7 +410,7 @@ contract LedToken is Controllable {
       cloneToken.transferControl(msg.sender);
 
       // An event to make the token easy to find on the blockchain
-      NewCloneToken(address(cloneToken));
+      emit NewCloneToken(address(cloneToken));
       return address(cloneToken);
     }
 

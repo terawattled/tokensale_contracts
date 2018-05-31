@@ -1,4 +1,4 @@
-pragma solidity ^0.4.13;
+pragma solidity ^0.4.24;
 
 import "./SafeMath.sol";
 import "./Pausable.sol";
@@ -46,7 +46,7 @@ contract Presale is Pausable, TokenInfo {
   event LogInt(string _name, uint256 _value);
   event Finalized();
 
-  function Presale(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
+  constructor(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
     require(_tokenAddress != 0x0);
     require(_startTime > 0);
     require(_endTime > _startTime);
@@ -97,11 +97,11 @@ contract Presale is Pausable, TokenInfo {
     contributors = contributors.add(1);
 
     ledToken.mint(_beneficiary, tokens);
-    TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
+    emit TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
     forwardFunds();
   }
 
-  function determineBonus(uint256 _wei) constant public returns (uint256) {
+  function determineBonus(uint256 _wei) public pure returns (uint256) {
     if(_wei > PRESALE_LEVEL_1) {
       if(_wei > PRESALE_LEVEL_2) {
         if(_wei > PRESALE_LEVEL_3) {
@@ -199,7 +199,7 @@ contract Presale is Pausable, TokenInfo {
     ledToken.mint(ledMultiSig, surplusTokens);
     ledToken.transferControl(owner);
 
-    Finalized();
+    emit Finalized();
 
     finalized = true;
   }
@@ -223,7 +223,7 @@ contract Presale is Pausable, TokenInfo {
     );
   }
   
-  function getInfoLevels() public constant returns(uint256, uint256, uint256, uint256, uint256, uint256, 
+  function getInfoLevels() public pure returns(uint256, uint256, uint256, uint256, uint256, uint256, 
   uint256, uint256, uint256, uint256){
     return (
       PRESALE_LEVEL_1, // Amount of ether needed per bonus level

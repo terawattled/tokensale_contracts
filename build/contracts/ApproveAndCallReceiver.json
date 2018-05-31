@@ -32,7 +32,7 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.4.13;\n\ncontract ApproveAndCallReceiver {\n    function receiveApproval(address from, uint256 _amount, address _token, bytes _data) public;\n}",
+  "source": "pragma solidity ^0.4.24;\n\ncontract ApproveAndCallReceiver {\n    function receiveApproval(address from, uint256 _amount, address _token, bytes _data) public;\n}",
   "sourcePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/ApproveAndCallReceiver.sol",
   "ast": {
     "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/ApproveAndCallReceiver.sol",
@@ -50,7 +50,7 @@
           "solidity",
           "^",
           "0.4",
-          ".13"
+          ".24"
         ],
         "nodeType": "PragmaDirective",
         "src": "0:24:0"
@@ -225,7 +225,7 @@
           "solidity",
           "^",
           "0.4",
-          ".13"
+          ".24"
         ],
         "nodeType": "PragmaDirective",
         "src": "0:24:0"
@@ -386,9 +386,9 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.23+commit.124ca40d.Emscripten.clang"
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-30T18:05:12.900Z"
+  "updatedAt": "2018-05-31T08:04:29.990Z"
 }

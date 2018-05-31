@@ -1,4 +1,4 @@
-pragma solidity ^0.4.13;
+pragma solidity ^0.4.24;
 
 contract TokenInfo {
     // Base prices in wei, going off from an Ether value of $600
@@ -57,5 +57,5 @@ contract TokenInfo {
     uint256 public constant LEDTEAM_TOKENS = 35000000;
     uint256 public constant TOTAL_TOKENCAP = 100000000;
 
-    address public constant LED_MULTISIG = 0x9c0e9941a4c554f6e1aa1930268a7c992e3c8602;
+    address public constant LED_MULTISIG = 0x0000000000000000000000000000000000000000;
 }
