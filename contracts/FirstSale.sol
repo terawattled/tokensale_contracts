@@ -1,4 +1,4 @@
-pragma solidity ^0.4.13;
+pragma solidity ^0.4.24;
 
 import "./SafeMath.sol";
 import "./Pausable.sol";
@@ -46,7 +46,7 @@ contract FirstSale is Pausable, TokenInfo {
   event LogInt(string _name, uint256 _value);
   event Finalized();
 
-  function FirstSale(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
+  constructor(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
     require(_tokenAddress != 0x0);
     require(_startTime > 0);
     require(_endTime > _startTime);
@@ -88,7 +88,7 @@ contract FirstSale is Pausable, TokenInfo {
     contributors = contributors.add(1);
 
     ledToken.mint(_beneficiary, tokens);
-    TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
+    emit TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
     forwardFunds();
   }
 
@@ -166,7 +166,7 @@ contract FirstSale is Pausable, TokenInfo {
     ledToken.mint(ledMultiSig, surplusTokens);
     ledToken.transferControl(owner);
 
-    Finalized();
+    emit Finalized();
 
     finalized = true;
   }

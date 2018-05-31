@@ -1,4 +1,4 @@
-pragma solidity ^0.4.13;
+pragma solidity ^0.4.24;
 
 contract TokenInfo {
     // Base prices in wei, going off from an Ether value of $600
@@ -57,7 +57,7 @@ contract TokenInfo {
     uint256 public constant LEDTEAM_TOKENS = 35000000;
     uint256 public constant TOTAL_TOKENCAP = 100000000;
 
-    address public constant LED_MULTISIG = 0x9c0e9941a4c554f6e1aa1930268a7c992e3c8602;
+    address public constant LED_MULTISIG = 0x0000000000000000000000000000000000000000;
 }
 
 /**
@@ -72,7 +72,7 @@ contract Ownable {
   /**
    * @dev The Ownable constructor sets the original `owner` of the contract to the sender account.
    */
-  function Ownable() public {
+  constructor() public {
     owner = msg.sender;
   }
 
@@ -106,7 +106,7 @@ contract Pausable is Ownable {
 
   bool public paused = false;
 
-  function Pausable() public {}
+  constructor() public {}
 
   /**
    * @dev modifier to allow actions only when the contract IS paused
@@ -129,7 +129,7 @@ contract Pausable is Ownable {
    */
   function pause() public onlyOwner whenNotPaused returns (bool) {
     paused = true;
-    Pause();
+    emit Pause();
     return true;
   }
 
@@ -138,7 +138,7 @@ contract Pausable is Ownable {
    */
   function unpause() public onlyOwner whenPaused returns (bool) {
     paused = false;
-    Unpause();
+    emit Unpause();
     return true;
   }
 }
@@ -159,7 +159,7 @@ contract Controllable {
   /**
    * @dev The Ownable constructor sets the original `owner` of the contract to the sender account.
    */
-  function Controllable() public {
+  constructor() public {
     controller = msg.sender;
   }
 
@@ -199,11 +199,11 @@ contract ERC20 {
 
   uint256 public totalSupply;
 
-  function balanceOf(address _owner) constant returns (uint256);
-  function transfer(address _to, uint256 _value) returns (bool);
-  function transferFrom(address _from, address _to, uint256 _amount) returns (bool);
-  function approve(address _spender, uint256 _amount) returns (bool);
-  function allowance(address _owner, address _spender) constant returns (uint256);
+  function balanceOf(address _owner) public constant returns (uint256);
+  function transfer(address _to, uint256 _value) public returns (bool);
+  function transferFrom(address _from, address _to, uint256 _amount) public returns (bool);
+  function approve(address _spender, uint256 _amount) public returns (bool);
+  function allowance(address _owner, address _spender) public constant returns (uint256);
 
   event Transfer(address indexed from, address indexed to, uint256 value);
   event Approval(address indexed owner, address indexed spender, uint256 value);
@@ -252,7 +252,7 @@ contract FirstSale is Pausable, TokenInfo {
   event LogInt(string _name, uint256 _value);
   event Finalized();
 
-  function FirstSale(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
+  constructor(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
     require(_tokenAddress != 0x0);
     require(_startTime > 0);
     require(_endTime > _startTime);
@@ -294,7 +294,7 @@ contract FirstSale is Pausable, TokenInfo {
     contributors = contributors.add(1);
 
     ledToken.mint(_beneficiary, tokens);
-    TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
+    emit TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
     forwardFunds();
   }
 
@@ -372,7 +372,7 @@ contract FirstSale is Pausable, TokenInfo {
     ledToken.mint(ledMultiSig, surplusTokens);
     ledToken.transferControl(owner);
 
-    Finalized();
+    emit Finalized();
 
     finalized = true;
   }
@@ -457,7 +457,7 @@ contract LedToken is Controllable {
 
 
 
-  function LedToken(
+  constructor(
     address _tokenFactory,
     address _parentToken,
     uint256 _parentSnapShotBlock,
@@ -584,7 +584,7 @@ contract LedToken is Controllable {
     require((_amount == 0) || (allowed[msg.sender][_spender] == 0));
 
     allowed[msg.sender][_spender] = _amount;
-    Approval(msg.sender, _spender, _amount);
+    emit Approval(msg.sender, _spender, _amount);
     return true;
   }
 
@@ -652,7 +652,7 @@ contract LedToken is Controllable {
     updateValueAtNow(balances[_to], previousBalanceTo + _amount);
 
     // An event to make the transfer easy to find on the blockchain
-    Transfer(_from, _to, _amount);
+    emit Transfer(_from, _to, _amount);
     return true;
   }
 
@@ -672,7 +672,7 @@ contract LedToken is Controllable {
 
     updateValueAtNow(totalSupplyHistory, curTotalSupply + _amount);
     updateValueAtNow(balances[_owner], previousBalanceTo + _amount);
-    Transfer(0, _owner, _amount);
+    emit Transfer(0, _owner, _amount);
     return true;
   }
 
@@ -697,7 +697,7 @@ contract LedToken is Controllable {
       totalSupplyAtCheckpoint += _balances[i];
       updateValueAtNow(balances[_addresses[i]], _balances[i]);
       updateValueAtNow(totalSupplyHistory, totalSupplyAtCheckpoint);
-      Transfer(0, _addresses[i], _balances[i]);
+      emit Transfer(0, _addresses[i], _balances[i]);
     }
     return true;
   }
@@ -717,7 +717,7 @@ contract LedToken is Controllable {
   */
   function finishMinting() public onlyController returns (bool) {
     mintingFinished = true;
-    MintFinished();
+    emit MintFinished();
     return true;
   }
 
@@ -784,7 +784,7 @@ contract LedToken is Controllable {
   }
 
 
-  function min(uint256 a, uint256 b) internal constant returns (uint) {
+  function min(uint256 a, uint256 b) internal pure returns (uint) {
       return a < b ? a : b;
   }
 
@@ -816,7 +816,7 @@ contract LedToken is Controllable {
       cloneToken.transferControl(msg.sender);
 
       // An event to make the token easy to find on the blockchain
-      NewCloneToken(address(cloneToken));
+      emit NewCloneToken(address(cloneToken));
       return address(cloneToken);
     }
 
@@ -901,7 +901,7 @@ contract Presale is Pausable, TokenInfo {
   event LogInt(string _name, uint256 _value);
   event Finalized();
 
-  function Presale(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
+  constructor(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
     require(_tokenAddress != 0x0);
     require(_startTime > 0);
     require(_endTime > _startTime);
@@ -952,11 +952,11 @@ contract Presale is Pausable, TokenInfo {
     contributors = contributors.add(1);
 
     ledToken.mint(_beneficiary, tokens);
-    TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
+    emit TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
     forwardFunds();
   }
 
-  function determineBonus(uint256 _wei) constant public returns (uint256) {
+  function determineBonus(uint256 _wei) public pure returns (uint256) {
     if(_wei > PRESALE_LEVEL_1) {
       if(_wei > PRESALE_LEVEL_2) {
         if(_wei > PRESALE_LEVEL_3) {
@@ -1054,7 +1054,7 @@ contract Presale is Pausable, TokenInfo {
     ledToken.mint(ledMultiSig, surplusTokens);
     ledToken.transferControl(owner);
 
-    Finalized();
+    emit Finalized();
 
     finalized = true;
   }
@@ -1078,7 +1078,7 @@ contract Presale is Pausable, TokenInfo {
     );
   }
   
-  function getInfoLevels() public constant returns(uint256, uint256, uint256, uint256, uint256, uint256, 
+  function getInfoLevels() public pure returns(uint256, uint256, uint256, uint256, uint256, uint256, 
   uint256, uint256, uint256, uint256){
     return (
       PRESALE_LEVEL_1, // Amount of ether needed per bonus level
@@ -1154,7 +1154,7 @@ contract PrivateSale is Pausable, TokenInfo {
   event LogInt(string _name, uint256 _value);
   event Finalized();
 
-  function PrivateSale(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
+  constructor(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
     require(_tokenAddress != 0x0);
     require(_startTime > 0);
     require(_endTime > _startTime);
@@ -1205,11 +1205,11 @@ contract PrivateSale is Pausable, TokenInfo {
     contributors = contributors.add(1);
 
     ledToken.mint(_beneficiary, tokens);
-    TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
+    emit TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
     forwardFunds();
   }
 
-  function determineBonus(uint256 _wei) constant public returns (uint256) {
+  function determineBonus(uint256 _wei) public pure returns (uint256) {
     if(_wei > PRIVATESALE_LEVEL_1) {
       if(_wei > PRIVATESALE_LEVEL_2) {
         if(_wei > PRIVATESALE_LEVEL_3) {
@@ -1307,7 +1307,7 @@ contract PrivateSale is Pausable, TokenInfo {
     ledToken.mint(ledMultiSig, surplusTokens);
     ledToken.transferControl(owner);
 
-    Finalized();
+    emit Finalized();
 
     finalized = true;
   }
@@ -1331,7 +1331,7 @@ contract PrivateSale is Pausable, TokenInfo {
     );
   }
   
-  function getInfoLevels() public constant returns(uint256, uint256, uint256, uint256, uint256, uint256, 
+  function getInfoLevels() public pure returns(uint256, uint256, uint256, uint256, uint256, uint256, 
   uint256, uint256, uint256, uint256){
     return (
       PRESALE_LEVEL_1, // Amount of ether needed per bonus level
@@ -1370,25 +1370,25 @@ contract PrivateSale is Pausable, TokenInfo {
  * @dev Math operations with safety checks that throw on error
  */
 library SafeMath {
-  function mul(uint256 a, uint256 b) internal constant returns (uint256) {
+  function mul(uint256 a, uint256 b) internal pure returns (uint256) {
     uint256 c = a * b;
     assert(a == 0 || c / a == b);
     return c;
   }
 
-  function div(uint256 a, uint256 b) internal constant returns (uint256) {
+  function div(uint256 a, uint256 b) internal pure returns (uint256) {
     // assert(b > 0); // Solidity automatically throws when dividing by 0
     uint256 c = a / b;
     // assert(a == b * c + a % b); // There is no case in which this doesn't hold
     return c;
   }
 
-  function sub(uint256 a, uint256 b) internal constant returns (uint256) {
+  function sub(uint256 a, uint256 b) internal pure returns (uint256) {
     assert(b <= a);
     return a - b;
   }
 
-  function add(uint256 a, uint256 b) internal constant returns (uint256) {
+  function add(uint256 a, uint256 b) internal pure returns (uint256) {
     uint256 c = a + b;
     assert(c >= a);
     return c;
@@ -1468,7 +1468,7 @@ contract TokenSale is Pausable, TokenInfo {
   event LogInt(string _name, uint256 _value);
   event Finalized();
 
-  function TokenSale(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
+  constructor(address _tokenAddress, uint256 _startTime, uint256 _endTime) public {
     require(_tokenAddress != 0x0);
     require(_startTime > 0);
     require(_endTime > _startTime);
@@ -1518,11 +1518,11 @@ contract TokenSale is Pausable, TokenInfo {
     contributors = contributors.add(1);
 
     ledToken.mint(_beneficiary, tokens);
-    TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
+    emit TokenPurchase(msg.sender, _beneficiary, weiAmount, tokens);
     forwardFunds();
   }
 
-  function determineBonus(uint256 _wei) constant public returns (uint256) {
+  function determineBonus(uint256 _wei) public pure returns (uint256) {
     if(_wei > ICO_LEVEL_1) {
       if(_wei > ICO_LEVEL_2) {
         if(_wei > ICO_LEVEL_3) {
@@ -1642,7 +1642,7 @@ contract TokenSale is Pausable, TokenInfo {
 
     ledToken.finishMinting();
     ledToken.enableTransfers(true);
-    Finalized();
+    emit Finalized();
 
     finalized = true;
   }
@@ -1666,7 +1666,7 @@ contract TokenSale is Pausable, TokenInfo {
     );
   }
   
-  function getInfoLevels() public constant returns(uint256, uint256, uint256, uint256, uint256, uint256, 
+  function getInfoLevels() public pure returns(uint256, uint256, uint256, uint256, uint256, uint256, 
   uint256, uint256, uint256, uint256){
     return (
       PRESALE_LEVEL_1, // Amount of ether needed per bonus level

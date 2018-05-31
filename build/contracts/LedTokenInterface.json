@@ -485,7 +485,7 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.4.13;\n\nimport './Controllable.sol';\n\n/**\n * @title LedToken (LED)\n * Standard Mintable ERC20 Token\n * https://github.com/ethereum/EIPs/issues/20\n * Based on code by FirstBlood:\n * https://github.com/Firstbloodio/token/blob/master/smart_contract/FirstBloodToken.sol\n */\ncontract LedTokenInterface is Controllable {\n\n  bool public transfersEnabled;\n\n  event Mint(address indexed to, uint256 amount);\n  event MintFinished();\n  event ClaimedTokens(address indexed _token, address indexed _owner, uint _amount);\n  event NewCloneToken(address indexed _cloneToken, uint _snapshotBlock);\n  event Approval(address indexed _owner, address indexed _spender, uint256 _amount);\n  event Transfer(address indexed from, address indexed to, uint256 value);\n\n  function totalSupply() public constant returns (uint);\n  function totalSupplyAt(uint _blockNumber) public constant returns(uint);\n  function balanceOf(address _owner) public constant returns (uint256 balance);\n  function balanceOfAt(address _owner, uint _blockNumber) public constant returns (uint);\n  function transfer(address _to, uint256 _amount) public returns (bool success);\n  function transferFrom(address _from, address _to, uint256 _amount) public returns (bool success);\n  function approve(address _spender, uint256 _amount) public returns (bool success);\n  function approveAndCall(address _spender, uint256 _amount, bytes _extraData) public returns (bool success);\n  function allowance(address _owner, address _spender) public constant returns (uint256 remaining);\n  function mint(address _owner, uint _amount) public returns (bool);\n  function importPresaleBalances(address[] _addresses, uint256[] _balances, address _presaleAddress) public returns (bool);\n  function lockPresaleBalances() public returns (bool);\n  function finishMinting() public returns (bool);\n  function enableTransfers(bool _value) public;\n  function enableMasterTransfers(bool _value) public;\n  function createCloneToken(uint _snapshotBlock, string _cloneTokenName, string _cloneTokenSymbol) public returns (address);\n\n}",
+  "source": "pragma solidity ^0.4.24;\n\nimport './Controllable.sol';\n\n/**\n * @title LedToken (LED)\n * Standard Mintable ERC20 Token\n * https://github.com/ethereum/EIPs/issues/20\n * Based on code by FirstBlood:\n * https://github.com/Firstbloodio/token/blob/master/smart_contract/FirstBloodToken.sol\n */\ncontract LedTokenInterface is Controllable {\n\n  bool public transfersEnabled;\n\n  event Mint(address indexed to, uint256 amount);\n  event MintFinished();\n  event ClaimedTokens(address indexed _token, address indexed _owner, uint _amount);\n  event NewCloneToken(address indexed _cloneToken, uint _snapshotBlock);\n  event Approval(address indexed _owner, address indexed _spender, uint256 _amount);\n  event Transfer(address indexed from, address indexed to, uint256 value);\n\n  function totalSupply() public constant returns (uint);\n  function totalSupplyAt(uint _blockNumber) public constant returns(uint);\n  function balanceOf(address _owner) public constant returns (uint256 balance);\n  function balanceOfAt(address _owner, uint _blockNumber) public constant returns (uint);\n  function transfer(address _to, uint256 _amount) public returns (bool success);\n  function transferFrom(address _from, address _to, uint256 _amount) public returns (bool success);\n  function approve(address _spender, uint256 _amount) public returns (bool success);\n  function approveAndCall(address _spender, uint256 _amount, bytes _extraData) public returns (bool success);\n  function allowance(address _owner, address _spender) public constant returns (uint256 remaining);\n  function mint(address _owner, uint _amount) public returns (bool);\n  function importPresaleBalances(address[] _addresses, uint256[] _balances, address _presaleAddress) public returns (bool);\n  function lockPresaleBalances() public returns (bool);\n  function finishMinting() public returns (bool);\n  function enableTransfers(bool _value) public;\n  function enableMasterTransfers(bool _value) public;\n  function createCloneToken(uint _snapshotBlock, string _cloneTokenName, string _cloneTokenSymbol) public returns (address);\n\n}",
   "sourcePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/LedTokenInterface.sol",
   "ast": {
     "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/LedTokenInterface.sol",
@@ -503,7 +503,7 @@
           "solidity",
           "^",
           "0.4",
-          ".13"
+          ".24"
         ],
         "nodeType": "PragmaDirective",
         "src": "0:24:6"
@@ -2594,7 +2594,7 @@
           "solidity",
           "^",
           "0.4",
-          ".13"
+          ".24"
         ],
         "nodeType": "PragmaDirective",
         "src": "0:24:6"
@@ -4671,9 +4671,9 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.4.23+commit.124ca40d.Emscripten.clang"
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-30T19:21:37.595Z"
+  "updatedAt": "2018-05-31T08:04:29.997Z"
 }
