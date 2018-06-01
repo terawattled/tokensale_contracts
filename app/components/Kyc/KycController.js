@@ -50,32 +50,86 @@ module.exports = {
         });
     }, // store function close
 
-    /*/!**
-     * show() get details of particular resource
+    /**
+     * get() get details of particular resource
      * based on passed resource id
      *
      * @url {{URL}}/transaction/resourceId
      * @param <ObjectId> resourceId
      * @return <Element> Resource Details
-     *!/
+     */
 
-    show: function (req, res) {
-        helpers.findOne(res, Transaction, constants.TRANSACTION_MODEL_NAME,
-            {'_id': req.params.objectId}, {},
-            function (transaction) {
-                if (!transaction || typeof transaction === 'undefined') {
-                    log("Refer does not exist for " + req.params.objectId + " in show method :");
-                    helpers.createResponse(res, constants.UNPROCESSED,
-                        messages.MODULE_NOT_FOUND(constants.TRANSACTION_MODEL_NAME),
-                        {'error': messages.MODULE_NOT_FOUND(constants.TRANSACTION_MODEL_NAME)});
-                } else {
-                    log('Transaction show API Success!');
-                    helpers.createResponse(res, constants.SUCCESS,
-                        messages.MODULE_SHOW_SUCCESS(constants.TRANSACTION_MODEL_NAME),
-                        { 'data' : transaction }
-                    );
-                }
+    get: function (req, res) {
+        
+        helpers.getSwiftAccessToken().then(response => {
+            
+            return helpers.getSwiftCustomer(response.access_token, req.params.objectId);
+        }).then(customer=>{
+            helpers.createResponse(res, constants.SUCCESS,
+                messages.KYC_SUCCESS,
+                {'data': customer}
+            );
+        }).catch ((err) => {
+            log('Error in kyc => get API : ', err);
+                helpers.createResponse(res, constants.SERVER_ERROR,
+                messages.SERVER_ERROR_MESSAGE,
+                {'error': messages.SERVER_ERROR_MESSAGE}
+            );
+        });
+    }, //show function close
+
+    put: function (req, res) {
+        
+        helpers.getSwiftAccessToken().then(response => {
+            var customer = {
+                type: req.body.type,
+                // telephone: req.body.telephone,
+                email: req.body.email
+            };
+            if (req.body.type == 'INDIVIDUAL') {
+                customer.first_name = req.body.first_name;
+                customer.last_name = req.body.last_name;
+            } else if (req.body.type == 'COMPANY') {
+                customer.company_name = req.body.company_name;
             }
-        );
-    }, //show function close*/
+            
+            return helpers.updateSwiftCustomer(response.access_token, customer, req.params.objectId);
+        }).then(updatedCustomer=>{
+            
+            helpers.createResponse(res, constants.SUCCESS,
+                messages.KYC_SUCCESS,
+                {'data': updatedCustomer}
+            );
+        }).catch ((err) => {
+            log('Error in kyc => store API : ', err);
+                helpers.createResponse(res, constants.SERVER_ERROR,
+                messages.SERVER_ERROR_MESSAGE,
+                {'error': messages.SERVER_ERROR_MESSAGE}
+            );
+        });
+    }, // store function close
+
+    
+    createDocuments: function (req, res) {
+        
+        helpers.getSwiftAccessToken().then(response => {
+            var document = {
+                type: req.body.type
+            };
+            return helpers.createSwiftDocument(response.access_token, req.params.objectId, document);
+        }).then(document=>{
+            
+            helpers.createResponse(res, constants.SUCCESS,
+                messages.KYC_SUCCESS,
+                {'data': document}
+            );
+        }).catch ((err) => {
+            log('Error in kyc => store API : ', err);
+                helpers.createResponse(res, constants.SERVER_ERROR,
+                messages.SERVER_ERROR_MESSAGE,
+                {'error': messages.SERVER_ERROR_MESSAGE}
+            );
+        });
+    }, // store function close
+
 };

@@ -474,7 +474,45 @@ module.exports = {
             json: true
         };
         return rp(options);
-    }
+    },
+
+    getSwiftCustomer : function(token, customerId) {
+        var options = {
+            uri: config.SWIFT_BASE_URL + 'customers/' + customerId,
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            json: true
+        };
+        return rp(options);
+    },
+
+    updateSwiftCustomer : function(token, customer, customerId) {
+        var options = {
+            uri: config.SWIFT_BASE_URL + 'customers/' + customerId,
+            method: 'PUT',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            body: customer,
+            json: true
+        };
+        return rp(options);
+    },
+    
+    createSwiftDocument : function(token, customerId, document) {
+        var options = {
+            uri: config.SWIFT_BASE_URL + 'customers/' + customerId,
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            body: document,
+            json: true
+        };
+        return rp(options);
+    },
 };
 
 function readHTMLFile(path, callback) {
