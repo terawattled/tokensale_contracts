@@ -109,6 +109,9 @@ module.exports = {
     WRONG_CREDENTIALS       : 'Email and password does not match.',
     REFERCODE_SUCCESS       : 'Refer Code has been generated successfully.',
 
+
+    KYC_SUCCESS       : 'KYC generated successfully.',
+
     URL_NOT_FOUND           : 'The URL you are looking for is not found!',
     USER_NOT_FOUND          : 'The User you are looking for is not found!',
     INVALID_MONGO_OBJECT_ID : 'The ObjectId is not a valid mongoId.',

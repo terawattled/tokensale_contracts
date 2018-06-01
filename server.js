@@ -99,7 +99,7 @@ try {
 } catch (err) {
     conn_string = "mongodb://localhost:27017/" + config.DB_NAME;
 }
-
+conn_string = "mongodb://localhost:27017/" + config.DB_NAME;
 mongoose.connect(
                 conn_string,
                 {useMongoClient: true}
@@ -112,9 +112,11 @@ var publicRoutes      = require(BASE_PATH + '/routes/index.js');
 var userRoutes        = require(BASE_PATH + '/app/components/User/UserRoute');
 var transactionRoutes = require(BASE_PATH + '/app/components/Transaction/TransactionRoute');
 var refercodeRoutes   = require(BASE_PATH + '/app/components/Refercode/RefercodeRoute');
+var kycRoutes   = require(BASE_PATH + '/app/components/Kyc/KycRoute');
 
 app.use('/api/transaction', validatorClass.useJWTMiddleware(), transactionRoutes); //transaction routes
 app.use('/api/user', validatorClass.useJWTMiddleware(), userRoutes); //user routes
+app.use('/api/kyc', validatorClass.useJWTMiddleware(), kycRoutes); //user routes
 
 //Keep this route to last route as we need static token for this route
 app.use('/api/referrals', validatorClass.allowGuestRequests(), refercodeRoutes); //refercode routes

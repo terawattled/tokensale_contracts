@@ -26,5 +26,10 @@ module.exports = {
     SORT_BY          : 'CreatedAt',
     SORT_ORDER       : 'desc',
     PAGE_NUMBER      : 1,
-    RECORDS_PER_PAGE : 10
+    RECORDS_PER_PAGE : 10,
+
+    //SwiftDil
+    SWIFT_BASE_URL         : 'https://sandbox.swiftdil.com/v1/',
+    SWIFT_CLIENT_ID        : 'terawatt-demo',
+    SWIFT_CLIENT_KEY       : '051c5977-0634-444b-8337-b1a9c0de2846',
 };

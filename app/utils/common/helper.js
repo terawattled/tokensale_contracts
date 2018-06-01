@@ -4,7 +4,10 @@ var jwt     = require('jsonwebtoken');
 var hbs     = require('handlebars');
 const nodemailer   = require('nodemailer');
 const sgMail = require('@sendgrid/mail');
+const rp = require('request-promise');
 
+var User           = require(BASE_PATH + '/app/components/User/UserSchema');
+var UserModel      = require(BASE_PATH + '/app/components/User/UserModel');
 
 module.exports = {
     //create function for response
@@ -375,6 +378,40 @@ module.exports = {
         });
     },
 
+    updateUserDetails: function(req, res, params) {
+        return new Promise((resolve, reject)=>{
+            var loggedInUser = helpers.parseJWTToken(req);
+            if (! loggedInUser) {
+                log('Error in parsing JWT token');
+                reject(new Error(messages.SERVER_ERROR_MESSAGE));
+            } else {
+                helpers.findOne(res, User, constants.USER_MODEL_NAME,
+                    {_id: loggedInUser._id}, {},
+                    function (user) {
+                        if (!user || typeof user === 'undefined') {
+                            log('User does not exist');
+                            reject(new Error(messages.SERVER_ERROR_MESSAGE));
+                        } else {
+                            helpers.findOneUpdateOrInsert(res, User, constants.USER_MODEL_NAME,
+                                {_id: user._id},
+                                {
+                                    $set: params
+                                },
+                                {new: true, runValidators: true},
+                                function (updatedUser) {
+                                    resolve(updatedUser);
+                                }
+                            );
+                        }
+                    }
+                );
+            }
+        }).catch((err) => {
+            log('Error during updateProfileDetails => catch block');
+            throw err;
+        });
+    },
+
     getIndianDate : function() {
         var d = new Date();
         var localTime = d.getTime();
@@ -411,6 +448,32 @@ module.exports = {
             };
             sgMail.send(msg)
         });
+    },
+
+    getSwiftAccessToken : function() {
+        var options = {
+            uri: config.SWIFT_BASE_URL + 'oauth2/token',
+            method: 'POST',
+            auth: {
+                'user': config.SWIFT_CLIENT_ID,
+                'pass': config.SWIFT_CLIENT_KEY
+            },
+            json: true
+        };
+        return rp(options);
+    },
+
+    createSwiftCustomer : function(token, customer) {
+        var options = {
+            uri: config.SWIFT_BASE_URL + 'customers',
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            body: customer,
+            json: true
+        };
+        return rp(options);
     }
 };
 

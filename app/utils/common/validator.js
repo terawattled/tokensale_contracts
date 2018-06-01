@@ -224,6 +224,36 @@ module.exports = {
         }
     },
 
+    kycRouteValidate:function (method) {
+        return function (req, res, next) {
+            switch(method) {
+                case 'store' :
+                    // req.checkBody('email', helpers.checkIfRequired('Email')).notEmpty()
+                    //     .isEmail().withMessage(helpers.checkIfEmail('Email'))
+                    //     .len(3, 100).withMessage(helpers.checkLength('Email', 3, 100));
+                    // req.checkBody('ethereumAddress', helpers.checkIfRequired('Ethereum Address')).notEmpty();
+
+                    break;
+
+                case 'show' :
+                    req.checkParams('objectId', helpers.checkIfRequired('objectId')).notEmpty()
+                        .isMongoId().withMessage(helpers.checkIfValidMongoId('objectId'));
+                    break;
+            }
+            req.getValidationResult().then( result => {
+                var errors = result.useFirstErrorOnly();
+                if (! errors.isEmpty()) {
+                    helpers.createResponse(res, constants.UNPROCESSED,
+                        messages.PARAM_MISSING,
+                        { 'error' : errors.array()[0].msg }
+                    );
+                } else {
+                    next();
+                }
+            });
+        }
+    },
+
     useJWTMiddleware:function() {
         return function (req, res, next) {
             var token = req.headers['authorization']; // Parse token from header

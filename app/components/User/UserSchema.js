@@ -52,6 +52,9 @@ var userSchema = new Schema({
     isAuthenticated : {
         type     : Boolean,
         default  : false
+    },
+    switfdilCustomerID : {
+        type     : String
     }
 }, {timestamps: true});
 
@@ -65,7 +68,8 @@ userSchema.methods.getUser = function() {
         referralCode        : this.referralCode,
         email               : this.email,
         is2FAOn             : this.is2FAOn,
-        encryptContainer    : this.encryptContainer
+        encryptContainer    : this.encryptContainer,
+        switfdilCustomerID  : this.switfdilCustomerID
     };
     return userDetail;
 };
