@@ -110,6 +110,25 @@ module.exports = {
     }, // store function close
 
     
+    getDocuments: function (req, res) {
+        
+        helpers.getSwiftAccessToken().then(response => {
+            return helpers.getSwiftDocuments(response.access_token, req.params.objectId);
+        }).then(documents=>{
+            
+            helpers.createResponse(res, constants.SUCCESS,
+                messages.KYC_SUCCESS,
+                {'data': documents}
+            );
+        }).catch ((err) => {
+            log('Error in kyc => store API : ', err);
+                helpers.createResponse(res, constants.SERVER_ERROR,
+                messages.SERVER_ERROR_MESSAGE,
+                {'error': messages.SERVER_ERROR_MESSAGE}
+            );
+        });
+    }, // store function close
+
     createDocuments: function (req, res) {
         
         helpers.getSwiftAccessToken().then(response => {

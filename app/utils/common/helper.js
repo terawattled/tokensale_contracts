@@ -503,12 +503,24 @@ module.exports = {
     
     createSwiftDocument : function(token, customerId, document) {
         var options = {
-            uri: config.SWIFT_BASE_URL + 'customers/' + customerId,
+            uri: config.SWIFT_BASE_URL + 'customers/' + customerId + '/documents',
             method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + token
             },
             body: document,
+            json: true
+        };
+        return rp(options);
+    },
+
+    getSwiftDocuments : function(token, customerId) {
+        var options = {
+            uri: config.SWIFT_BASE_URL + 'customers/' + customerId + '/documents',
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
             json: true
         };
         return rp(options);
