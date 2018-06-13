@@ -130,14 +130,25 @@ module.exports = {
     }, // store function close
 
     createDocuments: function (req, res) {
-        
+
         helpers.getSwiftAccessToken().then(response => {
-            var document = {
-                type: req.body.type
-            };
-            return helpers.createSwiftDocument(response.access_token, req.params.objectId, document);
+            var front_path = path.join(__dirname, '../../../uploads/', req.files.front_side.name);
+            var back_path = path.join(__dirname, '../../../uploads/', req.files.back_side.name);
+            return Promise.all( [req.files.front_side.mv(front_path), req.files.back_side.mv(back_path)] )
+            .then(()=>{
+
+                var documentFormData = {
+                    type: req.body.type,
+                    front_side: fs.createReadStream(front_path), 
+                    back_side: fs.createReadStream(back_path)
+                };
+
+                console.log(documentFormData);
+                
+                return helpers.createSwiftDocument(response.access_token, req.params.objectId, documentFormData);
+            })
         }).then(document=>{
-            
+
             helpers.createResponse(res, constants.SUCCESS,
                 messages.KYC_SUCCESS,
                 {'data': document}

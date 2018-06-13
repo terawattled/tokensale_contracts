@@ -501,16 +501,17 @@ module.exports = {
         return rp(options);
     },
     
-    createSwiftDocument : function(token, customerId, document) {
+    createSwiftDocument : function(token, customerId, documentFormData) {
         var options = {
             uri: config.SWIFT_BASE_URL + 'customers/' + customerId + '/documents',
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer ' + token
+                'Authorization': 'Bearer ' + token,
+                'content-type': 'multipart/form-data'
             },
-            body: document,
-            json: true
+            formData: documentFormData,
         };
+
         return rp(options);
     },
 
