@@ -24,7 +24,7 @@ contract LedToken is Controllable {
   bool public transfersEnabled;
 
   bool public masterTransfersEnabled;
-  address public masterWallet = 0xD8271285C255Ce31b9b25E46ac63619322Af5934;
+  address public masterWallet = 0xADe96dEDa9EC81aF99F8472b882708d85dc16514;
 
 
   struct Checkpoint {
@@ -413,5 +413,7 @@ contract LedToken is Controllable {
       emit NewCloneToken(address(cloneToken));
       return address(cloneToken);
     }
+
+
 
 }

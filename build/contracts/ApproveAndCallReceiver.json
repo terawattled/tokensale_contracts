@@ -33,9 +33,9 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.4.24;\n\ncontract ApproveAndCallReceiver {\n    function receiveApproval(address from, uint256 _amount, address _token, bytes _data) public;\n}",
-  "sourcePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/ApproveAndCallReceiver.sol",
+  "sourcePath": "/Users/jeromeraymond/tokensale_contracts/contracts/ApproveAndCallReceiver.sol",
   "ast": {
-    "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/ApproveAndCallReceiver.sol",
+    "absolutePath": "/Users/jeromeraymond/tokensale_contracts/contracts/ApproveAndCallReceiver.sol",
     "exportedSymbols": {
       "ApproveAndCallReceiver": [
         13
@@ -210,7 +210,7 @@
     "src": "0:158:0"
   },
   "legacyAST": {
-    "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/ApproveAndCallReceiver.sol",
+    "absolutePath": "/Users/jeromeraymond/tokensale_contracts/contracts/ApproveAndCallReceiver.sol",
     "exportedSymbols": {
       "ApproveAndCallReceiver": [
         13
@@ -390,5 +390,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-31T08:04:29.990Z"
+  "updatedAt": "2018-06-14T13:47:14.173Z"
 }

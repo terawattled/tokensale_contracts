@@ -36,14 +36,14 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b5060008054600160a060020a0319163317905561017f806100326000396000f30060806040526004361061004b5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416636d16fa418114610050578063f77c479114610080575b600080fd5b34801561005c57600080fd5b5061007e73ffffffffffffffffffffffffffffffffffffffff600435166100be565b005b34801561008c57600080fd5b50610095610137565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b60005473ffffffffffffffffffffffffffffffffffffffff1633146100e257600080fd5b73ffffffffffffffffffffffffffffffffffffffff811615610134576000805473ffffffffffffffffffffffffffffffffffffffff191673ffffffffffffffffffffffffffffffffffffffff83161790555b50565b60005473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820c93c190155727a9449fdf47ee0ccc0e9c2f18fba381902f0fee4507f3be3157f0029",
-  "deployedBytecode": "0x60806040526004361061004b5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416636d16fa418114610050578063f77c479114610080575b600080fd5b34801561005c57600080fd5b5061007e73ffffffffffffffffffffffffffffffffffffffff600435166100be565b005b34801561008c57600080fd5b50610095610137565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b60005473ffffffffffffffffffffffffffffffffffffffff1633146100e257600080fd5b73ffffffffffffffffffffffffffffffffffffffff811615610134576000805473ffffffffffffffffffffffffffffffffffffffff191673ffffffffffffffffffffffffffffffffffffffff83161790555b50565b60005473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820c93c190155727a9449fdf47ee0ccc0e9c2f18fba381902f0fee4507f3be3157f0029",
+  "bytecode": "0x608060405234801561001057600080fd5b5060008054600160a060020a0319163317905561017f806100326000396000f30060806040526004361061004b5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416636d16fa418114610050578063f77c479114610080575b600080fd5b34801561005c57600080fd5b5061007e73ffffffffffffffffffffffffffffffffffffffff600435166100be565b005b34801561008c57600080fd5b50610095610137565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b60005473ffffffffffffffffffffffffffffffffffffffff1633146100e257600080fd5b73ffffffffffffffffffffffffffffffffffffffff811615610134576000805473ffffffffffffffffffffffffffffffffffffffff191673ffffffffffffffffffffffffffffffffffffffff83161790555b50565b60005473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820b8527ee7f0fbe98dc68dc4b88a522e70cdb11eae10f9940354ae85b89caa6ceb0029",
+  "deployedBytecode": "0x60806040526004361061004b5763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416636d16fa418114610050578063f77c479114610080575b600080fd5b34801561005c57600080fd5b5061007e73ffffffffffffffffffffffffffffffffffffffff600435166100be565b005b34801561008c57600080fd5b50610095610137565b6040805173ffffffffffffffffffffffffffffffffffffffff9092168252519081900360200190f35b60005473ffffffffffffffffffffffffffffffffffffffff1633146100e257600080fd5b73ffffffffffffffffffffffffffffffffffffffff811615610134576000805473ffffffffffffffffffffffffffffffffffffffff191673ffffffffffffffffffffffffffffffffffffffff83161790555b50565b60005473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820b8527ee7f0fbe98dc68dc4b88a522e70cdb11eae10f9940354ae85b89caa6ceb0029",
   "sourceMap": "232:703:1:-;;;400:55;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;427:10:1;:23;;-1:-1:-1;;;;;;427:23:1;440:10;427:23;;;232:703;;;;;;",
   "deployedSourceMap": "232:703:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;778:154;;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;778:154:1;;;;;;;;;258:25;;8:9:-1;5:2;;;30:1;27;20:12;5:2;258:25:1;;;;;;;;;;;;;;;;;;;;;;;778:154;589:10;;;;575;:24;567:33;;;;;;858:27;;;;854:74;;895:10;:26;;-1:-1:-1;;895:26:1;;;;;;;854:74;778:154;:::o;258:25::-;;;;;;:::o",
   "source": "pragma solidity ^0.4.24;\n\n\n/**\n * @title Controllable\n * @dev The Controllable contract has an controller address, and provides basic authorization control\n * functions, this simplifies the implementation of \"user permissions\".\n */\ncontract Controllable {\n  address public controller;\n\n\n  /**\n   * @dev The Ownable constructor sets the original `owner` of the contract to the sender account.\n   */\n  constructor() public {\n    controller = msg.sender;\n  }\n\n  /**\n   * @dev Throws if called by any account other than the owner.\n   */\n  modifier onlyController() {\n    require(msg.sender == controller);\n    _;\n  }\n\n  /**\n   * @dev Allows the current owner to transfer control of the contract to a newOwner.\n   * @param newController The address to transfer ownership to.\n   */\n  function transferControl(address newController) public onlyController {\n    if (newController != address(0)) {\n      controller = newController;\n    }\n  }\n\n}",
-  "sourcePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/Controllable.sol",
+  "sourcePath": "/Users/jeromeraymond/tokensale_contracts/contracts/Controllable.sol",
   "ast": {
-    "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/Controllable.sol",
+    "absolutePath": "/Users/jeromeraymond/tokensale_contracts/contracts/Controllable.sol",
     "exportedSymbols": {
       "Controllable": [
         57
@@ -567,7 +567,7 @@
     "src": "0:935:1"
   },
   "legacyAST": {
-    "absolutePath": "/Users/julesdesmit/Desktop/workspace/terawatt/tokensale_contracts/contracts/Controllable.sol",
+    "absolutePath": "/Users/jeromeraymond/tokensale_contracts/contracts/Controllable.sol",
     "exportedSymbols": {
       "Controllable": [
         57
@@ -1096,5 +1096,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-  "updatedAt": "2018-05-31T08:04:29.990Z"
+  "updatedAt": "2018-06-14T13:47:14.174Z"
 }

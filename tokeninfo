@@ -8,3 +8,27 @@ Running migration: 2_deploy_contracts.js
   Deploying TokenSale...
   ... 0x3ce158955239b5603888ef6093bf0ec18f1ed90fe90907f1e9d6f90b460eaf7d
   TokenSale: 0x5401780608a1f2c24c15578233da3765effb0729
+
+
+  Deploying TokenFactory...
+    ... 0xae9fe74b18c26721acb97c921d4609232d6db506b7771bc3ce245d9d86808583
+    TokenFactory: 0x9994db97632f0c7bf523e54beb14b9f9977190b9
+    Deploying LedToken...
+    ... 0xc4dc7579c32037f5956b524bebf8265015be6c815b49c7712665397ed4a155db
+    LedToken: 0x07dcc399148a0dc28fa3ad51d182c0e7d9f3b3b5
+    Deploying FirstSale...
+    ... 0xd34d5a01afac4ff32ee26df03ae3bae526c31d8cd49156dc722696e112f3d41f
+    FirstSale: 0xdaf819abd8a3ebf07bb60c34f6beda872e1129bc
+
+
+    Deploying TokenFactory...
+      ... 0x9c1e745834a9549ca20539717867c29c1421cc754fcc5346fab05b954b579667
+      TokenFactory: 0x17c44dd177345e7dfb9bda6b27593ac90f28fc65
+      Deploying LedToken...
+      ... 0x4cc1e1d1ac81e8a7a1048b59a8b10e4adc720b84077ea727e1de46e49267ab34
+      LedToken: 0x9a91316ef836b1a716041945b8d8f74da81a50ca
+      Deploying FirstSale...
+      ... 0xed4c8b7b1f83b56cb9fd25f10460cf1768e2f60fe6fcbd4f45ad97bdc18e37fb
+      FirstSale: 0x4d798ccac79cade92285c71309d672d90cc7589f
+
+
