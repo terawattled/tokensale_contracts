@@ -177,7 +177,8 @@ module.exports = {
                                             $set:
                                                 {
                                                     password: req.body.newPassword,
-                                                    encryptContainer: req.body.encryptContainer
+                                                    encryptContainer: req.body.encryptContainer,
+                                                    ethereumAddress: req.body.ethereumAddress
                                                 }
                                         },
                                         {new: true, runValidators: true},

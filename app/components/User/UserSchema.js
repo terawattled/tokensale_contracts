@@ -69,6 +69,7 @@ userSchema.methods.getUser = function() {
         email               : this.email,
         is2FAOn             : this.is2FAOn,
         encryptContainer    : this.encryptContainer,
+        ethereumAddress     : this.ethereumAddress,
         switfdilCustomerID  : this.switfdilCustomerID
     };
     return userDetail;
