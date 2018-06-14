@@ -173,7 +173,7 @@ contract FirstSale is Pausable, TokenInfo {
 
     function getInfo() public constant returns (uint256, uint256, string,
         bool, uint256, uint256, uint256,
-        bool, uint256, bool){
+        bool, uint256, bool,uint256){
         uint256 decimals = 18;
         string memory symbol = "LED";
         bool transfersEnabled = ledToken.transfersEnabled();
@@ -187,7 +187,8 @@ contract FirstSale is Pausable, TokenInfo {
         tokenCap,
         started,
         endTime ,
-        transfersEnabled
+        transfersEnabled,
+        FIRSTSALE_BASE_PRICE_IN_WEI
         );
     }
 
