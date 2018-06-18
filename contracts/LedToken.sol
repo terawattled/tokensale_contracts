@@ -24,7 +24,7 @@ contract LedToken is Controllable {
   bool public transfersEnabled;
 
   bool public masterTransfersEnabled;
-  address public masterWallet = 0xADe96dEDa9EC81aF99F8472b882708d85dc16514;
+  address public masterWallet = 0x865e785f98b621c5fdde70821ca7cea9eeb77ef4;
 
 
   struct Checkpoint {
@@ -41,9 +41,7 @@ contract LedToken is Controllable {
 
   uint256 public totalSupplyAtCheckpoint;
 
-  event Mint(address indexed to, uint256 amount);
   event MintFinished();
-  event ClaimedTokens(address indexed _token, address indexed _owner, uint _amount);
   event NewCloneToken(address indexed cloneToken);
   event Approval(address indexed _owner, address indexed _spender, uint256 _amount);
   event Transfer(address indexed from, address indexed to, uint256 value);
@@ -68,10 +66,6 @@ contract LedToken is Controllable {
       masterTransfersEnabled = false;
       creationBlock = block.number;
       version = '0.1';
-  }
-
-  function() public payable {
-    revert();
   }
 
 
@@ -228,7 +222,7 @@ contract LedToken is Controllable {
 
     require(_amount > 0);
     require(parentSnapShotBlock < block.number);
-    require((_to != 0) && (_to != address(this)));
+    require((_to != address(0)) && (_to != address(this)));
 
     // If the amount being transfered is more than the balance of the
     // account the transfer returns false
@@ -413,7 +407,5 @@ contract LedToken is Controllable {
       emit NewCloneToken(address(cloneToken));
       return address(cloneToken);
     }
-
-
 
 }

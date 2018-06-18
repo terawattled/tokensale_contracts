@@ -14,8 +14,8 @@ const moment = require('moment');
 
 const assert = require('assert');
 
-const compiledLedToken = require('../contracts/build/LedToken.json');
-const compiledTokenSale = require('../contracts/build/TokenSale.json');
+const compiledLedToken = require('../mastercontract/build/LedToken.json');
+const compiledTokenSale = require('../mastercontract/build/TokenSale.json');
 
 let accounts;
 let tokenSale;
@@ -42,7 +42,7 @@ beforeEach(async function() {
   wallet = accounts[4];
 
   ledToken = await new web3.eth.Contract(JSON.parse(compiledLedToken.interface))
-  .deploy({data:compiledLedToken.bytecode,arguments:['0x0','0x0',0,'Led Token','PRFT']})
+  .deploy({data:compiledLedToken.bytecode,arguments:['0x0','0x0',0,'Led Token','LED']})
   .send({from:fund,gas:'3000000'});
   ledTokenAddress = ledToken.options.address;
 
@@ -76,9 +76,9 @@ describe('Initial State', function () {
     assert.equal('Led Token',name);
   })
 
-  it('should have PRFT symbol', async function() {
+  it('should have LED symbol', async function() {
     let symbol = await ledToken.methods.symbol().call();
-    assert.equal(symbol,'PRFT');
+    assert.equal(symbol,'LED');
   })
 })
 
@@ -276,9 +276,10 @@ describe('Transfers', function () {
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.mint(sender, 10000).send({from:fund,gas:'3000000'});
+    await ledToken.methods.enableTransfers(true).send({from:fund,gas:'3000000'});
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
 
-    await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
+    
     let initialSenderBalance = await ledToken.methods.balanceOf(sender).call();
     let initialReceiverBalance = await ledToken.methods.balanceOf(receiver).call();
 
@@ -300,9 +301,10 @@ describe('Transfers', function () {
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.mint(sender, 10000).send({from:fund,gas:'3000000'});
+    await ledToken.methods.enableTransfers(true).send({from:fund,gas:'3000000'});
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
 
-    await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
+    
     try {
       await ledToken.methods.transfer(receiver, 10001).send({from:sender,gas:'3000000'});
       assert(false);
@@ -317,9 +319,10 @@ describe('Transfers', function () {
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.mint(sender, 10000).send({from:fund,gas:'3000000'});
+    await ledToken.methods.enableTransfers(true).send({from:fund,gas:'3000000'});
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
 
-    await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
+   
     try {
       await ledToken.methods.transfer(ledTokenAddress, 1000).send({from:sender,gas:'3000000'});
       assert(false);
@@ -358,9 +361,10 @@ describe('Transfers', function () {
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.mint(sender, 10000).send({from:fund,gas:'3000000'});
+    await ledToken.methods.enableTransfers(true).send({from:fund,gas:'3000000'});
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
 
-    await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
+    
 
     let initialSenderBalance = await ledToken.methods.balanceOf(sender).call();
     let initialReceiverBalance = await ledToken.methods.balanceOf(receiver).call();
@@ -380,9 +384,10 @@ describe('Transfers', function () {
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.mint(sender, 10000).send({from:fund,gas:'3000000'});
+    await ledToken.methods.enableTransfers(true).send({from:fund,gas:'3000000'});
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
 
-    await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
+    
 
     let initialSenderBalance = await ledToken.methods.balanceOf(sender).call();
     let initialReceiverBalance = await ledToken.methods.balanceOf(receiver).call();
@@ -405,44 +410,7 @@ describe('Transfers', function () {
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
 
     try {
-      await tokenSale.methods.enableTransfers().send({from:sender,gas:'3000000'});
-      assert(false);
-    } catch(error) {
-      assert(true);
-    }
-  })
-
-  it('transfers can be enabled by anyone after the tokensale ends', async function() {
-    tokenSale = await new web3.eth.Contract(JSON.parse(compiledTokenSale.interface))
-    .deploy({data:compiledTokenSale.bytecode,arguments:[ledTokenAddress,1520000000,1520000020]})
-    .send({from:fund,gas:'3000000'});
-    tokenSaleAddress = tokenSale.options.address;
-    await ledToken.methods.mint(sender, 10000).send({from:fund,gas:'3000000'});
-    await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.enableTransfers().send({from:receiver,gas:'3000000'});
-
-    let initialSenderBalance = await ledToken.methods.balanceOf(sender).call();
-    let initialReceiverBalance = await ledToken.methods.balanceOf(receiver).call();
-
-    await ledToken.methods.transfer(receiver, 1000).send({from:sender,gas:'3000000'});
-
-    let senderBalance = await ledToken.methods.balanceOf(sender).call();
-    let receiverBalance = await ledToken.methods.balanceOf(receiver).call();
-
-    assert.equal(senderBalance,initialSenderBalance-1000);
-    assert.equal(receiverBalance,1000);
-  })
-
-  it('transfers can not be locked after the tokensale ends', async function() {
-    tokenSale = await new web3.eth.Contract(JSON.parse(compiledTokenSale.interface))
-    .deploy({data:compiledTokenSale.bytecode,arguments:[ledTokenAddress,1520000000,1520000020]})
-    .send({from:fund,gas:'3000000'});
-    tokenSaleAddress = tokenSale.options.address;
-    await ledToken.methods.mint(sender, 10000).send({from:fund,gas:'3000000'});
-    await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.enableTransfers().send({from:receiver,gas:'3000000'});
-    try {
-      await tokenSale.methods.lockTransfers().send({from:sender,gas:'3000000'});
+      await ledToken.methods.enableTransfers(true).send({from:sender,gas:'3000000'});
       assert(false);
     } catch(error) {
       assert(true);
@@ -518,8 +486,9 @@ describe('transferFrom: ', function () {
     tokenSaleAddress = tokenSale.options.address;
 
     await ledToken.methods.mint(sender, 1000).send({from:fund,gas:'3000000'});
+    await ledToken.methods.enableTransfers(true).send({from:fund,gas:'3000000'});
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
+    
   })
 
   it('should throw if no allowance has been given', async function() {
