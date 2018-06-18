@@ -5,9 +5,8 @@ const provider = ganache.provider();
 const Web3 = require('web3');
 const web3 = new Web3(provider);
 
-const compiledLedToken = require('../contracts/build/LedToken.json');
-const compiledTokenSale = require('../contracts/build/TokenSale.json');
-const compiledLedPresaleToken = require('../contracts/build/LedPresaleToken.json');
+const compiledLedToken = require('../mastercontract/build/LedToken.json');
+const compiledTokenSale = require('../mastercontract/build/TokenSale.json');
 
 const moment = require('moment');
 
@@ -26,7 +25,7 @@ let startTime;
 let endTime;
 let contractUploadTime;
 
-let ledMultiSig = '0x9c0e9941a4c554f6e1aa1930268a7c992e3c8602';
+let ledMultiSig = '0x865e785f98b621c5fdde70821ca7cea9eeb77ef4';
 
 beforeEach(async function() {
 
@@ -34,10 +33,6 @@ beforeEach(async function() {
   fund = accounts[0];
   sender = accounts[1];
   ledWalletAddress = accounts[9];
-  ledPresaleToken = await new web3.eth.Contract(JSON.parse(compiledLedPresaleToken.interface))
-  .deploy({data:compiledLedPresaleToken.bytecode})
-  .send({from:fund,gas:'3000000'});
-  ledPresaleTokenAddress = ledPresaleToken.options.address;
 
   ledToken = await new web3.eth.Contract(JSON.parse(compiledLedToken.interface))
   .deploy({data:compiledLedToken.bytecode,arguments:['0x0','0x0',0,'Led Token Test','PRFT Test']})
@@ -61,6 +56,7 @@ beforeEach(async function() {
 // })
 
 describe('Initial State', function () {
+  this.timeout(0);
 
   beforeEach(async function() {
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});

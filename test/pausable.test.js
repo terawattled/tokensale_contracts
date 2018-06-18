@@ -7,9 +7,8 @@ const moment = require('moment');
 
 const assert = require('assert');
 
-const compiledLedToken = require('../contracts/build/LedToken.json');
-const compiledTokenSale = require('../contracts/build/TokenSale.json');
-const compiledLedPresaleToken = require('../contracts/build/LedPresaleToken.json');
+const compiledLedToken = require('../mastercontract/build/LedToken.json');
+const compiledTokenSale = require('../mastercontract/build/TokenSale.json');
 
 let accounts;
 let fund;
@@ -36,11 +35,6 @@ beforeEach(async function() {
   wallet = accounts[5];
   ledWalletAddress = accounts[9];
 
-  ledPresaleToken = await new web3.eth.Contract(JSON.parse(compiledLedPresaleToken.interface))
-  .deploy({data:compiledLedPresaleToken.bytecode})
-  .send({from:fund,gas:'3000000'});
-  ledPresaleTokenAddress = ledPresaleToken.options.address;
-
   ledToken = await new web3.eth.Contract(JSON.parse(compiledLedToken.interface))
   .deploy({data:compiledLedToken.bytecode,arguments:['0x0','0x0',0,'Led Token Test','PRFT Test']})
   .send({from:fund,gas:'3000000'});
@@ -56,7 +50,6 @@ beforeEach(async function() {
   .send({from:fund,gas:'3000000'});
 
   tokenSaleAddress = tokenSale.options.address;
-  await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
 })
 
 describe('Pause', function () {
@@ -69,8 +62,9 @@ describe('Pause', function () {
   })
 
   beforeEach(async function() {
+    await ledToken.methods.enableTransfers(true).send({from:fund,gas:'3000000'});
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
+    
   })
 
   it('can be paused and unpaused by the owner', async function() {

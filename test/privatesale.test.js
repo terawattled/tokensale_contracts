@@ -16,9 +16,8 @@ import { pause, unpause } from '../scripts/pausableHelpers'*/
 
 const assert = require('assert');
 
-const compiledLedToken = require('../contracts/build/LedToken.json');
-const compiledTokenSale = require('../contracts/build/PrivateSale.json');
-const compiledLedPresaleToken = require('../contracts/build/LedPresaleToken.json');
+const compiledLedToken = require('../mastercontract/build/LedToken.json');
+const compiledTokenSale = require('../mastercontract/build/PrivateSale.json');
 
 let accounts;
 let fund;
@@ -48,7 +47,7 @@ beforeEach(async function() {
   ledWalletAddress = accounts[9];
 
   ledToken = await new web3.eth.Contract(JSON.parse(compiledLedToken.interface))
-  .deploy({data:compiledLedToken.bytecode,arguments:['0x0','0x0',0,'Led Token','PRFT']})
+  .deploy({data:compiledLedToken.bytecode,arguments:['0x0','0x0',0,'Led Token','LED']})
   .send({from:fund,gas:'3000000'});
 
   ledTokenAddress = ledToken.options.address;
@@ -66,7 +65,6 @@ describe('Private Sale Starting and Ending Period', async function() {
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
 
     try {
       await tokenSale.methods.buyTokens(sender).send({from:sender,value:web3.utils.toWei('1','ether'),gas:'3000000'});
@@ -87,7 +85,6 @@ describe('Private Sale Starting and Ending Period', async function() {
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
 
     let tx = await web3.eth.sendTransaction({
       from:sender,
@@ -114,7 +111,6 @@ describe('Private Sale Starting and Ending Period', async function() {
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
 
     try {
       await tokenSale.methods.buyTokens(sender).send({from:sender,value:web3.utils.toWei('1','ether'),gas:'3000000'});
@@ -138,7 +134,6 @@ describe('Private Sale Token Information', async function() {
 
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
   })
 
   it('should return the correct token supply', async function() {
@@ -166,7 +161,6 @@ describe('Private Sale Payments', async function() {
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
   })
 
   it('should accepts ether transactions sent to contract', async function() {
@@ -207,18 +201,6 @@ describe('Private Sale Payments', async function() {
     assert.ok(difference<0.1);
   })
 
-  it('should increase total supply by 3395.1 for 10 ether raised', async function() {
-    let initialTotalSupply = await ledToken.methods.totalSupply().call();
-
-    await tokenSale.methods.buyTokens(sender).send({from:sender,value:web3.utils.toWei('1','ether'),gas:'3000000'});
-
-    let totalSupply = await ledToken.methods.totalSupply().call();
-    let supplyIncrease = (totalSupply - initialTotalSupply);
-    let supplyBase = supplyIncrease/(10**18);
-
-    assert.equal(Math.floor(supplyBase),3395);
-  })
-
   it('should transfer money to the wallet after receiving investment', async function() {
     let multisig = await tokenSale.methods.ledMultiSig().call();
     let initialBalance = await web3.eth.getBalance(multisig);
@@ -245,7 +227,7 @@ describe('Private Sale Payments', async function() {
     assert.equal(balanceBase,expectedBalanceIncrease);
   })
 
-  it('should increase buyer balance by 3395.1 for 1 ether invested', async function() {
+  it('should increase buyer balance by 2500 for 1 ether invested', async function() {
     let initialTokenBalance = await ledToken.methods.balanceOf(sender).call();
 
     await tokenSale.methods.buyTokens(sender).send({from:sender,value:web3.utils.toWei('1','ether'),gas:'3000000'});
@@ -253,7 +235,7 @@ describe('Private Sale Payments', async function() {
     let tokenBalance = await ledToken.methods.balanceOf(sender).call();
     let balanceIncrease = (tokenBalance - initialTokenBalance);
     let balanceBase = balanceIncrease/(10**18);
-    assert.equal(Math.floor(balanceBase), 3395);
+    assert.equal(Math.floor(balanceBase), 2500);
   })
 })
 
@@ -372,17 +354,16 @@ describe('Private Sale Buying Tokens', async function() {
     .send({from:fund,gas:'3000000'});
     tokenSaleAddress = tokenSale.options.address;
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
   })
 
-  it('should have a base token price of 294542134252305 wei',async function () {
+  it('should have a base token price of 400000000000000 wei',async function () {
     let basePrice = await tokenSale.methods.PRIVATESALE_BASE_PRICE_IN_WEI().call();
-    assert.equal(basePrice, 294542134252305);
+    assert.equal(basePrice, 400000000000000);
   })
 
-  it('should offer a 20% bonus if more than 2.4 eth was put in', async function() {
+  it('should offer a 20% bonus if more than 4 eth was put in', async function() {
     let initialTokenBalance = await ledToken.methods.balanceOf(sender).call();
-    let sendValue = web3.utils.toWei('3','ether');
+    let sendValue = web3.utils.toWei('5','ether');
 
     await tokenSale.methods.buyTokens(sender).send({from:sender,value:sendValue,gas:'3000000'});
 
@@ -395,9 +376,9 @@ describe('Private Sale Buying Tokens', async function() {
     assert.equal(Math.floor(tokensWithoutBonus*1.2), Math.floor(balanceBase));
   })
 
-  it('should offer a 25% bonus if more than 5 eth was put in', async function() {
+  it('should offer a 25% bonus if more than 8.33 eth was put in', async function() {
     let initialTokenBalance = await ledToken.methods.balanceOf(sender).call();
-    let sendValue = web3.utils.toWei('6','ether');
+    let sendValue = web3.utils.toWei('8.5','ether');
 
     await tokenSale.methods.buyTokens(sender).send({from:sender,value:sendValue,gas:'3000000'});
 
@@ -410,9 +391,9 @@ describe('Private Sale Buying Tokens', async function() {
     assert.equal(Math.floor(tokensWithoutBonus*1.25), Math.floor(balanceBase));
   })
 
-  it('should offer a 35% bonus if more than 8.1 eth was put in', async function() {
+  it('should offer a 35% bonus if more than 13.5 eth was put in', async function() {
     let initialTokenBalance = await ledToken.methods.balanceOf(sender).call();
-    let sendValue = web3.utils.toWei('10','ether');
+    let sendValue = web3.utils.toWei('14','ether');
 
     await tokenSale.methods.buyTokens(sender).send({from:sender,value:sendValue,gas:'3000000'});
 
@@ -425,9 +406,9 @@ describe('Private Sale Buying Tokens', async function() {
     assert.equal(Math.floor(tokensWithoutBonus*1.35), Math.floor(balanceBase));
   })
 
-  it('should offer a 50% bonus if more than 12 eth was put in', async function() {
+  it('should offer a 50% bonus if more than 20 eth was put in', async function() {
     let initialTokenBalance = await ledToken.methods.balanceOf(sender).call();
-    let sendValue = web3.utils.toWei('13','ether');
+    let sendValue = web3.utils.toWei('21','ether');
 
     await tokenSale.methods.buyTokens(sender).send({from:sender,value:sendValue,gas:'3000000'});
 
@@ -440,9 +421,9 @@ describe('Private Sale Buying Tokens', async function() {
     assert.equal(Math.floor(tokensWithoutBonus*1.5), Math.floor(balanceBase));
   })
 
-  it('should offer a 100% bonus if more than 21 eth was put in', async function() {
+  it('should offer a 100% bonus if more than 33.33 eth was put in', async function() {
     let initialTokenBalance = await ledToken.methods.balanceOf(sender).call();
-    let sendValue = web3.utils.toWei('21','ether');
+    let sendValue = web3.utils.toWei('34','ether');
 
     await tokenSale.methods.buyTokens(sender).send({from:sender,value:sendValue,gas:'3000000'});
 
@@ -455,33 +436,29 @@ describe('Private Sale Buying Tokens', async function() {
     assert.equal(Math.floor(tokensWithoutBonus*2), Math.floor(balanceBase));
   })
 
-  it('should throw if the number of tokens exceeds the cap', async function() {
-    let basePriceInWei = await tokenSale.methods.PRIVATESALE_BASE_PRICE_IN_WEI().call();
-    let capInWei = await tokenSale.methods.weiCap().call();
-    let initialBalance = await ledToken.methods.balanceOf(sender).call();
-
-    let amount = 0.48 * capInWei * (1.1);
+  it('should throw if the investment is more than 1000 ETH', async function() {
     try {
-      await tokenSale.methods.buyTokens(sender).send({from:sender,value:amount,gas:'3000000'});
+      await tokenSale.methods.buyTokens(sender).send({from:sender,value:web3.utils.toWei('1001', 'ether'),gas:'3000000'});
       assert(false);
     } catch(error) {
-      let balance = await ledToken.methods.balanceOf(sender).call();
-      assert.equal(balance,initialBalance);
+      assert(true);
     }
   })
-
-  it('should not throw if the number of tokens hits just below the cap', async function() {
-    let basePriceInWei = await tokenSale.methods.PRIVATESALE_BASE_PRICE_IN_WEI().call();
-    let capInWei = await tokenSale.methods.weiCap().call();
-    let initialBalance = await ledToken.methods.balanceOf(sender).call();
-
-    let amount = 0.48 * capInWei * (0.99);
-    amount = BigNumber(amount);
+  it('should not throw if the investment is under 1000 ETH', async function() {
     try {
-      await tokenSale.methods.buyTokens(sender).send({from:sender,value:amount,gas:'3000000'});
+      await tokenSale.methods.buyTokens(sender).send({from:sender,value:web3.utils.toWei('999.8', 'ether'),gas:'3000000'});
       assert(true);
     } catch(error) {
       assert(false);
+    }
+  })
+
+  it('should throw if the investment is under 0.2 ETH', async function() {
+    try {
+      await tokenSale.methods.buyTokens(sender).send({from:sender,value:web3.utils.toWei('0.19', 'ether'),gas:'3000000'});
+      assert(false);
+    } catch(error) {
+      assert(true);
     }
   })
 
