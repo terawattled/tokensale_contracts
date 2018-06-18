@@ -58,5 +58,7 @@ contract TokenInfo {
     uint256 public constant LEDTEAM_TOKENS = 35000000;
     uint256 public constant TOTAL_TOKENCAP = 100000000;
 
+    uint256 public constant DECIMALS_MULTIPLIER = 1 ether;
+
     address public constant LED_MULTISIG = 0x865e785f98b621c5fdde70821ca7cea9eeb77ef4;
 }
