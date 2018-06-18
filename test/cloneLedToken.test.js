@@ -13,9 +13,9 @@ const web3 = new Web3(provider);
 
 const moment = require('moment');
 
-const compiledLedToken = require('../contracts/build/LedToken.json');
-const compiledTokenSale = require('../contracts/build/TokenSale.json');
-const compiledTokenFactory = require('../contracts/build/TokenFactory.json');
+const compiledLedToken = require('../mastercontract/build/LedToken.json');
+const compiledTokenSale = require('../mastercontract/build/TokenSale.json');
+const compiledTokenFactory = require('../mastercontract/build/TokenFactory.json');
 
 let tokenSale;
 let ledToken;
@@ -58,6 +58,7 @@ beforeEach(async function() {
   tokenSaleAddress = tokenSale.options.address;
 
   await ledToken.methods.transferControl(tokenSaleAddress).send({from:accounts[0]});
+  
 })
 
 describe('Cloning: ', function () {
@@ -67,8 +68,6 @@ describe('Cloning: ', function () {
     // And without reformatting them, it will throw an error.
 
     await tokenSale.methods.forceStart().send({from:accounts[0],gas:'3000000'});
-    await tokenSale.methods.whitelist(accounts[1]).send({from:accounts[0],gas:'3000000'});
-    await tokenSale.methods.whitelist(accounts[2]).send({from:accounts[0],gas:'3000000'});
     await tokenSale.methods.buyTokens(accounts[1]).send({
       from:accounts[1],
       value:web3.utils.toWei('1', 'ether'),
@@ -106,7 +105,6 @@ describe('Cloning: ', function () {
     await clonedToken.methods.transferControl(clonedTokenSaleAddress).send({from:accounts[0],gas:'3000000'});
 
     await clonedTokenSale.methods.forceStart().send({from:accounts[0],gas:'3000000'});
-    await clonedTokenSale.methods.whitelist(accounts[2]).send({from:accounts[0],gas:'3000000'});
 
     let initialTokenBalance = await clonedToken.methods.balanceOf(accounts[2]).call();
 
@@ -116,26 +114,5 @@ describe('Cloning: ', function () {
     let balanceIncrease = (tokenBalance - initialTokenBalance);
     balanceIncrease = (balanceIncrease/(10**18));
     assert(balanceIncrease>10);
-  })
-
-  it('cloned tokens should be transferable', async function() {
-
-    let clonedTokenSale = await new web3.eth.Contract(JSON.parse(compiledTokenSale.interface))
-    .deploy({data:compiledTokenSale.bytecode,arguments:[clonedTokenAddress,startTime,endTime]})
-    .send({from:accounts[0],gas:'3000000'});
-
-    let clonedTokenSaleAddress = clonedTokenSale.options.address;
-    await clonedToken.methods.transferControl(clonedTokenSaleAddress).send({from:accounts[0],gas:'3000000'});
-    await clonedTokenSale.methods.enableTransfers().send({from:accounts[0],gas:'3000000'});
-    let buyer1InitialBalance = await clonedToken.methods.balanceOf(accounts[1]).call();
-    let buyer2InitialBalance = await clonedToken.methods.balanceOf(accounts[2]).call();
-
-    await clonedToken.methods.transfer(accounts[2], 100).send({from:accounts[1],gas:'3000000'});
-
-    let buyer1Balance = await clonedToken.methods.balanceOf(accounts[1]).call();
-    let buyer2Balance = await clonedToken.methods.balanceOf(accounts[2]).call();
-
-    assert.ok(buyer1InitialBalance>buyer1Balance);
-    assert.ok(buyer2InitialBalance<buyer2Balance);
   })
 })

@@ -5,9 +5,8 @@ const web3 = new Web3(provider);
 
 const assert = require('assert');
 
-const compiledLedToken = require('../contracts/build/LedToken.json');
-const compiledTokenSale = require('../contracts/build/TokenSale.json');
-const compiledLedPresaleToken = require('../contracts/build/LedPresaleToken.json');
+const compiledLedToken = require('../mastercontract/build/LedToken.json');
+const compiledTokenSale = require('../mastercontract/build/TokenSale.json');
 
 let tokenSale;
 let fund;
@@ -34,11 +33,6 @@ beforeEach(async function(){
 
   let startBlock = blockNumber + 10;
   let endBlock = blockNumber + 20;
-
-  ledPresaleToken = await new web3.eth.Contract(JSON.parse(compiledLedPresaleToken.interface))
-  .deploy({data:compiledLedPresaleToken.bytecode})
-  .send({from:fund, gas:'3000000'});
-  ledPresaleTokenAddress = ledPresaleToken.options.address;
   
   ledToken = await new web3.eth.Contract(JSON.parse(compiledLedToken.interface))
   .deploy({data:compiledLedToken.bytecode,arguments:[ledPresaleTokenAddress,ledWalletAddress,0,'Led Token','LED']})

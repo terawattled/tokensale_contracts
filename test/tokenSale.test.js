@@ -14,9 +14,8 @@ import { pause, unpause } from '../scripts/pausableHelpers'*/
 
 const assert = require('assert');
 
-const compiledLedToken = require('../contracts/build/LedToken.json');
-const compiledTokenSale = require('../contracts/build/TokenSale.json');
-const compiledLedPresaleToken = require('../contracts/build/LedPresaleToken.json');
+const compiledLedToken = require('../mastercontract/build/LedToken.json');
+const compiledTokenSale = require('../mastercontract/build/TokenSale.json');
 
 let accounts;
 let fund;
@@ -46,7 +45,7 @@ beforeEach(async function() {
   ledWalletAddress = accounts[9];
 
   ledToken = await new web3.eth.Contract(JSON.parse(compiledLedToken.interface))
-  .deploy({data:compiledLedToken.bytecode,arguments:['0x0','0x0',0,'Led Token','PRFT']})
+  .deploy({data:compiledLedToken.bytecode,arguments:['0x0','0x0',0,'Led Token','LED']})
   .send({from:fund,gas:'3000000'});
 
   ledTokenAddress = ledToken.options.address;
@@ -64,9 +63,9 @@ beforeEach(async function() {
 
 describe('Token Information', async function() {
   beforeEach(async function() {
+    await ledToken.methods.enableTransfers(true).send({from:fund,gas:'3000000'});
     await ledToken.methods.transferControl(tokenSaleAddress).send({from:fund,gas:'3000000'});
-    await tokenSale.methods.enableTransfers().send({from:fund,gas:'3000000'});
-    await tokenSale.methods.whitelist(sender).send({from:fund,gas:'3000000'});
+    
   })
 
   it('should return the correct token supply', async function() {
