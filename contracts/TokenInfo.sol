@@ -2,22 +2,17 @@ pragma solidity ^0.4.24;
 
 contract TokenInfo {
     // Base prices in wei, going off from an Ether value of $500
-    uint256 public constant PRIVATESALE_BASE_PRICE_IN_WEI = 400000000000000;
+    uint256 public constant PRIVATESALE_BASE_PRICE_IN_WEI = 200000000000000;
     uint256 public constant PRESALE_BASE_PRICE_IN_WEI = 600000000000000;
     uint256 public constant ICO_BASE_PRICE_IN_WEI = 800000000000000;
     uint256 public constant FIRSTSALE_BASE_PRICE_IN_WEI = 200000000000000;
 
     // First sale minimum and maximum contribution, going off from an Ether value of $500
-    uint256 public constant MIN_PURCHASE_OTHERSALES = 200000000000000000;
+    uint256 public constant MIN_PURCHASE_OTHERSALES = 80000000000000000;
     uint256 public constant MIN_PURCHASE = 1000000000000000000;
     uint256 public constant MAX_PURCHASE = 1000000000000000000000;
 
     // Bonus percentages for each respective sale level
-    uint256 public constant PRIVATESALE_PERCENTAGE_1 = 20;
-    uint256 public constant PRIVATESALE_PERCENTAGE_2 = 25;
-    uint256 public constant PRIVATESALE_PERCENTAGE_3 = 35;
-    uint256 public constant PRIVATESALE_PERCENTAGE_4 = 50;
-    uint256 public constant PRIVATESALE_PERCENTAGE_5 = 100;
 
     uint256 public constant PRESALE_PERCENTAGE_1 = 10;
     uint256 public constant PRESALE_PERCENTAGE_2 = 15;
@@ -32,11 +27,6 @@ contract TokenInfo {
     uint256 public constant ICO_PERCENTAGE_5 = 25;
 
     // Bonus levels in wei for each respective level
-    uint256 public constant PRIVATESALE_LEVEL_1 = 4000000000000000000;
-    uint256 public constant PRIVATESALE_LEVEL_2 = 8333333333333333333;
-    uint256 public constant PRIVATESALE_LEVEL_3 = 13500000000000000000;
-    uint256 public constant PRIVATESALE_LEVEL_4 = 20000000000000000000;
-    uint256 public constant PRIVATESALE_LEVEL_5 = 33333333333333333333;
 
     uint256 public constant PRESALE_LEVEL_1 = 5000000000000000000;
     uint256 public constant PRESALE_LEVEL_2 = 10000000000000000000;
